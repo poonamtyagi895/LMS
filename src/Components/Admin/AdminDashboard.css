@@ -1,37 +1,27 @@
-/* ============ ADMIN DASHBOARD LAYOUT ============ */
-
 .dashboard-layout {
   display: flex;
-  width: 100%;
   min-height: 100vh;
-  background-color: #f9fafb;
+  background: #f9fafb;
   overflow: hidden;
 }
 
-/* MAIN CONTENT */
 .dashboard-main {
   flex: 1;
   padding: 28px;
   overflow-y: auto;
-  background-color: #f9fafb;
 }
 
-/* Heading (temporary placeholder) */
-.dashboard-main h1 {
-  font-size: 22px;
-  font-weight: 600;
-  color: #111827;
+.dashboard-header {
+  margin-bottom: 20px;
 }
 
-/* RESPONSIVE */
-@media (max-width: 1200px) {
-  .dashboard-layout {
-    flex-direction: row;
-  }
+.dashboard-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
 }
 
-@media (max-width: 768px) {
-  .dashboard-main {
-    padding: 20px;
-  }
+.dashboard-header span {
+  font-size: 13px;
+  color: #6b7280;
 }

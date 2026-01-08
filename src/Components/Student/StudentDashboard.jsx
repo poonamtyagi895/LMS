@@ -1,6 +1,7 @@
 import React from "react";
 import DashboardSidebar from "../Custom_components/DashboardSidebar/DashboardSidebar";
 import DashboardRightPanel from "../Custom_components/DashboardRightPanel/DashboardRightPanel";
+import DashboardWelcomeCard from "../Custom_components/DashboardWelcomeCard/DashboardWelcomeCard";
 import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
@@ -15,12 +16,19 @@ const StudentDashboard = () => {
     { label: "Support", icon: "fas fa-headset" }
   ];
 
+  const today = new Date().toDateString();
+
   return (
     <div className="dashboard-layout">
       <DashboardSidebar menus={studentMenus} />
 
       <div className="dashboard-main">
-        <h1>Student Dashboard</h1>
+        <div className="dashboard-header">
+          <h1>Dashboard</h1>
+          <span>{today}</span>
+        </div>
+
+        <DashboardWelcomeCard role="student" name="Sahil" />
       </div>
 
       <DashboardRightPanel role="student" />
