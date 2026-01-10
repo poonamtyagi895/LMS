@@ -1,0 +1,47 @@
+.students-enrolled h1 {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.students-enrolled p {
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.students-table {
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+}
+
+thead {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.status.active {
+  background: #dcfce7;
+  color: #16a34a;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.status.completed {
+  background: #fef3c7;
+  color: #d97706;
+  padding: 6px 12px;
+  border-radius: 999px;
+}

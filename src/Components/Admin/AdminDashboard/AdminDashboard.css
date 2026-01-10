@@ -1,0 +1,26 @@
+.admin-dashboard-header {
+  margin-bottom: 20px;
+}
+
+.admin-dashboard-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.admin-dashboard-date {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.admin-dashboard-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard-info-grid {
+    grid-template-columns: 1fr;
+  }
+}

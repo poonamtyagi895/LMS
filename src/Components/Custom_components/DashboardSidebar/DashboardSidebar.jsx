@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardSidebar.css";
 
@@ -11,44 +12,44 @@ const DashboardSidebar = ({ menus }) => {
       sidebar.classList.toggle("active");
     };
 
-    if (toggle) {
-      toggle.addEventListener("click", handleToggle);
-    }
+    if (toggle) toggle.addEventListener("click", handleToggle);
 
     return () => {
-      if (toggle) {
-        toggle.removeEventListener("click", handleToggle);
-      }
+      if (toggle) toggle.removeEventListener("click", handleToggle);
     };
   }, []);
 
   return (
     <>
+      {/* MOBILE TOGGLE */}
       <button className="dashboard-mobile-toggle" id="dashboardMobileToggle">
         <i className="fas fa-bars"></i>
       </button>
 
       <aside className="dashboard-sidebar" id="dashboardSidebar">
+        {/* LOGO */}
         <div className="dashboard-sidebar-header">
           <i className="fas fa-chart-pie dashboard-sidebar-logo-icon"></i>
           <span className="dashboard-sidebar-logo-text">LMS</span>
         </div>
 
+        {/* MENU */}
         <nav className="dashboard-sidebar-menu">
           {menus.map((item, index) => (
-            <div
+            <NavLink
               key={index}
-              className={`dashboard-sidebar-item ${
-                item.active ? "active" : ""
-              }`}
+              to={item.path}
+              className={({ isActive }) =>
+                `dashboard-sidebar-item ${isActive ? "active" : ""}`
+              }
             >
               <i className={item.icon}></i>
               <span>{item.label}</span>
-            </div>
+            </NavLink>
           ))}
         </nav>
 
-        {/* Premium Box */}
+        {/* PREMIUM */}
         <div className="dashboard-sidebar-premium">
           <div className="dashboard-sidebar-lottie">
             <DotLottieReact

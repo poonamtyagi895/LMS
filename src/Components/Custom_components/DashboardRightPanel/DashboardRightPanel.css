@@ -200,3 +200,13 @@
     margin-bottom: 10px;
   }
 }
+.dashboard-right-panel {
+  width: 320px;
+}
+
+/* TABLET + MOBILE */
+@media (max-width: 992px) {
+  .dashboard-right-panel {
+    display: none;
+  }
+}
