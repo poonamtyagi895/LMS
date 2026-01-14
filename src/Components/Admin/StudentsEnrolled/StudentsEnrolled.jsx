@@ -1,48 +1,253 @@
+import { useState } from "react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./StudentsEnrolled.css";
 
+import AddButton from "../../Custom_components/Buttons/AddButton/AddButton";
+import SearchBar from "../../Custom_components/Buttons/SearchBar/SearchBar";
+import EditButton from "../../Custom_components/Buttons/EditButton/EditButton";
+import DeleteButton from "../../Custom_components/Buttons/DeleteButton/DeleteButton";
+
+import StudentInfoChangeCard from "../../Custom_components/StudentInfoChangeCard/StudentInfoChangeCard";
+import DeleteConfirmCard from "../../Custom_components/DeleteConfirmCard/DeleteConfirmCard";
+import Loader2 from "../../Custom_components/Loaders/Loader2";
+
+const INITIAL_STUDENTS = [
+  {
+    id: 1,
+    gender: "male",
+    name: "Yuri Berry",
+    email: "info@example.com",
+    mobile: "9158522265",
+  },
+  {
+    id: 2,
+    gender: "female",
+    name: "Tiger Nixon",
+    email: "info@example.com",
+    mobile: "7845885444",
+  },
+  {
+    id: 3,
+    gender: "female",
+    name: "Tatyana Fitzpatrick",
+    email: "info@example.com",
+    mobile: "999785327",
+  },
+];
+
+const EMPTY_STUDENT = { name: "", email: "", mobile: "" };
+
 const StudentsEnrolled = () => {
-  const students = [
-    { id: 1, name: "Sahil", email: "sahil@gmail.com", courses: 3, date: "08 Jan 2026", status: "Active" },
-    { id: 2, name: "Priya Sharma", email: "priya@gmail.com", courses: 2, date: "07 Jan 2026", status: "Completed" },
-    { id: 3, name: "Rahul Singh", email: "rahul@gmail.com", courses: 4, date: "06 Jan 2026", status: "Active" },
-    { id: 4, name: "Ananya Gupta", email: "ananya@gmail.com", courses: 1, date: "06 Jan 2026", status: "Completed" },
-  ];
+  const [students, setStudents] = useState(INITIAL_STUDENTS);
+  const [search, setSearch] = useState("");
+  const [entriesPerPage, setEntriesPerPage] = useState(10);
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [mode, setMode] = useState("add");
+  const [activeId, setActiveId] = useState(null);
+  const [formData, setFormData] = useState(EMPTY_STUDENT);
+
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
+  const [deleteId, setDeleteId] = useState(null);
+
+  const [showLoader, setShowLoader] = useState(false);
+
+  /* helper to show loader for 0.6s */
+  const runWithLoader = (callback) => {
+    setShowLoader(true);
+    setTimeout(() => {
+      setShowLoader(false);
+      callback();
+    }, 500);
+  };
+
+  /* FILTER */
+  const filteredStudents = students.filter((s) =>
+    `${s.name} ${s.email} ${s.mobile}`
+      .toLowerCase()
+      .includes(search.toLowerCase())
+  );
+
+  /* ADD */
+  const handleAddNew = () => {
+    runWithLoader(() => {
+      setMode("add");
+      setFormData(EMPTY_STUDENT);
+      setActiveId(null);
+      setShowPopup(true);
+    });
+  };
+
+  /* EDIT */
+  const handleEdit = (student) => {
+    runWithLoader(() => {
+      setMode("edit");
+      setFormData({
+        name: student.name,
+        email: student.email,
+        mobile: student.mobile,
+      });
+      setActiveId(student.id);
+      setShowPopup(true);
+    });
+  };
+
+  /* SAVE */
+  const handleSave = () => {
+    if (mode === "add") {
+      setStudents([
+        ...students,
+        {
+          ...formData,
+          id: Date.now(),
+          gender: "male",
+        },
+      ]);
+    } else {
+      setStudents(
+        students.map((s) =>
+          s.id === activeId ? { ...s, ...formData } : s
+        )
+      );
+    }
+    setShowPopup(false);
+  };
+
+  /* DELETE */
+  const handleDeleteClick = (id) => {
+    setDeleteId(id);
+    setShowDeletePopup(true);
+  };
+
+  const confirmDelete = () => {
+    runWithLoader(() => {
+      setStudents(students.filter((s) => s.id !== deleteId));
+      setShowDeletePopup(false);
+    });
+  };
+
+  const visibleStudents = filteredStudents.slice(0, entriesPerPage);
 
   return (
-    <div className="students-enrolled">
-      <h1>Students Enrolled</h1>
-      <p>Total Students: {students.length}</p>
+    <div className="students-enrolled-page">
+      {/* LOADER */}
+      {showLoader && <Loader2 />}
 
-      <div className="students-table">
-        <table>
+      {/* HEADER */}
+      <div className="students-enrolled-header">
+        <h1 className="students-enrolled-title">Students Enrolled</h1>
+        <p className="students-enrolled-subtitle">
+          Total Students: {students.length}
+        </p>
+      </div>
+
+      {/* CONTROLS */}
+      <div className="students-enrolled-controls">
+        <div className="students-enrolled-entries">
+          Show
+          <select
+            value={entriesPerPage}
+            onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+          >
+            <option value={10}>10</option>
+            <option value={25}>25</option>
+            <option value={50}>50</option>
+          </select>
+          entries
+        </div>
+
+        <div className="students-enrolled-actions-top">
+          <SearchBar
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <AddButton onClick={handleAddNew} />
+        </div>
+      </div>
+
+      {/* TABLE */}
+      <div className="students-enrolled-table-card">
+        <table className="students-enrolled-table">
           <thead>
             <tr>
-              <th>#</th>
-              <th>Student Name</th>
+              <th>Profile</th>
+              <th>S.No.</th>
+              <th>Name</th>
               <th>Email</th>
-              <th>Courses</th>
-              <th>Date</th>
-              <th>Status</th>
+              <th>Mobile</th>
+              <th>Actions</th>
             </tr>
           </thead>
+
           <tbody>
-            {students.map(s => (
+            {visibleStudents.map((s, index) => (
               <tr key={s.id}>
-                <td>{s.id}</td>
+                <td>
+                  <div className="students-enrolled-avatar">
+                    <DotLottieReact
+                      src={
+                        s.gender === "male"
+                          ? "https://lottie.host/f2ffc4a9-3e7d-4eee-95f7-4aeaac63e5da/y0dA0Bl62z.lottie"
+                          : "https://lottie.host/cd22b1f3-55fc-4d27-b91a-4bb55da64d34/4r9g7dOxUC.lottie"
+                      }
+                      loop
+                      autoplay
+                    />
+                  </div>
+                </td>
+
+                <td>{index + 1}</td>
                 <td>{s.name}</td>
                 <td>{s.email}</td>
-                <td>{s.courses}</td>
-                <td>{s.date}</td>
+                <td>{s.mobile}</td>
+
                 <td>
-                  <span className={`status ${s.status.toLowerCase()}`}>
-                    {s.status}
-                  </span>
+                  <div className="students-enrolled-row-actions">
+                    <EditButton onClick={() => handleEdit(s)} />
+                    <DeleteButton onClick={() => handleDeleteClick(s.id)} />
+                  </div>
                 </td>
               </tr>
             ))}
+
+            {visibleStudents.length === 0 && (
+              <tr>
+                <td colSpan="6" className="no-data">
+                  No results found
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>
+
+      {/* INFO */}
+      <p className="table-info">
+        Showing {filteredStudents.length === 0 ? 0 : 1} to{" "}
+        {Math.min(entriesPerPage, filteredStudents.length)} of{" "}
+        {filteredStudents.length} entries
+        {search && ` (filtered from ${students.length} total entries)`}
+      </p>
+
+      {/* POPUPS */}
+      {showPopup && (
+        <StudentInfoChangeCard
+          mode={mode}
+          data={formData}
+          onChange={(e) =>
+            setFormData({ ...formData, [e.target.name]: e.target.value })
+          }
+          onSave={handleSave}
+          onCancel={() => setShowPopup(false)}
+        />
+      )}
+
+      {showDeletePopup && (
+        <DeleteConfirmCard
+          onDelete={confirmDelete}
+          onCancel={() => setShowDeletePopup(false)}
+        />
+      )}
     </div>
   );
 };
