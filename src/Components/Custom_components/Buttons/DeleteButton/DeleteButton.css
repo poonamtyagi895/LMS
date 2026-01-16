@@ -28,7 +28,7 @@
 
 .delete-button:hover {
   transition-duration: 0.3s;
-  background-color: rgb(255, 69, 69);
+  background-color: #ff828a;
   align-items: center;
   gap: 0;
 }

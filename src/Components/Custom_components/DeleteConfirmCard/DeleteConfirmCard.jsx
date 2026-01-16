@@ -1,11 +1,11 @@
 import "./DeleteConfirmCard.css";
 
-const DeleteConfirmCard = ({ onDelete, onCancel }) => {
+const DeleteConfirmCard = ({ onDelete, onCancel, message }) => {
   return (
     <div className="delete-popup-overlay">
       <div className="delete-popup-card">
         <h3>Are you sure?</h3>
-        <p>You want to delete this student.</p>
+        <p>{message}</p>
 
         <div className="delete-popup-actions">
           <button className="delete-confirm-btn" onClick={onDelete}>

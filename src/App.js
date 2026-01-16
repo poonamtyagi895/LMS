@@ -21,8 +21,8 @@ function App() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="students" element={<StudentsEnrolled />} />
-        <Route path="courses" element={<ManageCourses />} />
-        <Route path="tests" element={<TestManagement />} />
+        <Route path="manage-courses" element={<ManageCourses />} />
+        <Route path="test-management" element={<TestManagement />} />
       </Route>
 
       <Route path="/home" element={<Home/>}/>

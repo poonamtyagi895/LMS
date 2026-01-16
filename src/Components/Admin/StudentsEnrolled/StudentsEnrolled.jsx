@@ -41,6 +41,7 @@ const StudentsEnrolled = () => {
   const [students, setStudents] = useState(INITIAL_STUDENTS);
   const [search, setSearch] = useState("");
   const [entriesPerPage, setEntriesPerPage] = useState(10);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const [showPopup, setShowPopup] = useState(false);
   const [mode, setMode] = useState("add");
@@ -52,7 +53,6 @@ const StudentsEnrolled = () => {
 
   const [showLoader, setShowLoader] = useState(false);
 
-  /* helper to show loader for 0.6s */
   const runWithLoader = (callback) => {
     setShowLoader(true);
     setTimeout(() => {
@@ -67,6 +67,18 @@ const StudentsEnrolled = () => {
       .toLowerCase()
       .includes(search.toLowerCase())
   );
+
+  /* PAGINATION */
+  const totalPages = Math.ceil(filteredStudents.length / entriesPerPage);
+  const startIndex = (currentPage - 1) * entriesPerPage;
+  const endIndex = startIndex + entriesPerPage;
+  const visibleStudents = filteredStudents.slice(startIndex, endIndex);
+
+  /* RESET PAGE ON SEARCH / ENTRIES CHANGE */
+  const handleEntriesChange = (value) => {
+    setEntriesPerPage(value);
+    setCurrentPage(1);
+  };
 
   /* ADD */
   const handleAddNew = () => {
@@ -126,11 +138,8 @@ const StudentsEnrolled = () => {
     });
   };
 
-  const visibleStudents = filteredStudents.slice(0, entriesPerPage);
-
   return (
     <div className="students-enrolled-page">
-      {/* LOADER */}
       {showLoader && <Loader2 />}
 
       {/* HEADER */}
@@ -147,7 +156,7 @@ const StudentsEnrolled = () => {
           Show
           <select
             value={entriesPerPage}
-            onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+            onChange={(e) => handleEntriesChange(Number(e.target.value))}
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -159,7 +168,10 @@ const StudentsEnrolled = () => {
         <div className="students-enrolled-actions-top">
           <SearchBar
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setCurrentPage(1);
+            }}
           />
           <AddButton onClick={handleAddNew} />
         </div>
@@ -196,7 +208,7 @@ const StudentsEnrolled = () => {
                   </div>
                 </td>
 
-                <td>{index + 1}</td>
+                <td>{startIndex + index + 1}</td>
                 <td>{s.name}</td>
                 <td>{s.email}</td>
                 <td>{s.mobile}</td>
@@ -221,13 +233,40 @@ const StudentsEnrolled = () => {
         </table>
       </div>
 
-      {/* INFO */}
-      <p className="table-info">
-        Showing {filteredStudents.length === 0 ? 0 : 1} to{" "}
-        {Math.min(entriesPerPage, filteredStudents.length)} of{" "}
-        {filteredStudents.length} entries
-        {search && ` (filtered from ${students.length} total entries)`}
-      </p>
+      {/* INFO + PAGINATION */}
+      <div className="table-footer">
+        <p className="table-info">
+          Showing {filteredStudents.length === 0 ? 0 : startIndex + 1} to{" "}
+          {Math.min(endIndex, filteredStudents.length)} of{" "}
+          {filteredStudents.length} entries
+        </p>
+
+        <div className="pagination">
+          <button
+            disabled={currentPage === 1}
+            onClick={() => setCurrentPage((p) => p - 1)}
+          >
+            Previous
+          </button>
+
+          {[...Array(totalPages)].map((_, i) => (
+            <button
+              key={i}
+              className={currentPage === i + 1 ? "active" : ""}
+              onClick={() => setCurrentPage(i + 1)}
+            >
+              {i + 1}
+            </button>
+          ))}
+
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => setCurrentPage((p) => p + 1)}
+          >
+            Next
+          </button>
+        </div>
+      </div>
 
       {/* POPUPS */}
       {showPopup && (
@@ -244,6 +283,7 @@ const StudentsEnrolled = () => {
 
       {showDeletePopup && (
         <DeleteConfirmCard
+          message="You want to delete this student."
           onDelete={confirmDelete}
           onCancel={() => setShowDeletePopup(false)}
         />

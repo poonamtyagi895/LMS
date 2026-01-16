@@ -174,7 +174,7 @@ const Auth = () => {
             <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
 
-            <a href="#">Forget Your Password?</a>
+            <a>Forget Your Password?</a>
 
             {/* MESSAGE SLOT (FIXED HEIGHT) */}
             <div className="auth-message-slot">
