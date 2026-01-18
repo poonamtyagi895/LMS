@@ -7,6 +7,7 @@ import AdminLayout from "./Components/Admin/AdminLayout";
 import AdminDashboard from "./Components/Admin/AdminDashboard/AdminDashboard";
 import StudentsEnrolled from "./Components/Admin/StudentsEnrolled/StudentsEnrolled";
 import ManageCourses from "./Components/Admin/ManageCourses/ManageCourses";
+import CourseInfoChangeCard from "./Components/Custom_components/CourseInfoChangeCard/CourseInfoChangeCard";
 import TestManagement from "./Components/Admin/TestManagement/TestManagement";
 import Home from "./Components/Home/Home";
 
@@ -22,6 +23,8 @@ function App() {
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="students" element={<StudentsEnrolled />} />
         <Route path="manage-courses" element={<ManageCourses />} />
+          <Route path="manage-courses/new" element={<CourseInfoChangeCard mode="create" />}/>
+          <Route path="manage-courses/edit/:id" element={<CourseInfoChangeCard mode="edit" />}/>
         <Route path="test-management" element={<TestManagement />} />
       </Route>
 

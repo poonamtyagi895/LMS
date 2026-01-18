@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./ManageCourses.css";
 
 import AddButton from "../../Custom_components/Buttons/AddButton/AddButton";
@@ -17,6 +18,8 @@ const INITIAL_COURSES = [
 ];
 
 const ManageCourses = () => {
+  const navigate = useNavigate();
+
   const [courses, setCourses] = useState(INITIAL_COURSES);
   const [search, setSearch] = useState("");
   const [entriesPerPage, setEntriesPerPage] = useState(10);
@@ -107,7 +110,7 @@ const ManageCourses = () => {
               setCurrentPage(1);
             }}
           />
-          <AddButton onClick={() => {}} />
+          <AddButton onClick={() => navigate("/admin/manage-courses/new")} />
         </div>
       </div>
 
@@ -131,14 +134,6 @@ const ManageCourses = () => {
                 <td>{c.title}</td>
                 <td>{c.price}</td>
                 <td>
-                  {/* <button
-                    className={`manage-courses-publish-btn ${
-                      c.published ? "on" : "off"
-                    }`}
-                    onClick={() => togglePublish(c.id)}
-                  >
-                    {c.published ? "Published" : "Unpublished"}
-                  </button> */}
                   <ChangeTextButton
                     isActive={c.published}
                     beforeText="Unpublished"
@@ -148,7 +143,7 @@ const ManageCourses = () => {
                 </td>
                 <td>
                   <div className="manage-courses-row-actions">
-                    <EditButton onClick={() => {}} />
+                    <EditButton onClick={() => navigate(`/admin/manage-courses/edit/${c.id}`)}/>
                     <DeleteButton onClick={() => handleDeleteClick(c.id)} />
                   </div>
                 </td>

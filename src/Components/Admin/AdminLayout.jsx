@@ -18,19 +18,25 @@ const AdminLayout = () => {
     active: location.pathname === m.path,
   }));
 
+  const hideRightPanel =
+    location.pathname.includes("/admin/manage-courses/new") ||
+    location.pathname.includes("/admin/manage-courses/edit");
+
   return (
-    <div className="admin-layout">
+    <div className={`admin-layout ${hideRightPanel ? "admin-layout--no-right-panel" : ""}`}>
       <DashboardSidebar menus={updatedMenus} />
 
       <main className="admin-layout-main">
         <Outlet />
       </main>
 
-      <DashboardRightPanel
-        name="Poonam Tyagi"
-        username="@tyagip895"
-        role="admin"
-      />
+      {!hideRightPanel && (
+        <DashboardRightPanel
+          name="Poonam Tyagi"
+          username="@tyagip895"
+          role="admin"
+        />
+      )}
     </div>
   );
 };

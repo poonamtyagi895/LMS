@@ -83,26 +83,6 @@
   gap: 10px;
 }
 
-/* PUBLISH BUTTON */
-.manage-courses-publish-btn {
-  padding: 6px 14px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-}
-
-.manage-courses-publish-btn.on {
-  background: linear-gradient(to right, #22c55e, #16a34a);
-  color: #ffffff;
-}
-
-.manage-courses-publish-btn.off {
-  background: #e5e7eb;
-  color: #374151;
-}
-
 /* FOOTER */
 .manage-courses-footer {
   display: flex;

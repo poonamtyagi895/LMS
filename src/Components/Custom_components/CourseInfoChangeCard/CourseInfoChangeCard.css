@@ -1,0 +1,93 @@
+.course-info-change-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.course-info-change-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.course-info-change-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.course-info-change-unpublish {
+  background: #ff9800;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.course-info-change-delete {
+  background: #111827;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.course-info-change-content {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+}
+
+.course-info-change-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 18px;
+}
+
+.course-info-change-card label {
+  font-size: 13px;
+  color: #6b7280;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.course-info-change-card input,
+.course-info-change-card textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.course-info-change-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.course-info-change-chapter {
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.course-info-change-add-chapter {
+  margin-top: 10px;
+  width: 100%;
+  border: 1px dashed #ff9800;
+  background: transparent;
+  color: #ff9800;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .course-info-change-content {
+    grid-template-columns: 1fr;
+  }
+}
