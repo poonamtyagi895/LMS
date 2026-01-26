@@ -1,6 +1,6 @@
-import DashboardWelcomeCard from "../../Custom_components/DashboardWelcomeCard/DashboardWelcomeCard";
-import DashboardInfoCard from "../../Custom_components/DashboardInfoCard/DashboardInfoCard";
-import DashboardAdminLatestEnrollments from "../../Custom_components/DashboardAdminLatestEnrollments/DashboardAdminLatestEnrollments";
+import DashboardWelcomeCard from "../../CustomComponents/DashboardWelcomeCard/DashboardWelcomeCard";
+import DashboardInfoCard from "../../CustomComponents/DashboardInfoCard/DashboardInfoCard";
+import DashboardAdminLatestEnrollments from "../../CustomComponents/DashboardAdminLatestEnrollments/DashboardAdminLatestEnrollments";
 
 import "./AdminDashboard.css";
 

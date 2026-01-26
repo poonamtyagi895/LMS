@@ -1,8 +1,146 @@
-.test-management h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+.test-management-header {
+  margin-bottom: 18px;
 }
 
-.test-management p {
+.test-management-title {
+  font-size: 26px;
+  font-weight: 600;
+}
+
+.test-management-subtitle {
+  font-size: 14px;
   color: #6b7280;
+}
+
+/* CONTROLS */
+.test-management-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.test-management-entries {
+  font-size: 13px;
+  color: #374151;
+}
+
+.test-management-entries select {
+  margin: 0 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.test-management-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* TABLE CARD */
+.test-management-table-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+}
+
+/* TABLE */
+.test-management-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.test-management-table th {
+  text-align: left;
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+  padding-bottom: 14px;
+}
+
+.test-management-table td {
+  font-size: 14px;
+  padding: 7px 8px;
+  color: #111827;
+  border-top: 1px solid #eef0f4;
+  white-space: nowrap;
+}
+
+.test-management-table tr:hover td {
+  background: #fafafa;
+}
+
+/* ACTIONS */
+.test-management-row-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* FOOTER */
+.test-management-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.test-management-info {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* PAGINATION */
+.test-management-pagination {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.test-management-pagination button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #e5e7eb;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+}
+
+.test-management-pagination button.active {
+  background: #ff9800;
+  color: #ffffff;
+}
+
+.test-management-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* NO DATA */
+.test-management-no-data {
+  text-align: center;
+  padding: 30px;
+  color: #9ca3af;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .test-management-table {
+    min-width: 600px;
+  }
+
+  .test-management-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

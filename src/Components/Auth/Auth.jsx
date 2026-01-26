@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { authStart, authSuccess, authFailure } from "../redux/slices/authSlice";
-import Btn1 from "../Custom_components/Buttons/Btn1/Btn1";
+import DotButton from "../CustomComponents/Buttons/DotButton/DotButton";
 
 /* ===============================
    AUTH ERROR CODE → MESSAGE MAP
@@ -149,7 +149,7 @@ const Auth = () => {
               {uiType === "error" && <p className="auth-msg error-msg">{uiMessage}</p>}
             </div>
 
-            <Btn1 type="submit" label={loading ? "Please wait..." : "Sign Up"} />
+            <DotButton type="submit" label={loading ? "Please wait..." : "Sign Up"} />
 
             <p className="mobile-toggle">
               Already have an account?
@@ -182,7 +182,7 @@ const Auth = () => {
               {uiType === "success" && <p className="auth-msg success-msg">{uiMessage}</p>}
             </div>
 
-            <Btn1 type="submit" label={loading ? "Please wait..." : "Log In"} />
+            <DotButton type="submit" label={loading ? "Please wait..." : "Log In"} />
 
             <p className="mobile-toggle">
               Don&apos;t have an account?

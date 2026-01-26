@@ -1,0 +1,266 @@
+/* ==============================
+   PAGE & HEADER
+============================== */
+
+.course-info-change-page {
+  padding-bottom: 40px;
+}
+
+.course-info-change-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-info-change-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.course-info-change-heading {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 20px 0 4px;
+}
+
+.course-info-change-subheading {
+  font-size: 13px;
+  color: #545861;
+  margin-bottom: 28px;
+}
+
+/* ==============================
+   LAYOUT
+============================== */
+
+.course-info-change-content {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 24px;
+}
+
+/* ==============================
+   SECTION HEADINGS (LEFT & RIGHT)
+============================== */
+
+.course-info-change-section-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 14px;
+}
+.course-info-change-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #fff3e0a2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.course-info-change-icon img {
+  width: 22px;
+  height: 22px;
+}
+
+/* ==============================
+   CARD
+============================== */
+
+.course-info-change-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  margin-bottom: 18px;
+}
+
+.course-info-change-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-info-change-card label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* ==============================
+   VALUES / PLACEHOLDERS
+============================== */
+
+.course-info-change-value {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #111827;
+}
+
+.course-info-change-value i {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* ==============================
+   INPUTS
+============================== */
+
+.course-info-change-card input,
+.course-info-change-card textarea,
+.course-info-change-card select {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  margin-top: 8px;
+  padding: 10px 15px;
+  font-size: 13px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+  color: #111827;
+  resize: vertical;
+  overflow-x: hidden;
+}
+
+.course-info-change-card textarea {
+  min-height: 80px;
+}
+
+.course-info-change-card input:focus,
+.course-info-change-card textarea:focus,
+.course-info-change-card select:focus {
+  border-color: #ff9800;
+  background-color: #f9fafb;
+}
+/* ==============================
+   IMAGE UPLOAD UI
+============================== */
+
+.course-image-upload-box {
+  border: 2px dashed #e5e7eb;
+  border-radius: 14px;
+  padding: 30px;
+  text-align: center;
+  background: #f9fafb;
+  cursor: pointer;
+  transition: border 0.2s ease;
+  margin: 16px 0;
+}
+
+.course-image-upload-box:hover {
+  border-color: #ff9800;
+}
+
+.course-image-upload-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.course-image-upload-content p {
+  font-size: 14px;
+  color: #2563eb;
+}
+
+.course-image-upload-content span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.upload-icon {
+  font-size: 32px;
+}
+
+.course-image-hint {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 8px;
+}
+
+/* ==============================
+   EDIT ACTIONS
+============================== */
+
+.course-info-change-edit-btn {
+  background: transparent;
+  border: none;
+  color: #ff9800;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.course-info-change-edit-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  align-items: center;
+}
+
+.course-info-change-edit-actions button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.course-info-change-edit-actions button:first-child {
+  background: #ff9800;
+  color: #ffffff;
+}
+
+.course-info-change-edit-actions button:last-child {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+/* ==============================
+   IMAGE
+============================== */
+
+.course-info-change-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+  object-fit: cover;
+}
+
+/* ==============================
+   CHAPTERS
+============================== */
+
+.course-info-change-chapter {
+  padding: 10px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.course-info-change-add-chapter {
+  width: 100%;
+  margin-top: 10px;
+  border: 1px dashed #ff9800;
+  background: transparent;
+  color: #ff9800;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media (max-width: 900px) {
+  .course-info-change-content {
+    grid-template-columns: 1fr;
+  }
+}

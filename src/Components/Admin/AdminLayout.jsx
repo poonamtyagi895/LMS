@@ -1,5 +1,5 @@
-import DashboardSidebar from "../Custom_components/DashboardSidebar/DashboardSidebar";
-import DashboardRightPanel from "../Custom_components/DashboardRightPanel/DashboardRightPanel";
+import DashboardSidebar from "../CustomComponents/DashboardSidebar/DashboardSidebar";
+import DashboardRightPanel from "../CustomComponents/DashboardRightPanel/DashboardRightPanel";
 import "./AdminLayout.css";
 import { Outlet, useLocation } from "react-router-dom";
 
@@ -20,7 +20,9 @@ const AdminLayout = () => {
 
   const hideRightPanel =
     location.pathname.includes("/admin/manage-courses/new") ||
-    location.pathname.includes("/admin/manage-courses/edit");
+    location.pathname.includes("/admin/manage-courses/edit") ||
+    location.pathname.includes("/admin/manage-courses/") &&
+    location.pathname.includes("/chapters/");
 
   return (
     <div className={`admin-layout ${hideRightPanel ? "admin-layout--no-right-panel" : ""}`}>

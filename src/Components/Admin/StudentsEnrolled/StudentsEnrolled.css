@@ -166,7 +166,7 @@
   }
 
   .students-enrolled-table {
-    min-width: 700px; /* forces horizontal scroll */
+    min-width: 700px;
   }
   .students-enrolled-table td,
   .students-enrolled-table th {

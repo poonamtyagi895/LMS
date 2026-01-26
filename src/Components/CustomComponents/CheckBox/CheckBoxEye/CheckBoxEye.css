@@ -1,0 +1,61 @@
+.checkbox-eye-container {
+  --color: #ff9800;
+  --size: 22px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+  padding: 0 15px;
+}
+
+.checkbox-eye-container svg {
+  width: 22px;
+  height: 22px;
+  transition: fill 0.2s ease;
+}
+
+.checkbox-eye-container .checkbox-eye {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+
+.checkbox-eye-container .checkbox-eye-slash {
+  position: absolute;
+  animation: keyframes-fill .5s;
+  display: none;
+}
+
+/* ------ On check event ------ */
+.checkbox-eye-container input:checked ~ .checkbox-eye {
+  display: none;
+}
+
+.checkbox-eye-container input:checked ~ .checkbox-eye-slash {
+  display: block;
+  fill: #9ca3af;
+}
+
+/* ------ Hide the default checkbox ------ */
+.checkbox-eye-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* ------ Animation ------ */
+@keyframes keyframes-fill {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+}

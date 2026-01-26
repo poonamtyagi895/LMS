@@ -2,14 +2,15 @@ import { useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./StudentsEnrolled.css";
 
-import AddButton from "../../Custom_components/Buttons/AddButton/AddButton";
-import SearchBar from "../../Custom_components/Buttons/SearchBar/SearchBar";
-import EditButton from "../../Custom_components/Buttons/EditButton/EditButton";
-import DeleteButton from "../../Custom_components/Buttons/DeleteButton/DeleteButton";
+import AddButton from "../../CustomComponents/Buttons/AddButton/AddButton";
+import SearchBar from "../../CustomComponents/Buttons/SearchBar/SearchBar";
+import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
+import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
 
-import StudentInfoChangeCard from "../../Custom_components/StudentInfoChangeCard/StudentInfoChangeCard";
-import DeleteConfirmCard from "../../Custom_components/DeleteConfirmCard/DeleteConfirmCard";
-import Loader2 from "../../Custom_components/Loaders/Loader2";
+import StudentInfoChangeCard from "../../CustomComponents/StudentInfoChangeCard/StudentInfoChangeCard";
+import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
+import Loader2 from "../../CustomComponents/Loaders/Loader2";
+import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
 const INITIAL_STUDENTS = [
   {
@@ -52,7 +53,13 @@ const StudentsEnrolled = () => {
   const [deleteId, setDeleteId] = useState(null);
 
   const [showLoader, setShowLoader] = useState(false);
+  const isValidEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
 
+  const isValidMobile = (mobile) => {
+    return /^[0-9]{10}$/.test(mobile);
+  };
   const runWithLoader = (callback) => {
     setShowLoader(true);
     setTimeout(() => {
@@ -106,24 +113,44 @@ const StudentsEnrolled = () => {
 
   /* SAVE */
   const handleSave = () => {
-    if (mode === "add") {
-      setStudents([
-        ...students,
-        {
-          ...formData,
-          id: Date.now(),
-          gender: "male",
-        },
-      ]);
-    } else {
-      setStudents(
-        students.map((s) =>
-          s.id === activeId ? { ...s, ...formData } : s
-        )
-      );
-    }
-    setShowPopup(false);
-  };
+  // Empty check
+  if (!formData.name || !formData.email || !formData.mobile) {
+    showToast("warning", "Complete all the fields first");
+    return;
+  }
+  // Email validation
+  if (!isValidEmail(formData.email)) {
+    showToast("error", "Enter a valid email address");
+    return;
+  }
+  // Mobile validation
+  if (!isValidMobile(formData.mobile)) {
+    showToast("error", "Enter a valid 10-digit mobile number");
+    return;
+  }
+  // ADD
+  if (mode === "add") {
+    setStudents([
+      ...students,
+      {
+        ...formData,
+        id: Date.now(),
+        gender: "male",
+      },
+    ]);
+    showToast("success", "User added successfully");
+  } 
+  // EDIT
+  else {
+    setStudents(
+      students.map((s) =>
+        s.id === activeId ? { ...s, ...formData } : s
+      )
+    );
+    showToast("success", "User updated successfully");
+  }
+  setShowPopup(false);
+};
 
   /* DELETE */
   const handleDeleteClick = (id) => {
@@ -135,6 +162,8 @@ const StudentsEnrolled = () => {
     runWithLoader(() => {
       setStudents(students.filter((s) => s.id !== deleteId));
       setShowDeletePopup(false);
+
+      showToast("info", "User deleted");
     });
   };
 
@@ -282,9 +311,9 @@ const StudentsEnrolled = () => {
       )}
 
       {showDeletePopup && (
-        <DeleteConfirmCard
+        <ConfirmationCard
           message="You want to delete this student."
-          onDelete={confirmDelete}
+          onConfirm={confirmDelete}
           onCancel={() => setShowDeletePopup(false)}
         />
       )}

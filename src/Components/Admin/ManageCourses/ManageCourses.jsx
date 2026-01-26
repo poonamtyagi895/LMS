@@ -2,14 +2,15 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ManageCourses.css";
 
-import AddButton from "../../Custom_components/Buttons/AddButton/AddButton";
-import SearchBar from "../../Custom_components/Buttons/SearchBar/SearchBar";
-import EditButton from "../../Custom_components/Buttons/EditButton/EditButton";
-import DeleteButton from "../../Custom_components/Buttons/DeleteButton/DeleteButton";
-import ChangeTextButton from "../../Custom_components/Buttons/ChangeTextButton/ChangeTextButton";
+import AddButton from "../../CustomComponents/Buttons/AddButton/AddButton";
+import SearchBar from "../../CustomComponents/Buttons/SearchBar/SearchBar";
+import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
+import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
+import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/ChangeTextButton";
 
-import DeleteConfirmCard from "../../Custom_components/DeleteConfirmCard/DeleteConfirmCard";
-import Loader2 from "../../Custom_components/Loaders/Loader2";
+import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
+import Loader2 from "../../CustomComponents/Loaders/Loader2";
+import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
 const INITIAL_COURSES = [
   { id: 1, title: "React for Beginners", price: "₹1999", published: true },
@@ -24,6 +25,10 @@ const ManageCourses = () => {
   const [search, setSearch] = useState("");
   const [entriesPerPage, setEntriesPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
+
+  const [showPublishPopup, setShowPublishPopup] = useState(false);
+  const [publishId, setPublishId] = useState(null);
+  const [publishNextState, setPublishNextState] = useState(false);
 
   const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
@@ -60,16 +65,28 @@ const ManageCourses = () => {
       setCourses(courses.filter((c) => c.id !== deleteId));
       setShowDeletePopup(false);
       setDeleteId(null);
+      showToast("info", "Course deleted");
     });
   };
 
-  /* PUBLISH TOGGLE */
-  const togglePublish = (id) => {
-    setCourses(
-      courses.map((c) =>
-        c.id === id ? { ...c, published: !c.published } : c
-      )
-    );
+  /* CONFIRM PUBLISH */
+  const confirmPublishToggle = () => {
+    runWithLoader(() => {
+      setCourses(
+        courses.map((c) =>
+          c.id === publishId
+            ? { ...c, published: publishNextState }
+            : c
+        )
+      );
+      setShowPublishPopup(false);
+      setPublishId(null);
+      if (publishNextState) {
+        showToast("success", "Course published successfully");
+      } else {
+        showToast("warning", "Course unpublished");
+      }
+    });
   };
 
   return (
@@ -110,7 +127,14 @@ const ManageCourses = () => {
               setCurrentPage(1);
             }}
           />
-          <AddButton onClick={() => navigate("/admin/manage-courses/new")} />
+          <AddButton
+            onClick={() =>
+              runWithLoader(() => {
+                showToast("info", "Course setup page opened");
+                navigate("/admin/manage-courses/new");
+              })
+            }
+          />
         </div>
       </div>
 
@@ -138,12 +162,23 @@ const ManageCourses = () => {
                     isActive={c.published}
                     beforeText="Unpublished"
                     afterText="Published"
-                    onClick={() => togglePublish(c.id)}
+                    onClick={() => {
+                      setPublishId(c.id);
+                      setPublishNextState(!c.published);
+                      setShowPublishPopup(true);
+                    }}
                   />
                 </td>
                 <td>
                   <div className="manage-courses-row-actions">
-                    <EditButton onClick={() => navigate(`/admin/manage-courses/edit/${c.id}`)}/>
+                    <EditButton
+                      onClick={() =>
+                        runWithLoader(() => {
+                          showToast("info", "Course setup page opened");
+                          navigate(`/admin/manage-courses/edit/${c.id}`);
+                        })
+                      }
+                    />
                     <DeleteButton onClick={() => handleDeleteClick(c.id)} />
                   </div>
                 </td>
@@ -198,10 +233,21 @@ const ManageCourses = () => {
 
       {/* DELETE CONFIRM */}
       {showDeletePopup && (
-        <DeleteConfirmCard
+        <ConfirmationCard
           message="You want to delete this course."
-          onDelete={confirmDelete}
+          onConfirm={confirmDelete}
           onCancel={() => setShowDeletePopup(false)}
+        />
+      )}
+      {showPublishPopup && (
+        <ConfirmationCard
+          message={
+            publishNextState
+              ? "Do you want to publish this course?"
+              : "Do you want to unpublish this course?"
+          }
+          onConfirm={confirmPublishToggle}
+          onCancel={() => setShowPublishPopup(false)}
         />
       )}
     </div>

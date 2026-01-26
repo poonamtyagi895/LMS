@@ -1,7 +1,7 @@
-import DashboardSidebar from "../Custom_components/DashboardSidebar/DashboardSidebar";
-import DashboardWelcomeCard from "../Custom_components/DashboardWelcomeCard/DashboardWelcomeCard";
-import DashboardInfoCard from "../Custom_components/DashboardInfoCard/DashboardInfoCard";
-import DashboardRightPanel from "../Custom_components/DashboardRightPanel/DashboardRightPanel";
+import DashboardSidebar from "../CustomComponents/DashboardSidebar/DashboardSidebar";
+import DashboardWelcomeCard from "../CustomComponents/DashboardWelcomeCard/DashboardWelcomeCard";
+import DashboardInfoCard from "../CustomComponents/DashboardInfoCard/DashboardInfoCard";
+import DashboardRightPanel from "../CustomComponents/DashboardRightPanel/DashboardRightPanel";
 import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
