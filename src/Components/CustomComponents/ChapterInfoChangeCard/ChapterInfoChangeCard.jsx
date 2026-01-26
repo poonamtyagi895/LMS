@@ -30,7 +30,6 @@ const ChapterInfoChangeCard = () => {
   const [tempValue, setTempValue] = useState("");
   const [showLoader, setShowLoader] = useState(false);
   const [isUploadingVideo, setIsUploadingVideo] = useState(false);
-  const hasVideo = !!chapterData.video;
   const [confirmType, setConfirmType] = useState(null);
 
   const mandatory = ["title", "description", "video"];
