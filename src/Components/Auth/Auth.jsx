@@ -21,7 +21,7 @@ const AUTH_ERROR_MESSAGES = {
 
 const Auth = () => {
   const dispatch = useDispatch();
-  const { user, loading, error } = useSelector((state) => state.auth);
+  const { loading, error } = useSelector((state) => state.auth);
 
   /* toggle signup/login */
   const [isSignup, setIsSignup] = useState(false);
@@ -132,11 +132,10 @@ const Auth = () => {
             <h1>Create Account</h1>
 
             <div className="social-icons">
-              <a className="icon"><i className="fa-brands fa-google"></i></a>
-              <a className="icon"><i className="fa-brands fa-apple"></i></a>
-              <a className="icon"><i className="fa-solid fa-key"></i></a>
+              <button type="button" className="icon"><i className="fa-brands fa-google"></i></button>
+              <button type="button" className="icon"><i className="fa-brands fa-apple"></i></button>
+              <button type="button" className="icon"><i className="fa-solid fa-key"></i></button>
             </div>
-
             <span>or use your email for registration</span>
 
             <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
@@ -164,9 +163,9 @@ const Auth = () => {
             <h1>Log In</h1>
 
             <div className="social-icons">
-              <a className="icon"><i className="fa-brands fa-google"></i></a>
-              <a className="icon"><i className="fa-brands fa-apple"></i></a>
-              <a className="icon"><i className="fa-solid fa-key"></i></a>
+              <button type="button" className="icon"><i className="fa-brands fa-google"></i></button>
+              <button type="button" className="icon"><i className="fa-brands fa-apple"></i></button>
+              <button type="button" className="icon"><i className="fa-solid fa-key"></i></button>
             </div>
 
             <span>or use your email password</span>
@@ -174,7 +173,9 @@ const Auth = () => {
             <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
             <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
 
-            <a>Forget Your Password?</a>
+            <button type="button" className="forgot-password">
+              Forget Your Password?
+            </button>
 
             {/* MESSAGE SLOT (FIXED HEIGHT) */}
             <div className="auth-message-slot">
