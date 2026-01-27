@@ -2,6 +2,10 @@
   margin-bottom: 18px;
 }
 
+.test-management-segmented-tabs{
+  padding: 20px 0;
+}
+
 .test-management-title {
   font-size: 26px;
   font-weight: 600;

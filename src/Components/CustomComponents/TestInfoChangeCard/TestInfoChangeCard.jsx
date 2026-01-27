@@ -19,13 +19,44 @@ const MOCK_TESTS = {
     title: "Maths Unit Test",
     description: "Chapter 1 to 5",
     category: "Class 6",
+    testType: "Mock Test",
     duration: 60,
     marks: 100,
     uploaded: true,
+    attachments: [],
+  },
+
+  2: {
+    title: "Science Monthly Test",
+    description: "Identify strengths & weak areas",
+    category: "Class 8",
+    testType: "Diagnostic Test",
+    duration: 45,
+    marks: 50,
+    uploaded: false,
+    attachments: [],
+  },
+
+  3: {
+    title: "English Grammar Test",
+    description: "Grammar and comprehension practice",
+    category: "Class 10",
+    testType: "Practice Test",
+    duration: 30,
+    marks: 40,
+    uploaded: true,
+    attachments: [],
   },
 };
 
+
 const CATEGORIES = Array.from({ length: 10 }, (_, i) => `Class ${i + 1}`);
+
+const TEST_TYPES = [
+  "Mock Test",
+  "Diagnostic Test",
+  "Practice Test",
+];
 
 const TestInfoChangeCard = () => {
   const { id } = useParams();
@@ -37,11 +68,13 @@ const TestInfoChangeCard = () => {
         ? {
             ...MOCK_TESTS[id],
             attachments: MOCK_TESTS[id].attachments || [],
+            testType: MOCK_TESTS[id].testType || "",
         }
         : {
             title: "",
             description: "",
             category: "",
+            testType: "",
             duration: "",
             marks: "",
             uploaded: false,
@@ -67,6 +100,7 @@ const TestInfoChangeCard = () => {
     "title",
     "description",
     "category",
+    "testType",
     "duration",
     "marks",
   ];
@@ -148,10 +182,14 @@ const TestInfoChangeCard = () => {
             Customize your test
           </div>
 
-          {["title", "description", "category"].map((field) => (
+          {["title", "description", "category", "testType"].map((field) => (
             <div className="test-info-change-card" key={field}>
               <div className="test-info-change-card-header">
-                <label>{field.replace(/^\w/, (c) => c.toUpperCase())}</label>
+                <label>
+                    {field === "testType"
+                        ? "Test type"
+                        : field.replace(/^\w/, (c) => c.toUpperCase())}
+                </label>
                 {editField !== field && (
                   <EditButton onClick={() => startEdit(field)} />
                 )}
@@ -161,27 +199,36 @@ const TestInfoChangeCard = () => {
                 <>
                   {field === "category" ? (
                     <select
-                      value={tempValue}
-                      onChange={(e) => setTempValue(e.target.value)}
+                        value={tempValue}
+                        onChange={(e) => setTempValue(e.target.value)}
                     >
-                      <option value="">Select category</option>
-                      {CATEGORIES.map((c) => (
+                        <option value="">Select category</option>
+                        {CATEGORIES.map((c) => (
                         <option key={c}>{c}</option>
-                      ))}
+                        ))}
                     </select>
-                  ) : field === "description" ? (
+                    ) : field === "testType" ? (
+                    <select
+                        value={tempValue}
+                        onChange={(e) => setTempValue(e.target.value)}
+                    >
+                        <option value="">Select test type</option>
+                        <option value="Mock Test">Mock Test</option>
+                        <option value="Diagnostic Test">Diagnostic Test</option>
+                        <option value="Practice Test">Practice Test</option>
+                    </select>
+                    ) : field === "description" ? (
                     <textarea
-                      rows="4"
-                      value={tempValue}
-                      onChange={(e) => setTempValue(e.target.value)}
+                        rows="4"
+                        value={tempValue}
+                        onChange={(e) => setTempValue(e.target.value)}
                     />
-                  ) : (
+                    ) : (
                     <input
-                      value={tempValue}
-                      onChange={(e) => setTempValue(e.target.value)}
+                        value={tempValue}
+                        onChange={(e) => setTempValue(e.target.value)}
                     />
                   )}
-
                   <div className="test-info-change-edit-actions">
                     <DotButton label="Save" onClick={saveEdit} />
                     <button

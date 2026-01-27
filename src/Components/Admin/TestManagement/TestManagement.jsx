@@ -7,6 +7,7 @@ import SearchBar from "../../CustomComponents/Buttons/SearchBar/SearchBar";
 import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
 import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
 import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/ChangeTextButton";
+import SegmentedTabs from "../../CustomComponents/SegmentedTabs/SegmentedTabs";
 
 import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
 import Loader2 from "../../CustomComponents/Loaders/Loader2";
@@ -18,20 +19,30 @@ const INITIAL_TESTS = [
     id: 1,
     title: "Maths Unit Test",
     category: "Class 6",
-    status: true, // Uploaded
+    status: true,
+    testType: "Mock Test",
   },
   {
     id: 2,
     title: "Science Monthly Test",
     category: "Class 8",
-    status: false, // Draft
+    status: false,
+    testType: "Diagnostic Test",
   },
   {
     id: 3,
     title: "English Grammar Test",
     category: "Class 10",
     status: true,
+    testType: "Practice Test",
   },
+];
+
+const TEST_TABS = [
+  { label: "All", value: "all" },
+  { label: "Mock Test", value: "Mock Test" },
+  { label: "Diagnostic Test", value: "Diagnostic Test" },
+  { label: "Practice Test", value: "Practice Test" },
 ];
 
 const TestManagement = () => {
@@ -51,6 +62,8 @@ const TestManagement = () => {
 
   const [showLoader, setShowLoader] = useState(false);
 
+  const [activeTab, setActiveTab] = useState("all");
+
   /* LOADER HELPER */
   const runWithLoader = (cb) => {
     setShowLoader(true);
@@ -61,9 +74,16 @@ const TestManagement = () => {
   };
 
   /* SEARCH */
-  const filteredTests = tests.filter((t) =>
-    t.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredTests = tests.filter((t) => {
+    const matchesSearch = t.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+
+    const matchesTab =
+      activeTab === "all" ? true : t.testType === activeTab;
+
+    return matchesSearch && matchesTab;
+  });
 
   /* PAGINATION */
   const totalPages = Math.ceil(filteredTests.length / entriesPerPage);
@@ -110,12 +130,20 @@ const TestManagement = () => {
 
       {/* HEADER */}
       <div className="test-management-header">
-        <h1 className="test-management-title">Manage Tests</h1>
-        <p className="test-management-subtitle">
-          Total Tests: {tests.length}
-        </p>
+        <div>
+          <h1 className="test-management-title">Manage Tests</h1>
+          <p className="test-management-subtitle">
+            Total Tests: {filteredTests.length}
+          </p>
+        </div>
+        <div className="test-management-segmented-tabs">
+          <SegmentedTabs
+            tabs={TEST_TABS}
+            activeValue={activeTab}
+            onChange={setActiveTab}
+          />
+        </div>
       </div>
-
       {/* CONTROLS */}
       <div className="test-management-controls">
         <div className="test-management-entries">
