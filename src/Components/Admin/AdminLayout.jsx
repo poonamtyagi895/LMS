@@ -19,12 +19,17 @@ const AdminLayout = () => {
   }));
 
   const hideRightPanel =
-    location.pathname.includes("/admin/manage-courses/new") ||
-    location.pathname.includes("/admin/manage-courses/edit") ||
-    (
-      location.pathname.includes("/admin/manage-courses/") &&
-      location.pathname.includes("/chapters/")
-    );
+  // Course create/edit
+  location.pathname.includes("/admin/manage-courses/new") ||
+  location.pathname.includes("/admin/manage-courses/edit") ||
+  (
+    location.pathname.includes("/admin/manage-courses/") &&
+    location.pathname.includes("/chapters/")
+  ) ||
+
+  // Test create/edit
+  location.pathname.includes("/admin/test-management/new") ||
+  location.pathname.includes("/admin/test-management/edit");
 
   return (
     <div className={`admin-layout ${hideRightPanel ? "admin-layout--no-right-panel" : ""}`}>

@@ -147,7 +147,7 @@ const TestManagement = () => {
             onClick={() =>
               runWithLoader(() => {
                 showToast("info", "Test creation page opened");
-                navigate("/admin/manage-tests/new");
+                navigate("/admin/test-management/new");
               })
             }
           />
@@ -191,7 +191,7 @@ const TestManagement = () => {
                       onClick={() =>
                         runWithLoader(() => {
                           showToast("info", "Test edit page opened");
-                          navigate(`/admin/manage-tests/edit/${t.id}`);
+                          navigate(`/admin/test-management/edit/${t.id}`);
                         })
                       }
                     />

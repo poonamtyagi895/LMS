@@ -57,7 +57,7 @@ const ChapterInfoChangeCard = () => {
     setIsUploadingVideo(true);
 
     setTimeout(() => {
-      setTempValue(file); // IMPORTANT
+      setTempValue(file);
       setIsUploadingVideo(false);
       showToast("success", "Video uploaded");
     }, 900);
