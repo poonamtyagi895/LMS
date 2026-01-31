@@ -3,21 +3,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* 🔥 NEW GRADIENT */
   background: linear-gradient(135deg, #ff9900c6, #ff6a00c6);
-
   border-radius: 22px;
   padding: 28px 40px;
   margin-bottom: 28px;
-
-  /* ⬇️ REDUCED HEIGHT */
   min-height: 200px;
-
-  overflow: visible; /* 🔥 allow image overflow */
+  overflow: visible;
 }
 
-/* LEFT CONTENT */
 .dashboard-welcome-left {
   max-width: 55%;
   z-index: 2;
@@ -38,32 +31,15 @@
   color: #ffffff;
 }
 
-/* BUTTON */
-.dashboard-welcome-btn {
-  background: #ffffff;
-  color: #ff6a00;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-}
-
-.dashboard-welcome-btn:hover {
-  opacity: 0.9;
-}
-
-/* RIGHT IMAGE */
 .dashboard-welcome-right {
   position: absolute;
   right: 40px;
-  bottom: -18px; /* 🔥 flows outside card */
+  bottom: -18px;
   z-index: 1;
 }
 
 .dashboard-welcome-right img {
-  width: 340px;       /* 🔥 BIGGER IMAGE */
+  width: 340px;
   max-width: none;
 }
 

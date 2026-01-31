@@ -66,45 +66,6 @@
   border-radius: 14px;
 }
 
-/* CALENDAR */
-.dashboard-right-panel-card-header {
-  display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-.calendar-nav i {
-  margin-left: 10px;
-  cursor: pointer;
-  color: #ff9800;
-}
-
-.dashboard-right-panel-calendar {
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  font-size: 12px;
-}
-
-.day {
-  text-align: center;
-  color: #9ca3af;
-}
-
-.date {
-  text-align: center;
-  padding: 6px;
-  border-radius: 8px;
-}
-
-.date.today {
-  background: #ff9800;
-  color: #ffffff;
-  font-weight: 600;
-}
-
 /* NOTIFICATIONS */
 .notifications-card {
   flex: 1;

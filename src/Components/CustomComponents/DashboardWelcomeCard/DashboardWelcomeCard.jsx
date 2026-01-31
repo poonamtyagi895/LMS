@@ -1,9 +1,8 @@
 import React from "react";
 import "./DashboardWelcomeCard.css";
+import DotButtonWhite from "../Buttons/DotButtonWhite/DotButtonWhite";
 
-const DashboardWelcomeCard = ({ role, name }) => {
-  const isStudent = role === "student";
-
+const DashboardWelcomeCard = ({ name, buttonLabel, onButtonClick }) => {
   return (
     <div className="dashboard-welcome-card">
       <div className="dashboard-welcome-left">
@@ -12,9 +11,7 @@ const DashboardWelcomeCard = ({ role, name }) => {
           We’ve missed you! Check out what’s new and improved in your dashboard.
         </p>
 
-        <button className="dashboard-welcome-btn">
-          {isStudent ? "Explore More Courses" : "Explore New Students"}
-        </button>
+        <DotButtonWhite label={buttonLabel} onClick={onButtonClick}/>
       </div>
 
       <div className="dashboard-welcome-right">

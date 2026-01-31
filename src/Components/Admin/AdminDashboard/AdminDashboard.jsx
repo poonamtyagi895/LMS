@@ -1,8 +1,8 @@
 import DashboardWelcomeCard from "../../CustomComponents/DashboardWelcomeCard/DashboardWelcomeCard";
 import DashboardInfoCard from "../../CustomComponents/DashboardInfoCard/DashboardInfoCard";
 import DashboardAdminLatestEnrollments from "../../CustomComponents/DashboardAdminLatestEnrollments/DashboardAdminLatestEnrollments";
-
 import "./AdminDashboard.css";
+import LineGraph from "../../CustomComponents/LineGraph/LineGraph";
 
 const AdminDashboard = () => {
   return (
@@ -14,9 +14,17 @@ const AdminDashboard = () => {
 
       <DashboardWelcomeCard
         name="Poonam Tyagi"
-        buttonText="Explore New Students"
+        buttonLabel="Explore New Students"
       />
-
+      <div className="graph">
+        <LineGraph
+          title="Latest Enrollments"
+          data={[5, 10, 15, 12, 20, 25, 30]}
+          yMax={50}
+          yStep={5}
+          type="count"
+        />
+      </div>
       <div className="admin-dashboard-info-grid">
         <DashboardInfoCard
           icon="fas fa-school"

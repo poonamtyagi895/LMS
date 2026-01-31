@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardRightPanel.css";
+import Calendar from "../Calendar/Calendar";
 
 const DashboardRightPanel = ({ role }) => {
   const [open, setOpen] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date());
 
   const isStudent = role === "student";
 
@@ -14,21 +14,6 @@ const DashboardRightPanel = ({ role }) => {
   const profileLottie = isStudent
     ? "https://lottie.host/f2ffc4a9-3e7d-4eee-95f7-4aeaac63e5da/y0dA0Bl62z.lottie"
     : "https://lottie.host/cd22b1f3-55fc-4d27-b91a-4bb55da64d34/4r9g7dOxUC.lottie";
-
-  const today = new Date();
-  const todayDate = today.getDate();
-  const todayMonth = today.getMonth();
-  const todayYear = today.getFullYear();
-
-  const months = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December"
-  ];
-
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
-  const firstDay = new Date(year, month, 1).getDay();
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
   return (
     <>
@@ -60,45 +45,8 @@ const DashboardRightPanel = ({ role }) => {
           </div>
         </div>
 
-        {/* CALENDAR */}
-        <div className="dashboard-right-panel-card">
-          <div className="dashboard-right-panel-card-header">
-            <span>{months[month]} {year}</span>
-            <div className="calendar-nav">
-              <i
-                className="fas fa-chevron-left"
-                onClick={() => setCurrentDate(new Date(year, month - 1, 1))}
-              />
-              <i
-                className="fas fa-chevron-right"
-                onClick={() => setCurrentDate(new Date(year, month + 1, 1))}
-              />
-            </div>
-          </div>
-
-          <div className="dashboard-right-panel-calendar">
-            {["Su","Mo","Tu","We","Th","Fr","Sa"].map(d => (
-              <div key={d} className="day">{d}</div>
-            ))}
-
-            {Array(firstDay).fill("").map((_, i) => (
-              <div key={i} />
-            ))}
-
-            {Array(daysInMonth).fill("").map((_, i) => {
-              const isToday =
-                i + 1 === todayDate &&
-                month === todayMonth &&
-                year === todayYear;
-
-              return (
-                <div key={i} className={`date ${isToday ? "today" : ""}`}>
-                  {i + 1}
-                </div>
-              );
-            })}
-          </div>
-        </div>
+        {/* CALENDER */}
+        <Calendar mode = "display"/>
 
         {/* NOTIFICATIONS */}
         <div className="dashboard-right-panel-card notifications-card">

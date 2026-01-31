@@ -1,0 +1,101 @@
+.calendar-card {
+  background: #ffffff;
+  padding: 18px;
+  border-radius: 16px;
+  width: 280px;
+  min-width: 280px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  animation: popIn 0.25s ease;
+}
+
+/* HEADER */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.calendar-nav i {
+  margin-left: 10px;
+  cursor: pointer;
+  color: #ff9800;
+  transition: transform 0.2s ease;
+}
+
+.calendar-nav i:hover {
+  transform: scale(1.15);
+}
+
+/* GRID */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  font-size: 13px;
+}
+
+.calendar-day {
+  text-align: center;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* DATE BASE */
+.calendar-date {
+  text-align: center;
+  padding: 6px 0;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  user-select: none;
+  font-weight: 600;
+}
+
+/* SELECTABLE */
+.calendar-date.selectable {
+  cursor: pointer;
+  color: #111827;
+}
+
+/* HOVER */
+.calendar-date.selectable:hover {
+  background: rgba(255, 152, 0, 0.15);
+  color: #ff9800;
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.35);
+}
+
+/* SELECTED */
+.calendar-date.selected {
+  background: #ff9800;
+  color: #ffffff;
+  font-weight: 600;
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.45);
+}
+
+/* DISABLED */
+.calendar-date.disabled {
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.calendar-date.today {
+  background: #ff9900;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ANIMATION */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

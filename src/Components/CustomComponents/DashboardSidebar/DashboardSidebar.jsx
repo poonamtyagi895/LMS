@@ -39,6 +39,7 @@ const DashboardSidebar = ({ menus }) => {
             <NavLink
               key={index}
               to={item.path}
+              end
               className={({ isActive }) =>
                 `dashboard-sidebar-item ${isActive ? "active" : ""}`
               }

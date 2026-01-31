@@ -12,6 +12,10 @@
   color: #6b7280;
 }
 
+.graph {
+  margin-top: 32px;
+}
+
 .admin-dashboard-info-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(260px, 1fr));
