@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import Highcharts from "highcharts";
 import Calendar from "../Calendar/Calendar";
 import "./LineGraph.css";
@@ -31,21 +31,20 @@ export default function LineGraph({
     };
   }, [showPicker]);
 
-
-  // -------------------------------
-  // LAST 7 DAYS (BASED ON SELECTED DATE)
-  // -------------------------------
-  const last7Days = [];
-  for (let i = 6; i >= 0; i--) {
-    const d = new Date(selectedDate);
-    d.setDate(d.getDate() - i);
-    last7Days.push(
-      d.toLocaleDateString("en-GB", {
-        day: "2-digit",
-        month: "short",
-      })
-    );
-  }
+  const last7Days = useMemo(() => {
+    const days = [];
+    for (let i = 6; i >= 0; i--) {
+      const d = new Date(selectedDate);
+      d.setDate(d.getDate() - i);
+      days.push(
+        d.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+        })
+      );
+    }
+    return days;
+  }, [selectedDate]);
 
   const getDateLabel = () => {
     const end = new Date(selectedDate);
