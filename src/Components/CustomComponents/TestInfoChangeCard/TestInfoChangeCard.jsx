@@ -52,12 +52,6 @@ const MOCK_TESTS = {
 
 const CATEGORIES = Array.from({ length: 10 }, (_, i) => `Class ${i + 1}`);
 
-const TEST_TYPES = [
-  "Mock Test",
-  "Diagnostic Test",
-  "Practice Test",
-];
-
 const TestInfoChangeCard = () => {
   const { id } = useParams();
   const navigate = useNavigate();

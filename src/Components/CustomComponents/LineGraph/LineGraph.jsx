@@ -61,20 +61,18 @@ export default function LineGraph({
   useEffect(() => {
     Highcharts.chart("line-graph-chart", {
       credits: { enabled: false },
-
       chart: {
         type: "area",
         marginRight: 40,
         spacingLeft: 40,
         spacingBottom: 50,
       },
-
       title: { text: null },
       subtitle: { text: null },
 
       xAxis: {
-        lineColor: "#eeeeee",
         categories: last7Days,
+        lineColor: "#eeeeee",
         labels: {
           style: { color: "#999999" },
           y: 35,
@@ -84,18 +82,15 @@ export default function LineGraph({
       },
 
       yAxis: {
-        gridLineColor: "#eeeeee",
         min: 0,
         max: yMax,
         tickInterval: yStep,
+        gridLineColor: "#eeeeee",
         title: { text: null },
         labels: {
-          style: {
-            color: "#999999",
-            fontSize: "9px",
-          },
+          style: { color: "#999999", fontSize: "9px" },
           formatter: function () {
-            return this.value; // hours only
+            return this.value;
           },
         },
       },
@@ -103,7 +98,6 @@ export default function LineGraph({
       tooltip: {
         useHTML: true,
         formatter: function () {
-          // STUDENT (hours + minutes)
           if (type === "hours") {
             const totalMinutes = Math.round(this.y * 60);
             const h = Math.floor(totalMinutes / 60);
@@ -119,7 +113,6 @@ export default function LineGraph({
             `;
           }
 
-          // ADMIN (enrollments)
           return `
             <div class="line-graph-tooltip">
               <div class="line-graph-tooltip-title">${this.key}</div>
@@ -139,10 +132,7 @@ export default function LineGraph({
       plotOptions: {
         area: {
           lineWidth: 2,
-          marker: {
-            symbol: "circle",
-            radius: 4,
-          },
+          marker: { symbol: "circle", radius: 4 },
         },
         series: {
           fillOpacity: 0.12,
@@ -158,7 +148,7 @@ export default function LineGraph({
         },
       ],
     });
-  }, [data, yMax, yStep, selectedDate]);
+  }, [last7Days, title, type, data, yMax, yStep]);
 
   return (
     <div className="line-graph-box">
