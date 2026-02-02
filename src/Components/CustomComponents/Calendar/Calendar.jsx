@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import "./Calendar.css";
 
-/**
- * mode:
- * - "display" → static calendar (right panel)
- * - "picker"  → date picker (line graph)
- */
 const Calendar = ({ mode = "display", onSelectDate }) => {
-  const [currentDate, setCurrentDate] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
-
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
 
   const months = [
     "January","February","March","April","May","June",
     "July","August","September","October","November","December",
   ];
+
+  const years = Array.from({ length: 80 }, (_, i) => today.getFullYear() - i);
 
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
@@ -25,7 +22,12 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
 
   const isSelectable = (date) => {
     if (mode === "display") return true;
-    return date.getTime() <= today.getTime(); // ⛔ future blocked
+    return date.getTime() <= today.getTime();
+  };
+
+  const selectDate = (date) => {
+    setSelectedDate(date);
+    onSelectDate?.(date);
   };
 
   const handleDateClick = (day) => {
@@ -36,14 +38,41 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
 
     if (!isSelectable(picked)) return;
 
-    setSelectedDate(picked);
-    onSelectDate?.(picked);
+    selectDate(picked);
   };
 
   return (
     <div className="calendar-card">
+      {/* HEADER */}
       <div className="calendar-header">
-        <span>{months[month]} {year}</span>
+        {mode === "picker" ? (
+          <div className="calendar-selectors">
+            <select
+              value={month}
+              onChange={(e) =>
+                setCurrentDate(new Date(year, Number(e.target.value), 1))
+              }
+            >
+              {months.map((m, i) => (
+                <option key={m} value={i}>{m}</option>
+              ))}
+            </select>
+
+            <select
+              value={year}
+              onChange={(e) =>
+                setCurrentDate(new Date(Number(e.target.value), month, 1))
+              }
+            >
+              {years.map((y) => (
+                <option key={y} value={y}>{y}</option>
+              ))}
+            </select>
+          </div>
+        ) : (
+          <span>{months[month]} {year}</span>
+        )}
+
         <div className="calendar-nav">
           <i
             className="fas fa-chevron-left"
@@ -56,6 +85,7 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
         </div>
       </div>
 
+      {/* GRID */}
       <div className="calendar-grid">
         {["Su","Mo","Tu","We","Th","Fr","Sa"].map((d) => (
           <div key={d} className="calendar-day">{d}</div>
@@ -73,7 +103,6 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
           const isToday = dateObj.getTime() === today.getTime();
           const selectable = isSelectable(dateObj);
           const selected =
-            mode === "picker" &&
             selectedDate &&
             selectedDate.getTime() === dateObj.getTime();
 
@@ -93,6 +122,28 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
           );
         })}
       </div>
+
+      {/* FOOTER (ONLY PICKER) */}
+      {mode === "picker" && (
+        <div className="calendar-footer">
+          <button
+            className="calendar-btn ghost"
+            onClick={() => {
+              setSelectedDate(null);
+              onSelectDate?.(null);
+            }}
+          >
+            Clear
+          </button>
+
+          <button
+            className="calendar-btn primary"
+            onClick={() => selectDate(today)}
+          >
+            Today
+          </button>
+        </div>
+      )}
     </div>
   );
 };

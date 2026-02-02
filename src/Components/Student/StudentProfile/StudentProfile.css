@@ -1,179 +1,223 @@
-.student-profile-container {
-  display: flex;
-  flex-direction: column;
+.student-profile-page {
+  padding-bottom: 40px;
 }
 
+/* =========================
+   HEADER
+========================= */
 .student-profile-header {
-    margin: 20px 0;
+  margin: 20px 0 28px;
 }
 
-.student-profile-heading {
-    font-size: 26px;
-    font-weight: 600;
-    color: #111827;
-}
-
-.student-profile-subheading {
-    font-size: 14px;
-    color: #6b7280;
-}
-
-/* Card */
-.card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 24px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
-}
-
-/* Header */
-.profile-header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.profile-left {
-  display: flex;
-  gap: 18px;
-}
-
-.profile-avatar {
-  width: 90px;
-  height: 90px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.profile-basic-info h2 {
-  margin: 0;
-  font-size: 22px;
+.student-profile-header h1 {
+  font-size: 26px;
   font-weight: 600;
   color: #111827;
 }
 
-.username {
-  font-size: 14px;
-  color: #2563eb;
-  display: inline-block;
-  margin-bottom: 6px;
-}
-
-.profile-basic-info p {
-  font-size: 14px;
-  color: #6b7280;
-  margin: 2px 0;
-}
-
-/* Meta */
-.profile-meta {
-  display: flex;
-  gap: 40px;
-  margin-top: 20px;
-}
-
-.profile-meta div {
-  display: flex;
-  flex-direction: column;
-}
-
-.profile-meta label {
+.student-profile-header p {
   font-size: 13px;
   color: #6b7280;
 }
 
-.profile-meta span {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
+/* =========================
+   CARD BASE
+========================= */
+.student-profile-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 22px 24px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  margin-bottom: 22px;
 }
 
-/* Details */
-.profile-details {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-}
-
-.profile-details h3 {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.details-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-}
-
-.detail-item label {
-  font-size: 13px;
-  color: #6b7280;
-}
-
-.detail-item span {
-  font-size: 14px;
-  color: #111827;
-}
-
-.address {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #374151;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .profile-details {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-meta {
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-}
-
-/* Section Header */
-.section-header {
+/* =========================
+   CARD HEADER
+========================= */
+.student-profile-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 22px;
 }
 
-.section-header h3 {
-  font-size: 17px;
+.student-profile-card-header h3 {
+  font-size: 15px;
   font-weight: 600;
   color: #111827;
 }
 
-/* Meta */
-.meta-item {
+/* =========================
+   PROFILE INFORMATION
+========================= */
+.student-profile-info-content {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+/* BIG LOTTIE */
+.student-profile-avatar-large {
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+}
+
+/* DETAILS COLUMN */
+.student-profile-basic-details {
   display: flex;
   flex-direction: column;
+  gap: 18px;
+  width: 100%;
 }
 
-.meta-label {
+/* FIELD BLOCK */
+.student-profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.student-profile-field label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.student-profile-field p {
+  font-size: 15px;
+  color: #111827;
+}
+
+/* READ-ONLY EMAIL */
+.student-profile-readonly {
+  font-size: 15px;
+  color: #374151;
+  background: #f9fafb;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+}
+
+/* =========================
+   GRID (DETAIL SECTIONS)
+========================= */
+.student-profile-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 22px;
+}
+
+/* =========================
+   ROWS (DETAIL FIELDS)
+========================= */
+.student-profile-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.student-profile-row:last-child {
+  border-bottom: none;
+}
+
+.student-profile-label {
   font-size: 13px;
   color: #6b7280;
 }
 
-.meta-value {
+/* =========================
+   INPUTS & TEXTAREA
+========================= */
+.student-profile-row input,
+.student-profile-field input,
+.student-profile-card textarea {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 14px;
-  font-weight: 500;
-  color: #111827;
+  outline: none;
+  width: 100%;
 }
 
-/* Details */
-.detail-label {
+.student-profile-card textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.student-profile-row input:focus,
+.student-profile-field input:focus,
+.student-profile-card textarea:focus {
+  border-color: #ff9800;
+  background: #ffffff;
+}
+
+.student-profile-card-header .dot-button {
+  padding: 6px 14px;
   font-size: 13px;
-  color: #6b7280;
 }
 
-.detail-value {
+.student-profile-row select {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 14px;
   font-size: 14px;
-  font-weight: 500;
+}
+
+.student-profile-row select:focus {
+  border-color: #ff9800;
+  background-color: #f9fafb;
+}
+
+/* =========================
+   MUTED / EMPTY TEXT
+========================= */
+.student-profile-muted {
+  font-size: 14px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.student-profile-value {
+  font-size: 14px;
   color: #111827;
+  font-style: normal;
+}
+
+/* =========================
+   DOB CALENDAR POPOVER
+========================= */
+.dob-picker-wrapper {
+  position: relative;
+}
+
+.dob-calendar-popover {
+  position: absolute;
+  top: 48px;
+  left: 0;
+  z-index: 20;
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px) {
+  .student-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-profile-info-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .student-profile-avatar-large {
+    width: 180px;
+    height: 180px;
+  }
 }

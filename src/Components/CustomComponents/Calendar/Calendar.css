@@ -88,6 +88,60 @@
   font-weight: 600;
 }
 
+/* ======================
+   PICKER CONTROLS
+====================== */
+.calendar-selectors {
+  display: flex;
+  gap: 8px;
+}
+
+.calendar-selectors select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ======================
+   FOOTER
+====================== */
+.calendar-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.calendar-btn {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.calendar-btn.primary {
+  background: #ff9800;
+  color: #ffffff;
+}
+
+.calendar-btn.primary:hover {
+  background: #fb8c00;
+}
+
+.calendar-btn.ghost {
+  background: transparent;
+  color: #6b7280;
+}
+
+.calendar-btn.ghost:hover {
+  background: #f3f4f6;
+}
+
+
 /* ANIMATION */
 @keyframes popIn {
   from {

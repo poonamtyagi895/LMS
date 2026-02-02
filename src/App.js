@@ -12,7 +12,7 @@ import CourseInfoChangeCard from "./Components/CustomComponents/CourseInfoChange
 import ChapterInfoChangeCard from "./Components/CustomComponents/ChapterInfoChangeCard/ChapterInfoChangeCard";
 import TestManagement from "./Components/Admin/TestManagement/TestManagement";
 import TestInfoChangeCard from "./Components/CustomComponents/TestInfoChangeCard/TestInfoChangeCard";
-import Home from "./Components/Home/Home";
+import HomePage from "./Components/Website/HomePage/HomePage";
 import BackGround from "./Components/CustomComponents/BackGround/BackGround";
 import AutoCarousel from "./Components/CustomComponents/AutoCarousel/AutoCarousel";
 
@@ -22,26 +22,52 @@ function App() {
       <ToastProvider />
 
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        {/* Public Website */}
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<Navigate to="/" />} />
+
+        {/* Auth */}
         <Route path="/login" element={<Auth />} />
+
+        {/* Student Panel */}
         <Route path="/student" element={<StudentLayout />}>
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
         </Route>
+
+        {/* Admin Panel */}
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="students" element={<StudentsEnrolled />} />
           <Route path="manage-courses" element={<ManageCourses />} />
-          <Route path="manage-courses/new" element={<CourseInfoChangeCard mode="create" />} />
-          <Route path="manage-courses/edit/:id" element={<CourseInfoChangeCard mode="edit" />} />
-          <Route path="manage-courses/:courseId/chapters/:chapterIndex" element={<ChapterInfoChangeCard />}/>
+          <Route
+            path="manage-courses/new"
+            element={<CourseInfoChangeCard mode="create" />}
+          />
+          <Route
+            path="manage-courses/edit/:id"
+            element={<CourseInfoChangeCard mode="edit" />}
+          />
+          <Route
+            path="manage-courses/:courseId/chapters/:chapterIndex"
+            element={<ChapterInfoChangeCard />}
+          />
           <Route path="test-management" element={<TestManagement />} />
-          <Route path="test-management/new" element={<TestInfoChangeCard mode="create" />} />
-          <Route path="test-management/edit/:id" element={<TestInfoChangeCard mode="edit" />} />
+          <Route
+            path="test-management/new"
+            element={<TestInfoChangeCard mode="create" />}
+          />
+          <Route
+            path="test-management/edit/:id"
+            element={<TestInfoChangeCard mode="edit" />}
+          />
         </Route>
+
+        {/* Extra / Testing Routes */}
         <Route path="/carousel" element={<AutoCarousel />} />
         <Route path="/bg" element={<BackGround />} />
-        <Route path="/home" element={<Home />} />
+
+        {/* Fallback */}
         <Route path="*" element={<h2>Page Not Found</h2>} />
       </Routes>
     </>
