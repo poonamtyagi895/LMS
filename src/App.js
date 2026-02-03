@@ -4,6 +4,7 @@ import Auth from "./Components/Auth/Auth";
 import StudentLayout from "./Components/Student/StudentLayout";
 import StudentDashboard from "./Components/Student/StudentDashboard/StudentDashboard";
 import StudentProfile from "./Components/Student/StudentProfile/StudentProfile";
+import StudentCourses from "./Components/Student/StudentCourses/StudentCourses";
 import AdminLayout from "./Components/Admin/AdminLayout";
 import AdminDashboard from "./Components/Admin/AdminDashboard/AdminDashboard";
 import StudentsEnrolled from "./Components/Admin/StudentsEnrolled/StudentsEnrolled";
@@ -33,6 +34,7 @@ function App() {
         <Route path="/student" element={<StudentLayout />}>
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
+          <Route path="courses" element={<StudentCourses />} />
         </Route>
 
         {/* Admin Panel */}

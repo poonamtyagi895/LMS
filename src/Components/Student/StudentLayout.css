@@ -10,6 +10,11 @@
   padding: 28px 32px;
 }
 
+/* 🔥 REMOVE right panel column */
+.student-layout--no-right-panel {
+  grid-template-columns: 260px 1fr;
+}
+
 /* Tablet */
 @media (max-width: 1200px) {
   .student-layout {

@@ -8,33 +8,44 @@ const StudentLayout = () => {
 
   const menus = [
     { label: "Dashboard", icon: "fas fa-user", path: "/student/dashboard" },
-    { label: "Certifications", icon: "fas fa-certificate", path: "/student/certifications" },
-    { label: "Downloads", icon: "fas fa-download", path: "/student/downloads" },
-    { label: "My Cart", icon: "fas fa-shopping-cart", path: "/student/cart" },
+    { label: "My Courses", icon: "fas fa-briefcase", path: "/student/courses" },
     { label: "Refer a Friend", icon: "fas fa-user-friends", path: "/student/refer" },
     { label: "Purchase History", icon: "fas fa-receipt", path: "/student/purchase-history" },
-    { label: "Settings", icon: "fas fa-cog", path: "/student/settings" },
     { label: "Support", icon: "fas fa-headset", path: "/student/support" },
+    { label: "My Cart", icon: "fas fa-shopping-cart", path: "/student/cart" },
+    { label: "Settings", icon: "fas fa-cog", path: "/student/settings" },
+    { label: "Downloads", icon: "fas fa-download", path: "/student/downloads" },
   ];
 
   const updatedMenus = menus.map(m => ({
     ...m,
-    active: location.pathname === m.path,
+    active: location.pathname.startsWith(m.path),
   }));
 
+  /* 🔥 Hide right panel on My Courses */
+  const hideRightPanel =
+    location.pathname === "/student/courses" ||
+    location.pathname.startsWith("/student/courses/");
+
   return (
-    <div className="student-layout">
+    <div
+      className={`student-layout ${
+        hideRightPanel ? "student-layout--no-right-panel" : ""
+      }`}
+    >
       <DashboardSidebar menus={updatedMenus} />
 
       <main className="student-layout-main">
         <Outlet />
       </main>
 
-      <DashboardRightPanel
-        name="Sahil"
-        username="@sahil"
-        role="student"
-      />
+      {!hideRightPanel && (
+        <DashboardRightPanel
+          name="Sahil"
+          username="@sahil"
+          role="student"
+        />
+      )}
     </div>
   );
 };
