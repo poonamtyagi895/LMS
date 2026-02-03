@@ -8,7 +8,6 @@ const HomePage = () => {
       <Wave>
         <Header />
       </Wave>
-      this is 
     </div>
   );
 };
