@@ -9,6 +9,7 @@ import AdminLayout from "./Components/Admin/AdminLayout";
 import AdminDashboard from "./Components/Admin/AdminDashboard/AdminDashboard";
 import StudentsEnrolled from "./Components/Admin/StudentsEnrolled/StudentsEnrolled";
 import ManageCourses from "./Components/Admin/ManageCourses/ManageCourses";
+import CoursePage from "./Components/CustomComponents/CoursePage/CoursePage";
 import CourseInfoChangeCard from "./Components/CustomComponents/CourseInfoChangeCard/CourseInfoChangeCard";
 import ChapterInfoChangeCard from "./Components/CustomComponents/ChapterInfoChangeCard/ChapterInfoChangeCard";
 import TestManagement from "./Components/Admin/TestManagement/TestManagement";
@@ -35,6 +36,7 @@ function App() {
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
           <Route path="courses" element={<StudentCourses />} />
+          <Route path="courses/:courseId" element={<CoursePage />} />
         </Route>
 
         {/* Admin Panel */}

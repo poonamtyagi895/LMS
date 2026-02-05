@@ -1,0 +1,145 @@
+.progress-percent-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 30px;
+  background: radial-gradient(circle, #1b2735, #090a0f);
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border: 1px solid #313131;
+}
+
+.progress-percent-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 40%;
+  background: #ff9800;
+  border-radius: 30px;
+  animation: grow 3s ease-in-out forwards;
+  box-shadow:
+    0 0 15px #ff9900c6,
+    0 0 30px #ff6a00c6;
+}
+
+.progress-percent-bar::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15), transparent);
+  opacity: 0.5;
+  animation: ripple 3s infinite;
+}
+
+.progress-percent-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+}
+
+.progress-percent-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.progress-percent-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: float 5s infinite ease-in-out;
+}
+
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 40%;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.5);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+}
+.progress-percent-particle:nth-child(1) {
+  top: 10%;
+  left: 20%;
+  animation-delay: 0s;
+}
+.progress-percent-particle:nth-child(2) {
+  top: 30%;
+  left: 70%;
+  animation-delay: 1s;
+}
+.progress-percent-particle:nth-child(3) {
+  top: 50%;
+  left: 50%;
+  animation-delay: 2s;
+}
+.progress-percent-particle:nth-child(4) {
+  top: 80%;
+  left: 40%;
+  animation-delay: 1.5s;
+}
+.progress-percent-particle:nth-child(5) {
+  top: 90%;
+  left: 60%;
+  animation-delay: 2.5s;
+}
+
+@media (max-width: 480px) {
+  .progress-percent-container {
+    height: 18px;
+    max-width: 120px;
+    border-radius: 18px;
+  }
+
+  .progress-percent-text {
+    font-size: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .progress-percent-particle {
+    width: 2px;
+    height: 2px;
+    opacity: 0.4;
+  }
+}

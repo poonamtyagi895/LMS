@@ -1,0 +1,107 @@
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 12px 24px;
+  border-radius: 8px;
+
+  background: linear-gradient(135deg, #ff9800, #ffb347);
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  box-shadow: 0 8px 16px rgba(255, 152, 0, 0.35);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.3s ease;
+}
+
+/* Glow layer */
+.share-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.35) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* Hover */
+.share-button:hover {
+  box-shadow: 0 14px 28px rgba(255, 152, 0, 0.45);
+  background: linear-gradient(135deg, #ffb347, #ff9800);
+}
+
+.share-button:hover::before {
+  opacity: 1;
+}
+
+/* Active */
+.share-button:active {
+  transform: translateY(-1px) scale(0.97);
+  box-shadow: 0 6px 12px rgba(255, 152, 0, 0.3);
+}
+
+/* Text */
+.share-button-text {
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+/* Icon */
+.share-button-icon {
+  fill: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.share-button:hover .share-button-icon {
+  transform: rotate(180deg) scale(1.1);
+}
+
+/* Accessibility */
+.share-button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 152, 0, 0.5),
+    0 8px 16px rgba(255, 152, 0, 0.35);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .share-button,
+  .share-button-icon {
+    transition: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .share-button {
+    padding: 2px 14px;
+    gap: 6px;
+
+    font-size: 12px;
+    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+  }
+
+  .share-button-icon {
+    width: 13px;
+    height: 13px;
+  }
+
+  .share-button-text {
+    letter-spacing: 0.2px;
+  }
+}

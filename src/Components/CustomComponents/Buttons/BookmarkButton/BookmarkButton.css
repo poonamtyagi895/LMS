@@ -1,0 +1,125 @@
+/* Container positioning */
+.bookmark-button {
+  position: absolute;
+  bottom: -14px;
+  right: -14px;
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 6;
+
+  --icon-size: 20px;
+  --icon-secondary-color: #787878;
+  --icon-hover-color: #5a5a5a;
+  --icon-primary-color: #ff9800;
+  --icon-circle-border: 1px solid var(--icon-primary-color);
+  --icon-circle-size: 32px;
+  --icon-anmt-duration: 0.3s;
+}
+
+/* Hide checkbox */
+.bookmark-button input {
+  appearance: none;
+  display: none;
+}
+
+/* SVG icon */
+.bookmark-button-icon {
+  width: var(--icon-size);
+  fill: var(--icon-secondary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transform-origin: top;
+  transition: 0.2s;
+}
+
+/* Spark effect */
+.bookmark-button-icon::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  box-shadow:
+    0 30px 0 -4px var(--icon-primary-color),
+    30px 0 0 -4px var(--icon-primary-color),
+    0 -30px 0 -4px var(--icon-primary-color),
+    -30px 0 0 -4px var(--icon-primary-color),
+    -22px 22px 0 -4px var(--icon-primary-color),
+    -22px -22px 0 -4px var(--icon-primary-color),
+    22px -22px 0 -4px var(--icon-primary-color),
+    22px 22px 0 -4px var(--icon-primary-color);
+  border-radius: 50%;
+  transform: scale(0);
+}
+
+/* Circle pulse */
+.bookmark-button-icon::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border: var(--icon-circle-border);
+  opacity: 0;
+}
+
+/* Hover */
+.bookmark-button:hover .bookmark-button-icon {
+  fill: var(--icon-hover-color);
+}
+
+/* Checked state */
+.bookmark-button input:checked + .bookmark-button-icon {
+  fill: var(--icon-primary-color);
+  animation: bookmark-bounce var(--icon-anmt-duration) forwards;
+}
+
+.bookmark-button input:checked + .bookmark-button-icon::before {
+  animation: bookmark-circle var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.bookmark-button input:checked + .bookmark-button-icon::after {
+  animation: bookmark-sparks var(--icon-anmt-duration)
+    cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+/* Animations */
+@keyframes bookmark-bounce {
+  50% {
+    transform: scaleY(0.6);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes bookmark-circle {
+  90% {
+    width: var(--icon-circle-size);
+    height: var(--icon-circle-size);
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes bookmark-sparks {
+  from {
+    transform: scale(0);
+  }
+  40% {
+    opacity: 1;
+  }
+  to {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}

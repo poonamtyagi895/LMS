@@ -7,14 +7,14 @@
 /* Header */
 .student-courses-header {
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .student-courses-title {
   font-size: 26px;
   font-weight: 600;
-  color: #111827;
 }
 
 .student-courses-subtitle {
@@ -23,7 +23,6 @@
 }
 
 /* Grid Rules */
-/* Default desktop → 3 */
 .student-courses-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -52,5 +51,10 @@
 
   .student-courses-title {
     font-size: 22px;
+  }
+
+  .student-courses-header {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

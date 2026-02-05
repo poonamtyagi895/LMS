@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import "./CourseCard.css";
+import BookmarkButton from "../../CustomComponents/Buttons/BookmarkButton/BookmarkButton";
 
-const CourseCard = ({ course }) => {
+const CourseCard = ({ course, onBookmarkToggle }) => {
   const {
     title,
     category,
@@ -12,6 +14,12 @@ const CourseCard = ({ course }) => {
 
   return (
     <div className="course-card">
+      {/* Bookmark button */}
+      <BookmarkButton
+        checked={course.bookmarked}
+        onToggle={() => onBookmarkToggle(course.id)}
+      />
+
       <div className="course-card-image">
         <img src={image} alt={title} />
       </div>
@@ -19,7 +27,12 @@ const CourseCard = ({ course }) => {
       <div className="course-card-content">
         <span className="course-card-category">{category}</span>
 
-        <h3 className="course-card-title">{title}</h3>
+        <Link
+          to={`/student/courses/${course.id}`}
+          className="course-card-title course-card-title-link"
+        >
+          {title}
+        </Link>
 
         <div className="course-card-meta">
           <i className="fas fa-book-open"></i>

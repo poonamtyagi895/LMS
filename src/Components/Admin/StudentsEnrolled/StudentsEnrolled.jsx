@@ -32,7 +32,7 @@ const INITIAL_STUDENTS = [
     gender: "female",
     name: "Tatyana Fitzpatrick",
     email: "info@example.com",
-    mobile: "999785327",
+    mobile: "9997851327",
   },
 ];
 

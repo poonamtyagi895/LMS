@@ -137,6 +137,41 @@
   border-color: #ff9800;
   background-color: #f9fafb;
 }
+
+/* ==============================
+   KEYPOINTS
+============================== */
+
+.course-keypoints-list {
+  margin-top: 10px;
+  padding-left: 18px;
+}
+
+.course-keypoints-list li {
+  font-size: 14px;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+.course-keypoint-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9fafb;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-top: 8px;
+  font-size: 13px;
+}
+
+.course-keypoint-add {
+  margin-top: 10px;
+}
+
+.course-keypoint-add input {
+  flex: 1;
+}
+
 /* ==============================
    IMAGE UPLOAD UI
 ============================== */
@@ -264,3 +299,14 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+
+
+
+
+
+
+
+
+

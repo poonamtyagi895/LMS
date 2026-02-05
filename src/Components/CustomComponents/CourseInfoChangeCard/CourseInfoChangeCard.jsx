@@ -18,6 +18,10 @@ const MOCK_COURSES = {
   1: {
     title: "React for Beginners",
     description: "Learn React from scratch",
+    keypoints: [
+      "10+ hours of video content",
+      "Lifetime access to course materials",
+    ],
     category: "Class 6",
     price: "1999",
     image: "/images/bg9.jpg",
@@ -28,6 +32,10 @@ const MOCK_COURSES = {
   2: {
     title: "Advanced JavaScript",
     description: "Deep dive into advanced JavaScript concepts",
+    keypoints: [
+      "10+ hours of video content",
+      "Lifetime access to course materials",
+    ],
     category: "Class 8",
     price: "2499",
     image: "/images/bg9.jpg",
@@ -38,6 +46,10 @@ const MOCK_COURSES = {
   3: {
     title: "UI/UX Design Basics",
     description: "Understand UI/UX principles and design thinking",
+    keypoints: [
+      "10+ hours of video content",
+      "Lifetime access to course materials",
+    ],
     category: "Class 10",
     price: "1499",
     image: "/images/bg9.jpg",
@@ -60,6 +72,7 @@ const CourseInfoChangeCard = () => {
       : {
           title: "",
           description: "",
+          keypoints: [],
           category: "",
           price: "",
           image: null,
@@ -78,6 +91,8 @@ const CourseInfoChangeCard = () => {
   const [dragIndex, setDragIndex] = useState(null);
   const [isAddingChapter, setIsAddingChapter] = useState(false);
   const [newChapterName, setNewChapterName] = useState("");
+  const [newKeypoint, setNewKeypoint] = useState("");
+  const [editingKeypoints, setEditingKeypoints] = useState(false);
 
   const runWithLoader = (cb) => {
     setShowLoader(true);
@@ -305,6 +320,102 @@ const CourseInfoChangeCard = () => {
               )}
             </div>
           ))}
+
+          {/* KEYPOINTS */}
+          <div className="course-info-change-card">
+            <div className="course-info-change-card-header">
+              <label>Keypoints</label>
+
+              <AddButton
+                label="Add"
+                onClick={() => setEditingKeypoints(true)}
+              />
+            </div>
+
+            {/* VIEW MODE */}
+            {!editingKeypoints && (
+              <>
+                {course.keypoints.length === 0 ? (
+                  <p className="course-info-change-value">
+                    <i>No keypoints added</i>
+                  </p>
+                ) : (
+                  <ul className="course-keypoints-list">
+                    {course.keypoints.map((point, index) => (
+                      <li key={index}>{point}</li>
+                    ))}
+                  </ul>
+                )}
+              </>
+            )}
+
+            {/* EDIT MODE */}
+            {editingKeypoints && (
+              <>
+                {/* EXISTING KEYPOINTS */}
+                {course.keypoints.map((point, index) => (
+                  <div key={index} className="course-keypoint-item">
+                    <span>{point}</span>
+                    <DeleteButton
+                      onClick={() =>
+                        setCourse({
+                          ...course,
+                          keypoints: course.keypoints.filter((_, i) => i !== index),
+                        })
+                      }
+                    />
+                  </div>
+                ))}
+
+                {/* INPUT */}
+                <div className="course-keypoint-add">
+                  <input
+                    placeholder="Enter keypoint (e.g. 10+ hours of video content)"
+                    value={newKeypoint}
+                    onChange={(e) => setNewKeypoint(e.target.value)}
+                  />
+                </div>
+
+                {/* ACTIONS (same position as Save earlier) */}
+                <div className="course-info-change-edit-actions">
+                  <DotButton
+                    label="Add"
+                    onClick={() => {
+                      if (!newKeypoint.trim()) {
+                        showToast("error", "Keypoint cannot be empty");
+                        return;
+                      }
+
+                      setShowLoader(true);
+
+                      setTimeout(() => {
+                        setCourse({
+                          ...course,
+                          keypoints: [...course.keypoints, newKeypoint.trim()],
+                        });
+
+                        setNewKeypoint("");
+                        setEditingKeypoints(false); // 👈 HIDE INPUT + BUTTONS
+                        setShowLoader(false);
+
+                        showToast("success", "Keypoint added");
+                      }, 500);
+                    }}
+                  />
+
+                  <button
+                    className="course-info-change-cancel"
+                    onClick={() => {
+                      setEditingKeypoints(false);
+                      setNewKeypoint("");
+                    }}
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
 
           {/* IMAGE */}
           <div className="course-info-change-card">
