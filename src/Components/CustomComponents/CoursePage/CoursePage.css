@@ -1,10 +1,15 @@
+/* ===============================
+   PAGE LAYOUT
+================================ */
 .course-page {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-/* TOP ACTION BAR */
+/* ===============================
+   TOP ACTION BAR
+================================ */
 .course-page-actions {
   display: flex;
   align-items: center;
@@ -23,18 +28,29 @@
   min-width: 120px;
 }
 
-/* HERO SECTION */
+/* ===============================
+   COURSE CARD (SINGLE BOX)
+================================ */
 .course-page-hero {
-  display: flex;
-  gap: 24px;
   background: #ffffff;
-  padding: 20px;
+  padding: 50px;
   border-radius: 16px;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ===============================
+   TOP CONTENT (IMAGE + DETAILS)
+================================ */
+.course-page-hero-top {
+  display: flex;
+  gap: 24px;
 }
 
 .course-page-hero-image {
-  width: 320px;
+  width: 40%;
   flex-shrink: 0;
 }
 
@@ -46,16 +62,26 @@
 }
 
 .course-page-hero-content {
+  width: 60%;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 24px;
 }
 
-/* HEADER */
+/* ===============================
+   HEADER & RATING
+================================ */
 .course-page-header {
   display: flex;
   flex-direction: column;
   gap: 4px;
+}
+
+.course-page-category {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff9800;
+  letter-spacing: 0.4px;
 }
 
 .course-page-header h1 {
@@ -64,71 +90,72 @@
   color: #111827;
 }
 
-.course-page-header p {
-  font-size: 14px;
-  color: #6b7280;
-}
-
-/* RATINGS */
 .course-page-rating {
-  font-size: 14px;
-  color: #f59e0b;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .course-page-rating span {
-  color: #6b7280;
   font-size: 13px;
+  color: #6b7280;
+  font-weight: 600;
 }
 
-/* KEY POINTS */
+/* ===============================
+   KEY POINTS
+================================ */
 .course-page-keypoints {
-  list-style: disc;
-  padding-left: 18px;
+  list-style: none;
+  padding: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.course-page-keypoints li {
+.course-page-keypoint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-size: 14px;
   color: #374151;
 }
 
-/* CARD */
-.course-page-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 20px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+/* ===============================
+   DESCRIPTION (INSIDE SAME BOX)
+================================ */
+.course-page-description {
+  border-top: 1px solid #e5e7eb;
+  padding-top: 16px;
 }
 
-.course-page-card-header h3 {
+.course-page-description h3 {
   font-size: 18px;
   font-weight: 600;
   color: #111827;
+  margin-bottom: 8px;
 }
 
-/* TEXT */
-.course-page-text {
+.course-page-description p {
   font-size: 14px;
   color: #4b5563;
   line-height: 1.6;
 }
 
-/* RESPONSIVE */
+/* ===============================
+   RESPONSIVE
+================================ */
 @media (max-width: 768px) {
-  .course-page-hero {
+  .course-page-hero-top {
     flex-direction: column;
   }
 
-  .course-page-hero-image {
+  .course-page-hero-image,
+  .course-page-hero-content {
     width: 100%;
+  }
+
+  .course-page-hero-image {
     height: 200px;
   }
 
@@ -138,12 +165,7 @@
 }
 
 @media (max-width: 480px) {
-  .course-page-actions {
-    justify-content: flex-start;
-  }
-
   .course-page-actions-right {
-    margin-left: auto;
     min-width: unset;
     gap: 8px;
   }

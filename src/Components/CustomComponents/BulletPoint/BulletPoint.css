@@ -1,0 +1,39 @@
+.bullet-point {
+  display: inline-flex;
+  align-items: center;
+}
+
+/* STATIC BULLET */
+.bullet-point-indicator {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #ecf0f3;
+  box-shadow:
+    -8px -4px 8px 0px #ffffff,
+     8px  4px 12px 0px #d1d9e6;
+  overflow: hidden;
+}
+
+/* INNER DEPTH */
+.bullet-point-indicator::before,
+.bullet-point-indicator::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: 50%;
+}
+
+.bullet-point-indicator::before {
+  box-shadow:
+    -4px -2px 4px 0px #d1d9e6,
+     4px  2px 8px 0px #ffffff;
+}
+
+.bullet-point-indicator::after {
+  background-color: #ecf0f3;
+  box-shadow:
+    -4px -2px 4px 0px #ffffff,
+     4px  2px 8px 0px #d1d9e6;
+}
