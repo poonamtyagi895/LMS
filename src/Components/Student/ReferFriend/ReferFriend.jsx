@@ -27,7 +27,7 @@ const ReferFriend = () => {
         {/* Left Image Section */}
         <div className="refer-friend-image-wrapper">
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f"
+            src="/images/student/1.jpg"
             alt="Learning together"
             className="refer-friend-image"
           />
