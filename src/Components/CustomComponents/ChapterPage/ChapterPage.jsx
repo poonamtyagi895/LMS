@@ -1,45 +1,118 @@
+import { useState } from "react";
 import "./ChapterPage.css";
 
+import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
+import Loader2 from "../Loaders/Loader2";
+import { showToast } from "../CustomToast/CustomToast";
+
+const chaptersData = [
+  {
+    id: 1,
+    title: "Introduction to HTML",
+    video: "/videos/v1.mp4",
+  },
+  {
+    id: 2,
+    title: "Create Vite Project",
+    video: "/videos/v2.mov",
+  },
+];
+
 const ChapterPage = () => {
+  const [activeChapter, setActiveChapter] = useState(chaptersData[0]);
+  const [completedChapters, setCompletedChapters] = useState([]);
+  const [showLoader, setShowLoader] = useState(false);
+
+  const isCompleted = (id) => completedChapters.includes(id);
+
+  const runWithLoader = (cb) => {
+    setShowLoader(true);
+    setTimeout(() => {
+      setShowLoader(false);
+      cb();
+    }, 500);
+  };
+
+  const toggleCompleted = () => {
+    runWithLoader(() => {
+      if (isCompleted(activeChapter.id)) {
+        setCompletedChapters(
+          completedChapters.filter((id) => id !== activeChapter.id)
+        );
+        showToast("info", "Marked as not completed");
+      } else {
+        setCompletedChapters([...completedChapters, activeChapter.id]);
+        showToast("success", "Chapter completed");
+      }
+    });
+  };
+
+  const handleVideoEnd = () => {
+    if (!isCompleted(activeChapter.id)) {
+      setCompletedChapters([...completedChapters, activeChapter.id]);
+      showToast("success", "Chapter completed");
+    }
+  };
+
   return (
     <div className="chapter-page">
-      {/* LEFT: CHAPTERS */}
+      {showLoader && <Loader2 />}
+
+      {/* LEFT */}
       <div className="chapter-page-chapters">
         <h3>Course Curriculum</h3>
-        <p className="chapter-page-chapters-count">4 Chapters</p>
+        <p className="chapter-page-chapters-count">
+          {chaptersData.length} Chapters
+        </p>
 
         <ul className="chapter-page-chapter-menu">
-          <li className="chapter-page-chapter-item active">
-            <i className="fas fa-play-circle"></i>
-            <span>Introduction to HTML</span>
-          </li>
-
-          <li className="chapter-page-chapter-item">
-            <i className="fas fa-lock"></i>
-            <span>Create Vite Project</span>
-          </li>
-
-          <li className="chapter-page-chapter-item">
-            <i className="fas fa-lock"></i>
-            <span>Free</span>
-          </li>
-
-          <li className="chapter-page-chapter-item">
-            <i className="fas fa-lock"></i>
-            <span>Free1</span>
-          </li>
+          {chaptersData.map((chapter) => (
+            <li
+              key={chapter.id}
+              className={`chapter-page-chapter-item ${
+                activeChapter.id === chapter.id ? "active" : ""
+              }`}
+              onClick={() => setActiveChapter(chapter)}
+            >
+              <i
+                className={`fas ${
+                  isCompleted(chapter.id)
+                    ? "fa-check-circle"
+                    : "fa-play-circle"
+                }`}
+              ></i>
+              <span>{chapter.title}</span>
+            </li>
+          ))}
         </ul>
       </div>
 
-      {/* RIGHT: VIDEO */}
+      {/* RIGHT */}
       <div className="chapter-page-video">
         <div className="chapter-page-video-player">
-          <p>Select a preview lecture to watch</p>
+          <video
+            key={activeChapter.video}
+            src={activeChapter.video}
+            controls
+            width="100%"
+            height="100%"
+            onEnded={handleVideoEnd}
+          />
         </div>
 
         <div className="chapter-page-video-title">
-          <strong>Lecture Title</strong>
-          <span>Complete HTML Course</span>
+          <div className="chapter-page-video-title-row">
+            <strong>{activeChapter.title}</strong>
+
+            <ChangeTextButton
+              isActive={isCompleted(activeChapter.id)}
+              beforeText="Not Completed"
+              afterText="Completed"
+              onClick={toggleCompleted}
+            />
+          </div>
+
+          <span>React for Beginners</span>
         </div>
       </div>
     </div>

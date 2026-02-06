@@ -9,7 +9,7 @@ const StudentLayout = () => {
   const menus = [
     { label: "Dashboard", icon: "fas fa-user", path: "/student/dashboard" },
     { label: "My Courses", icon: "fas fa-briefcase", path: "/student/courses" },
-    { label: "Refer a Friend", icon: "fas fa-user-friends", path: "/student/refer" },
+    { label: "Refer a Friend", icon: "fas fa-user-friends", path: "/student/refer-friend" },
     { label: "Purchase History", icon: "fas fa-receipt", path: "/student/purchase-history" },
     { label: "Support", icon: "fas fa-headset", path: "/student/support" },
     { label: "My Cart", icon: "fas fa-shopping-cart", path: "/student/cart" },

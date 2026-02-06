@@ -1,6 +1,7 @@
 .change-text-button {
   position: relative;
-  width: 105px;
+  min-width: 105px;
+  width: 125px;
   height: 30px;
   border-radius: 6px;
   border: 2px solid #ff828a;
@@ -11,6 +12,7 @@
   font-weight: 600;
   letter-spacing: 1px;
   color: #ff828a;
+  white-space: nowrap;
 }
 
 /* Shared text styles */
@@ -21,6 +23,7 @@
   align-items: center;
   justify-content: center;
   transition: transform 0.35s ease, opacity 0.35s ease;
+  color: inherit;
 }
 
 /* Initial state */

@@ -1,0 +1,142 @@
+/* ================= HEADER ================= */
+
+.refer-friend-header {
+  margin-bottom: 24px;
+}
+
+.refer-friend-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.refer-friend-subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* ================= CARD ================= */
+
+.refer-friend-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* ================= IMAGE ================= */
+
+.refer-friend-image-wrapper {
+  background: linear-gradient(135deg, #a855f7, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refer-friend-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================= CONTENT ================= */
+
+.refer-friend-content {
+  padding: 40px;
+}
+
+.refer-friend-heading {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 16px;
+}
+
+.refer-friend-description {
+  font-size: 15px;
+  color: #374151;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+/* ================= LINK BOX ================= */
+
+.refer-friend-link-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #f9fafb;
+  margin-bottom: 24px;
+}
+
+.refer-friend-link {
+  font-size: 14px;
+  color: #4f46e5;
+  word-break: break-all;
+  flex: 1;
+}
+
+.refer-friend-copy-btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  background: #4f46e5;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.refer-friend-copy-btn:hover {
+  background: #4338ca;
+}
+
+/* ================= SOCIALS ================= */
+
+.refer-friend-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.refer-friend-social-btn {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  color: #111827;
+}
+
+.refer-friend-social-btn:hover {
+  background: #f3f4f6;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .refer-friend-card {
+    grid-template-columns: 1fr;
+  }
+
+  .refer-friend-image-wrapper {
+    height: 260px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .refer-friend-content {
+    padding: 24px;
+  }
+
+  .refer-friend-heading {
+    font-size: 22px;
+  }
+}

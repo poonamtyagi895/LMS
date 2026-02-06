@@ -5,6 +5,7 @@ import StudentLayout from "./Components/Student/StudentLayout";
 import StudentDashboard from "./Components/Student/StudentDashboard/StudentDashboard";
 import StudentProfile from "./Components/Student/StudentProfile/StudentProfile";
 import StudentCourses from "./Components/Student/StudentCourses/StudentCourses";
+import ReferFriend from "./Components/Student/ReferFriend/ReferFriend";
 import AdminLayout from "./Components/Admin/AdminLayout";
 import AdminDashboard from "./Components/Admin/AdminDashboard/AdminDashboard";
 import StudentsEnrolled from "./Components/Admin/StudentsEnrolled/StudentsEnrolled";
@@ -37,6 +38,7 @@ function App() {
           <Route path="profile" element={<StudentProfile />} />
           <Route path="courses" element={<StudentCourses />} />
           <Route path="courses/:courseId" element={<CoursePage />} />
+          <Route path="refer-friend" element={<ReferFriend />} />
         </Route>
 
         {/* Admin Panel */}
