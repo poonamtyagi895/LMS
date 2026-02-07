@@ -3,6 +3,7 @@ import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
 import { authStart, authSuccess, authFailure } from "../redux/slices/authSlice";
 import DotButton from "../CustomComponents/Buttons/DotButton/DotButton";
+import DotButtonWhite from "../CustomComponents/Buttons/DotButtonWhite/DotButtonWhite";
 
 /* ===============================
    AUTH ERROR CODE → MESSAGE MAP
@@ -198,13 +199,19 @@ const Auth = () => {
             <div className="toggle-panel toggle-left">
               <h1>Welcome Back!</h1>
               <p>Enter your personal details to use all LMS features</p>
-              <button className="hidden" onClick={() => switchMode(false)}>Log In</button>
+              <DotButtonWhite
+                label="Log In"
+                onClick={() => switchMode(false)}
+              />
             </div>
 
             <div className="toggle-panel toggle-right">
               <h1>Hello, Friend!</h1>
               <p>Register with your personal details to use all LMS features</p>
-              <button className="hidden" onClick={() => switchMode(true)}>Sign Up</button>
+              <DotButtonWhite
+                label="Sign Up"
+                onClick={() => switchMode(true)}
+              />
             </div>
           </div>
         </div>

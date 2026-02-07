@@ -40,6 +40,7 @@ export default function LineGraph({
         d.toLocaleDateString("en-GB", {
           day: "2-digit",
           month: "short",
+          year: "numeric",
         })
       );
     }
@@ -52,7 +53,11 @@ export default function LineGraph({
     start.setDate(end.getDate() - 6);
 
     const format = (d) =>
-      d.toLocaleDateString("en-GB", { day: "2-digit", month: "short" });
+    d.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
 
     return `${format(start)} - ${format(end)}`;
   };

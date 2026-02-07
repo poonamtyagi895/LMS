@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import DashboardWelcomeCard from "../../CustomComponents/DashboardWelcomeCard/DashboardWelcomeCard";
 import DashboardInfoCard from "../../CustomComponents/DashboardInfoCard/DashboardInfoCard";
 import DashboardAdminLatestEnrollments from "../../CustomComponents/DashboardAdminLatestEnrollments/DashboardAdminLatestEnrollments";
@@ -5,17 +6,35 @@ import "./AdminDashboard.css";
 import LineGraph from "../../CustomComponents/LineGraph/LineGraph";
 
 const AdminDashboard = () => {
+  const today = new Date().toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
+  const latestEnrollmentsRef = useRef(null);
+
+  const handleExploreClick = () => {
+    latestEnrollmentsRef.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div className="admin-dashboard">
       <div className="admin-dashboard-header">
         <h1 className="admin-dashboard-title">Dashboard</h1>
-        <p className="admin-dashboard-date">Thu Jan 08 2026</p>
+        <p className="admin-dashboard-date">{today}</p>
       </div>
 
       <DashboardWelcomeCard
         name="Poonam Tyagi"
         buttonLabel="Explore New Students"
+        onButtonClick={handleExploreClick}
       />
+
       <div className="graph">
         <LineGraph
           title="Latest Enrollments"
@@ -25,6 +44,7 @@ const AdminDashboard = () => {
           type="count"
         />
       </div>
+
       <div className="admin-dashboard-info-grid">
         <DashboardInfoCard
           icon="fas fa-school"
@@ -37,7 +57,10 @@ const AdminDashboard = () => {
           subheading="50 courses"
         />
       </div>
-      <DashboardAdminLatestEnrollments />
+
+      <div ref={latestEnrollmentsRef}>
+        <DashboardAdminLatestEnrollments />
+      </div>
     </div>
   );
 };

@@ -1,0 +1,84 @@
+.tooltip-button-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* BUTTON */
+.tooltip-button-trigger {
+  width: 100%;
+  padding: 10px;
+  background: #ff9800;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background 0.3s;
+}
+
+.tooltip-button-trigger:hover {
+  background: #fb8c00;
+}
+
+/* TOOLTIP CLOUD */
+.tooltip-button-tooltip {
+  visibility: hidden;
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  color: #40c1b0;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  width: 220px;
+  text-align: center;
+  box-shadow: 0 5px 15px #0000004d;
+  animation: tooltip-bounce 0.6s infinite alternate;
+  z-index: 20;
+}
+
+/* TOOLTIP ARROW */
+.tooltip-button-tooltip::before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 10px;
+  border-style: solid;
+  border-color: white transparent transparent transparent;
+}
+
+/* BADGE */
+.tooltip-button-tooltip::after {
+  content: "TIP!";
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  background: #ff828a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 14px;
+  transform: rotate(15deg);
+  font-family: "Comic Neue", cursive;
+}
+
+/* SHOW TOOLTIP ON HOVER */
+.tooltip-button-wrapper:hover .tooltip-button-tooltip {
+  visibility: visible;
+}
+
+/* BOUNCE ANIMATION */
+@keyframes tooltip-bounce {
+  from {
+    transform: translateX(-50%) translateY(0px);
+  }
+  to {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}

@@ -1,10 +1,11 @@
 import "./ShareButton.css";
 import { showToast } from "../../CustomToast/CustomToast";
 
-const ShareButton = () => {
+const ShareButton = ({ link }) => {
   const handleShareClick = async () => {
     try {
-      await navigator.clipboard.writeText(window.location.href);
+      const shareLink = link || window.location.href;
+      await navigator.clipboard.writeText(shareLink);
       showToast("success", "Link copied to clipboard");
     } catch (err) {
       showToast("error", "Failed to copy link");

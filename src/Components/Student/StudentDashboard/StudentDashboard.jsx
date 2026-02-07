@@ -6,11 +6,17 @@ import "./StudentDashboard.css";
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
+  const today = new Date().toLocaleDateString("en-GB", {
+    weekday: "short",
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
   return (
     <>
       <div className="student-dashboard-header">
         <h1 className="student-dashboard-title">Dashboard</h1>
-        <p className="student-dashboard-date">Thu Jan 08 2026</p>
+        <p className="student-dashboard-date">{today}</p>
       </div>
       <DashboardWelcomeCard
         name="Sahil"

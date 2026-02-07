@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardSidebar.css";
+import LogoutButton from "../Buttons/LogoutButton/LogoutButton";
+import TooltipButton from "../Buttons/TooltipButton/TooltipButton";
 
 const DashboardSidebar = ({ menus }) => {
   useEffect(() => {
@@ -50,6 +52,11 @@ const DashboardSidebar = ({ menus }) => {
           ))}
         </nav>
 
+        {/* LOGOUT */}
+        <div className="dashboard-sidebar-logout">
+          <LogoutButton/>
+        </div>
+
         {/* PREMIUM */}
         <div className="dashboard-sidebar-premium">
           <div className="dashboard-sidebar-lottie">
@@ -60,12 +67,9 @@ const DashboardSidebar = ({ menus }) => {
             />
           </div>
 
-          <h4>Premium subscription</h4>
-          <p>Buy Premium and get access to new courses</p>
-
-          <button className="dashboard-sidebar-premium-btn">
-            More detailed
-          </button>
+          <h4>Learn Without Limits</h4>
+          <p>Access all premium courses and exclusive content</p>
+          <TooltipButton label = "More Detailed" tooltipText = "An investment in knowledge pays the best interest."/>
         </div>
       </aside>
     </>

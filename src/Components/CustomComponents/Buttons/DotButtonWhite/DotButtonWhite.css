@@ -44,6 +44,10 @@
   animation: orangeTopBubbles 0.6s ease;
 }
 
+.container .dot-button-white {
+  color: #ff9800;
+}
+
 @keyframes orangeTopBubbles {
   0% {
     background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,

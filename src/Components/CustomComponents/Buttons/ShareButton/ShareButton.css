@@ -1,10 +1,10 @@
 .share-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
-  padding: 12px 24px;
+  padding: 12.5px 24px;
   border-radius: 8px;
 
   background: linear-gradient(135deg, #ff9800, #ffb347);
@@ -23,6 +23,8 @@
     transform 0.25s ease,
     box-shadow 0.25s ease,
     background 0.3s ease;
+  vertical-align: middle;
+  line-height: 1;
 }
 
 /* Glow layer */
@@ -59,12 +61,14 @@
 .share-button-text {
   white-space: nowrap;
   letter-spacing: 0.3px;
+  display: block;
 }
 
 /* Icon */
 .share-button-icon {
   fill: #ffffff;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  display: block;
 }
 
 .share-button:hover .share-button-icon {
