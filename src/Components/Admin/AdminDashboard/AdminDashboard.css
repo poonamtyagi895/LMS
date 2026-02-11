@@ -5,11 +5,12 @@
 .admin-dashboard-title {
   font-size: 26px;
   font-weight: 600;
+  color: var(--main-heading);
 }
 
 .admin-dashboard-date {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--main-subheading);
 }
 
 .graph {

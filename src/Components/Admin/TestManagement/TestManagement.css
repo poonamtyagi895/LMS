@@ -9,11 +9,12 @@
 .test-management-title {
   font-size: 26px;
   font-weight: 600;
+  color: var(--main-heading);
 }
 
 .test-management-subtitle {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--main-subheading);
 }
 
 /* CONTROLS */
@@ -28,7 +29,7 @@
 
 .test-management-entries {
   font-size: 13px;
-  color: #374151;
+  color: var(--light-text);
 }
 
 .test-management-entries select {
@@ -36,7 +37,7 @@
   padding: 4px 8px;
   font-size: 13px;
   border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--light-border);
 }
 
 .test-management-actions {
@@ -46,7 +47,7 @@
 
 /* TABLE CARD */
 .test-management-table-card {
-  background: #ffffff;
+  background: white;
   border-radius: 18px;
   padding: 24px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
@@ -64,20 +65,20 @@
   text-align: left;
   font-size: 13px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--main-heading);
   padding-bottom: 14px;
 }
 
 .test-management-table td {
   font-size: 14px;
   padding: 7px 8px;
-  color: #111827;
-  border-top: 1px solid #eef0f4;
+  color: var(--dark-text);
+  border-top: 1px solid var(--light-border);
   white-space: nowrap;
 }
 
 .test-management-table tr:hover td {
-  background: #fafafa;
+  background: var(--dull-background);
 }
 
 /* ACTIONS */
@@ -99,7 +100,7 @@
 
 .test-management-info {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--light-text);
 }
 
 /* PAGINATION */
@@ -113,16 +114,16 @@
   padding: 6px 12px;
   border-radius: 6px;
   border: none;
-  background: #e5e7eb;
+  background: var(--dull-background);
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: var(--normal-shadow);
 }
 
 .test-management-pagination button.active {
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
 }
 
 .test-management-pagination button:disabled {
@@ -134,7 +135,6 @@
 .test-management-no-data {
   text-align: center;
   padding: 30px;
-  color: #9ca3af;
 }
 
 /* MOBILE */

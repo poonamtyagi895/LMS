@@ -15,11 +15,12 @@
 .student-courses-title {
   font-size: 26px;
   font-weight: 600;
+  color: var(--main-heading);
 }
 
 .student-courses-subtitle {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--main-subheading);
 }
 
 /* Grid Rules */
@@ -29,7 +30,7 @@
   gap: 22px;
 }
 
-/* Large screens / zoom-out → max 4 */
+/* Large screens */
 @media (min-width: 1500px) {
   .student-courses-grid {
     grid-template-columns: repeat(4, 1fr);

@@ -8,8 +8,8 @@
 .tooltip-button-trigger {
   width: 100%;
   padding: 10px;
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -18,7 +18,7 @@
 }
 
 .tooltip-button-trigger:hover {
-  background: #fb8c00;
+  background: var(--secondary-color);
 }
 
 /* TOOLTIP CLOUD */
@@ -28,14 +28,14 @@
   bottom: 150%;
   left: 50%;
   transform: translateX(-50%);
-  background: #ffffff;
-  color: #40c1b0;
+  background: white;
+  color: var(--green-family);
   padding: 15px;
   border-radius: 10px;
   font-size: 16px;
   width: 220px;
   text-align: center;
-  box-shadow: 0 5px 15px #0000004d;
+  box-shadow: var(--light-shadow);
   animation: tooltip-bounce 0.6s infinite alternate;
   z-index: 20;
 }
@@ -58,7 +58,7 @@
   position: absolute;
   top: -25px;
   right: -25px;
-  background: #ff828a;
+  background: var(--red-family);
   color: white;
   padding: 8px 12px;
   border-radius: 50%;

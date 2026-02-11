@@ -9,8 +9,8 @@ import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import AddButton from "../Buttons/AddButton/AddButton";
 import ConfirmationCard from "../ConfirmationCard/ConfirmationCard";
-import Loader2 from "../Loaders/Loader2";
-import ProgressBar from "../ProgressBar/ProgressBar";
+import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
+import ProgressBarLoader from "../Loaders/ProgressBarLoader/ProgressBarLoader";
 import { showToast } from "../CustomToast/CustomToast";
 
 /* MOCK DATA */
@@ -145,7 +145,7 @@ const TestInfoChangeCard = () => {
 
   return (
     <div className="test-info-change-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* HEADER */}
       <div className="test-info-change-topbar">
@@ -325,7 +325,7 @@ const TestInfoChangeCard = () => {
             />
 
             {/* PROGRESS BAR */}
-            {isUploadingAttachment && <ProgressBar />}
+            {isUploadingAttachment && <ProgressBarLoader />}
 
             {/* EMPTY STATE */}
             {!isUploadingAttachment && test.attachments.length === 0 && (

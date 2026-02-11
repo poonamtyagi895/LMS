@@ -4,10 +4,10 @@
 .chapter-page {
   display: flex;
   gap: 20px;
-  background: #ffffff;
+  background: white;
   padding: 20px;
   border-radius: 16px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--light-shadow);
   position: relative;
 }
 
@@ -16,7 +16,7 @@
 ================================ */
 .chapter-page-chapters {
   width: 30%;
-  background: #f9fafb;
+  background: var(--dull-background);
   border-radius: 12px;
   padding: 16px;
 }
@@ -29,8 +29,8 @@
 
 .chapter-page-chapters-count {
   font-size: 13px;
-  color: #6b7280;
   margin-bottom: 12px;
+  color: var(--dark-text);
 }
 
 /* ===============================
@@ -53,7 +53,7 @@
   border-radius: 10px;
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: var(--main-heading);
   cursor: pointer;
   transition: all 0.25s ease;
 }
@@ -62,22 +62,22 @@
   width: 18px;
   text-align: center;
   font-size: 15px;
-  color: #9ca3af;
+  color: var(--main-subheading);
 }
 
 .chapter-page-chapter-item:hover {
-  background: #f3f4f6;
-  color: #ff9800;
+  background: var(--input-background);
+  color: var(--primary-color);
 }
 
 .chapter-page-chapter-item.active {
-  background: #ffffff;
-  color: #ff9800;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  background: white;
+  color: var(--primary-color);
+  box-shadow: var(--light-shadow);
 }
 
 .chapter-page-chapter-item.active i {
-  color: #ff9800;
+  color: var(--primary-color);
 }
 
 /* ===============================
@@ -91,7 +91,7 @@
 }
 
 .chapter-page-video-player {
-  background: #000000;
+  background: var(--main-heading);
   height: 360px;
   border-radius: 12px;
   overflow: hidden;
@@ -105,7 +105,7 @@
 
 .chapter-page-video-title span {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--dark-text);
 }
 
 /* ===============================

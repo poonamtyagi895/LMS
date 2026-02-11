@@ -1,14 +1,12 @@
 .checkbox-eye-container {
-  --color: #ff9800;
-  --size: 22px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   position: relative;
   cursor: pointer;
-  font-size: var(--size);
+  font-size: 22px;
   user-select: none;
-  fill: var(--color);
+  fill: var(--primary-color);
   padding: 0 15px;
 }
 
@@ -36,7 +34,7 @@
 
 .checkbox-eye-container input:checked ~ .checkbox-eye-slash {
   display: block;
-  fill: #9ca3af;
+  fill: var(--light-text);
 }
 
 /* ------ Hide the default checkbox ------ */

@@ -4,7 +4,7 @@ import BackButton from "../../CustomComponents/Buttons/BackButton/BackButton";
 import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
 import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import Loader2 from "../../CustomComponents/Loaders/Loader2";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 import Calendar from "../../CustomComponents/Calendar/Calendar";
 
@@ -80,13 +80,13 @@ const StudentProfile = () => {
 
   return (
     <div className="student-profile-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
       <BackButton />
 
       {/* HEADER */}
       <div className="student-profile-header">
-        <h1>My Profile</h1>
-        <p>
+        <h1 className="student-profile-header-title">My Profile</h1>
+        <p className="student-profile-header-subtitle">
           {isProfileCompleted
             ? "Profile Completed! This is the student profile page"
             : "Complete your Profile"}
@@ -94,7 +94,7 @@ const StudentProfile = () => {
       </div>
 
       {/* PROFILE INFORMATION */}
-      <div className="student-profile-card student-profile-information">
+      <div className="student-profile-card">
         <div className="student-profile-card-header">
           <h3>Profile Information</h3>
 
@@ -166,7 +166,7 @@ const StudentProfile = () => {
       {/* DETAILS GRID */}
       <div className="student-profile-grid">
         {/* PERSONAL DETAILS */}
-        <div className="student-profile-card student-personal-details">
+        <div className="student-profile-card">
           <div className="student-profile-card-header">
             <h3>Personal Details</h3>
             {editBox === "personal" ? (
@@ -275,7 +275,7 @@ const StudentProfile = () => {
         </div>
 
         {/* ACADEMIC DETAILS */}
-        <div className="student-profile-card student-academic-details">
+        <div className="student-profile-card">
           <div className="student-profile-card-header">
             <h3>Academic Details</h3>
           </div>
@@ -293,7 +293,7 @@ const StudentProfile = () => {
       </div>
 
       {/* ADDRESS */}
-      <div className="student-profile-card student-address-details">
+      <div className="student-profile-card">
         <CardHeader
           title="Address"
           isEditing={editBox === "address"}

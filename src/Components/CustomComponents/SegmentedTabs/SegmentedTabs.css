@@ -1,11 +1,11 @@
 .segmented-tabs-container {
   position: relative;
   display: flex;
-  background: #e6e6e6;
+  background: var(--input-background);
   padding: 4px;
   border-radius: 12px;
   width: fit-content;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: var(--normal-shadow);
 }
 
 .segmented-tabs-btn {
@@ -14,7 +14,7 @@
   border: none;
   font-size: 14px;
   font-weight: 500;
-  color: #555;
+  color: var(--dark-text);
   cursor: pointer;
   border-radius: 8px;
   position: relative;
@@ -23,7 +23,7 @@
 }
 
 .segmented-tabs-btn.active {
-  color: #111;
+  color: var(--main-heading);
   font-weight: 600;
 }
 
@@ -32,8 +32,8 @@
   top: 4px;
   left: 0;
   height: calc(100% - 8px);
-  background: #fff;
+  background: white;
   border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--light-shadow);
   transition: all 0.25s ease;
 }

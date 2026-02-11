@@ -1,14 +1,15 @@
 .line-graph-box {
-  background: #ffffff;
+  background: white;
   width: 100%;
   border-radius: 16px;
   padding-bottom: 20px;
+  box-shadow: var(--light-shadow);
 }
 
 .line-graph-title {
   font-size: 18px;
   font-weight: 600;
-  color: #111827;
+  color: var(--main-heading);
   margin: 0;
   padding: 32px 32px 12px;
   position: relative;
@@ -22,26 +23,14 @@
 .line-graph-date-btn {
   border: none;
   background: none;
-  color: #9e9e9e;
+  color: var(--light-text);
   font-size: 14px;
   cursor: pointer;
-}
-
-.line-graph-date-btn:hover {
-  color: #ff9800;
   transition: color 0.3s ease-in-out;
 }
 
-.line-graph-date-picker {
-  position: absolute;
-  top: 28px;
-  right: 0;
-  padding: 6px;
-  font-size: 12px;
-  border-radius: 8px;
-  border: 1px solid #ddd;
-  background: #fff;
-  z-index: 20;
+.line-graph-date-btn:hover {
+  color: var(--primary-color);
 }
 
 .line-graph-chart {
@@ -50,24 +39,24 @@
 }
 
 .line-graph-tooltip {
-  background: #ffffff;
+  background: white;
   padding: 8px 10px;
   border-radius: 8px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--light-shadow);
   text-align: center;
 }
 
 .line-graph-tooltip-title {
   font-size: 12px;
   font-weight: 600;
-  color: #111827;
+  color: var(--dark-text);
   margin-bottom: 4px;
 }
 
 .line-graph-tooltip-value {
   font-size: 13px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--light-text);
 }
 
 .line-graph-calendar {

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
 import "./Calendar.css";
 
 const Calendar = ({ mode = "display", onSelectDate }) => {
@@ -136,12 +137,14 @@ const Calendar = ({ mode = "display", onSelectDate }) => {
             Clear
           </button>
 
-          <button
-            className="calendar-btn primary"
+          <DotButton
+            label="Today"
             onClick={() => selectDate(today)}
-          >
-            Today
-          </button>
+            disabled={
+              selectedDate &&
+              selectedDate.getTime() === today.getTime()
+            }
+          />
         </div>
       )}
     </div>

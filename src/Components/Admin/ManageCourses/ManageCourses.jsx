@@ -9,7 +9,7 @@ import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButt
 import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/ChangeTextButton";
 
 import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
-import Loader2 from "../../CustomComponents/Loaders/Loader2";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
 const INITIAL_COURSES = [
@@ -91,7 +91,7 @@ const ManageCourses = () => {
 
   return (
     <div className="manage-courses-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* HEADER */}
       <div className="manage-courses-header">

@@ -3,11 +3,11 @@
   height: 30px;
   border-radius: 20%;
   border: none;
-  background-color: #0000005c;
+  background-color: var(--overlay-background);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.123);
+  box-shadow: var(--normal-shadow);
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -17,7 +17,7 @@
   content: "";
   width: 200%;
   height: 200%;
-  background-color: #40c1b0;
+  background-color: var(--green-family);
   position: absolute;
   z-index: 1;
   transform: scale(0);
@@ -27,9 +27,6 @@
 }
 .editBtn:hover::before {
   transform: scale(1);
-}
-.editBtn:hover {
-  box-shadow: 0px 5px 10px #00000056;
 }
 
 .editBtn svg {

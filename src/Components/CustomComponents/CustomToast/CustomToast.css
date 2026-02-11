@@ -44,13 +44,13 @@
 .custom-toast {
   width: 320px;
   min-height: 72px;
-  background: #ffffff;
+  background: white;
   border-radius: 14px;
   padding: 12px 14px;
   display: flex;
   align-items: center;
   gap: 14px;
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+  box-shadow: var(--light-shadow);
   border-left: 5px solid;
 }
 
@@ -76,7 +76,7 @@
 
 .custom-toast-message {
   font-size: 13px;
-  color: #666;
+  color: var(--dark-text);
   margin-top: 2px;
 }
 
@@ -86,7 +86,7 @@
   background: transparent;
   font-size: 20px;
   cursor: pointer;
-  color: #888;
+  color: var(--light-text);
 }
 
 /* TYPES */

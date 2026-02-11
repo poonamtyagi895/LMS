@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
-import { authStart, authSuccess, authFailure } from "../redux/slices/authSlice";
+import {
+  authStart,
+  authSuccess,
+  authFailure,
+} from "../redux/slices/authSlice";
+
 import DotButton from "../CustomComponents/Buttons/DotButton/DotButton";
 import DotButtonWhite from "../CustomComponents/Buttons/DotButtonWhite/DotButtonWhite";
+import { showToast } from "../CustomComponents/CustomToast/CustomToast";
 
 /* ===============================
    AUTH ERROR CODE → MESSAGE MAP
@@ -17,19 +24,16 @@ const AUTH_ERROR_MESSAGES = {
   OTP_EXPIRED: "OTP has expired. Please request a new one.",
   PASSWORD_TOO_WEAK: "Password is too weak. Use at least 6 characters.",
   TERMS_NOT_ACCEPTED: "Please accept the terms and conditions.",
-  SERVER_ERROR: "Something went wrong. Please try again later."
+  SERVER_ERROR: "Something went wrong. Please try again later.",
 };
 
 const Auth = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { loading, error } = useSelector((state) => state.auth);
 
   /* toggle signup/login */
   const [isSignup, setIsSignup] = useState(false);
-
-  /* local UI message */
-  const [uiMessage, setUiMessage] = useState(null); //errormessage / seterrormessage
-  const [uiType, setUiType] = useState(null); // "error" | "success" //errortype/ seterrortype
 
   /* form data */
   const [formData, setFormData] = useState({
@@ -39,28 +43,22 @@ const Auth = () => {
     confirmPassword: "",
   });
 
-  /* update UI message from redux error */
+  /* Redux error → Toast */
   useEffect(() => {
     if (error) {
-      setUiMessage(AUTH_ERROR_MESSAGES[error] || "Something went wrong");
-      setUiType("error");
+      showToast(
+        "error",
+        AUTH_ERROR_MESSAGES[error] || "Something went wrong"
+      );
     }
   }, [error]);
 
-  /* clear messages when switching mode */
   const switchMode = (value) => {
     setIsSignup(value);
-    setUiMessage(null);
-    setUiType(null);
     dispatch(authFailure(null));
   };
 
   const handleChange = (e) => {
-    if (uiMessage) {
-      setUiMessage(null);
-      setUiType(null);
-    }
-
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
@@ -72,8 +70,6 @@ const Auth = () => {
     if (loading) return;
 
     dispatch(authStart());
-    setUiMessage(null);
-    setUiType(null);
 
     /* MOCK BACKEND */
     setTimeout(() => {
@@ -115,10 +111,10 @@ const Auth = () => {
         })
       );
 
-      /* SUCCESS MESSAGE ONLY FOR LOGIN */
-      if (!isSignup) {
-        setUiMessage(`Logged in as ${formData.email}`);
-        setUiType("success");
+      if (isSignup) {
+        showToast("success", "Account created successfully");
+      } else {
+        showToast("success", `Logged in as ${formData.email}`);
       }
     }, 800);
   };
@@ -126,34 +122,62 @@ const Auth = () => {
   return (
     <div className="auth-wrapper">
       <div className={isSignup ? "container active" : "container"}>
-
         {/* ================= SIGN UP ================= */}
         <div className="form-container sign-up">
           <form onSubmit={handleSubmit}>
             <h1>Create Account</h1>
 
             <div className="social-icons">
-              <button type="button" className="icon"><i className="fa-brands fa-google"></i></button>
-              <button type="button" className="icon"><i className="fa-brands fa-apple"></i></button>
-              <button type="button" className="icon"><i className="fa-solid fa-key"></i></button>
+              <button type="button" className="icon">
+                <i className="fa-brands fa-google"></i>
+              </button>
+              <button type="button" className="icon">
+                <i className="fa-brands fa-apple"></i>
+              </button>
+              <button type="button" className="icon">
+                <i className="fa-solid fa-key"></i>
+              </button>
             </div>
+
             <span>or use your email for registration</span>
 
-            <input name="name" placeholder="Name" value={formData.name} onChange={handleChange} />
-            <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-            <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
-            <input type="password" name="confirmPassword" placeholder="Confirm Password" value={formData.confirmPassword} onChange={handleChange} />
+            <input
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleChange}
+            />
+            <input
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formData.confirmPassword}
+              onChange={handleChange}
+            />
 
-            {/* MESSAGE SLOT (FIXED HEIGHT) */}
-            <div className="auth-message-slot">
-              {uiType === "error" && <p className="auth-msg error-msg">{uiMessage}</p>}
-            </div>
-
-            <DotButton type="submit" label={loading ? "Please wait..." : "Sign Up"} />
+            <DotButton
+              type="submit"
+              label={loading ? "Please wait..." : "Sign Up"}
+            />
 
             <p className="mobile-toggle">
               Already have an account?
-              <button type="button" onClick={() => switchMode(false)}>Log In</button>
+              <button type="button" onClick={() => switchMode(false)}>
+                Log In
+              </button>
             </p>
           </form>
         </div>
@@ -164,36 +188,52 @@ const Auth = () => {
             <h1>Log In</h1>
 
             <div className="social-icons">
-              <button type="button" className="icon"><i className="fa-brands fa-google"></i></button>
-              <button type="button" className="icon"><i className="fa-brands fa-apple"></i></button>
-              <button type="button" className="icon"><i className="fa-solid fa-key"></i></button>
+              <button type="button" className="icon">
+                <i className="fa-brands fa-google"></i>
+              </button>
+              <button type="button" className="icon">
+                <i className="fa-brands fa-apple"></i>
+              </button>
+              <button type="button" className="icon">
+                <i className="fa-solid fa-key"></i>
+              </button>
             </div>
 
             <span>or use your email password</span>
 
-            <input name="email" placeholder="Email" value={formData.email} onChange={handleChange} />
-            <input type="password" name="password" placeholder="Password" value={formData.password} onChange={handleChange} />
+            <input
+              name="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange}
+            />
 
             <button type="button" className="forgot-password">
               Forget Your Password?
             </button>
 
-            {/* MESSAGE SLOT (FIXED HEIGHT) */}
-            <div className="auth-message-slot">
-              {uiType === "error" && <p className="auth-msg error-msg">{uiMessage}</p>}
-              {uiType === "success" && <p className="auth-msg success-msg">{uiMessage}</p>}
-            </div>
-
-            <DotButton type="submit" label={loading ? "Please wait..." : "Log In"} />
+            <DotButton
+              type="submit"
+              label={loading ? "Please wait..." : "Log In"}
+            />
 
             <p className="mobile-toggle">
               Don&apos;t have an account?
-              <button type="button" onClick={() => switchMode(true)}>Sign Up</button>
+              <button type="button" onClick={() => switchMode(true)}>
+                Sign Up
+              </button>
             </p>
           </form>
         </div>
 
-        {/* TOGGLE PANELS (UNCHANGED) */}
+        {/* ================= TOGGLE PANELS ================= */}
         <div className="toggle-container">
           <div className="toggle">
             <div className="toggle-panel toggle-left">
@@ -215,8 +255,11 @@ const Auth = () => {
             </div>
           </div>
         </div>
-
       </div>
+
+      {/* TEST ROUTES */}
+      <button onClick={() => navigate("/admin/dashboard")}>ADMIN</button>
+      <button onClick={() => navigate("/student/dashboard")}>STUDENT</button>
     </div>
   );
 };

@@ -3,9 +3,9 @@
   padding: 12px 24px;
   border-radius: 8px;
   border: none;
-  color: #ff9800;
+  color: var(--primary-color);
   cursor: pointer;
-  background-color: #fff;
+  background-color: white;
   transition: all 0.2s ease;
   z-index: 1;
   font-weight: 600;
@@ -29,15 +29,15 @@
 
 .dot-button-white:hover::before {
   top: -70%;
-  background-image: radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, #fff 20%, transparent 30%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #fff 15%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%);
+  background-image: radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, white 20%, transparent 30%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, white 15%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%,
     15% 15%, 10% 10%, 18% 18%;
   background-position: 50% 120%;
@@ -45,7 +45,7 @@
 }
 
 .container .dot-button-white {
-  color: #ff9800;
+  color: var(--primary-color);
 }
 
 @keyframes orangeTopBubbles {
@@ -68,13 +68,13 @@
 
 .dot-button-white:hover::after {
   bottom: -70%;
-  background-image: radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #fff 15%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%),
-    radial-gradient(circle, #fff 20%, transparent 20%);
+  background-image: radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, white 15%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%),
+    radial-gradient(circle, white 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%,
     18% 18%;
   background-position: 50% 0%;

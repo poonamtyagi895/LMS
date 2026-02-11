@@ -34,7 +34,7 @@ const CourseCard = ({ course, onBookmarkToggle }) => {
           {title}
         </Link>
 
-        <div className="course-card-meta">
+        <div className="course-card-chapters-data">
           <i className="fas fa-book-open"></i>
           <span>{chapters} Chapters</span>
         </div>

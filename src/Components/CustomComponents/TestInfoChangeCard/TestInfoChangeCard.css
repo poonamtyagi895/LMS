@@ -16,12 +16,13 @@
 .test-info-change-heading {
   font-size: 26px;
   font-weight: 600;
-  margin: 20px 0 4px;
+  color: var(--main-heading);
+  margin-top: 20px;
 }
 
 .test-info-change-subheading {
   font-size: 13px;
-  color: #545861;
+  color: var(--main-subheading);
   margin-bottom: 28px;
 }
 
@@ -38,7 +39,6 @@
   align-items: center;
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
   margin-bottom: 14px;
   gap: 10px;
 }
@@ -47,7 +47,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #fff3e0a2;
+  background: var(--light-primary-color);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -61,10 +61,10 @@
 
 /* CARD */
 .test-info-change-card {
-  background: #ffffff;
+  background: white;
   padding: 18px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--light-shadow);
   margin-bottom: 18px;
 }
 
@@ -77,34 +77,33 @@
 .test-info-change-card label {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: var(--main-heading);
 }
 
 /* VALUE */
 .test-info-change-value {
   margin-top: 8px;
   font-size: 14px;
-  color: #111827;
+  color: var(--dark-text);
 }
 
 .test-info-change-value i {
-  color: #9ca3af;
   font-style: italic;
+  color: var(--light-text);
 }
 
 /* INPUTS */
 .test-info-change-card input,
 .test-info-change-card textarea,
 .test-info-change-card select {
-  background-color: #f3f4f6;
-  border: 1px solid #e5e7eb;
+  background-color: var(--input-background);
+  border: 1px solid var(--light-border);
   margin-top: 8px;
   padding: 10px 15px;
   font-size: 13px;
   border-radius: 8px;
   width: 100%;
   outline: none;
-  color: #111827;
 }
 
 .test-info-change-card textarea {
@@ -114,8 +113,8 @@
 .test-info-change-card input:focus,
 .test-info-change-card textarea:focus,
 .test-info-change-card select:focus {
-  border-color: #ff9800;
-  background-color: #f9fafb;
+  border-color: var(--primary-color);
+  background-color: var(--dull-background);
 }
 
 /* EDIT ACTIONS */
@@ -135,20 +134,20 @@
 }
 
 .test-info-change-edit-actions button:first-child {
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
 }
 
 .test-info-change-edit-actions button:last-child {
-  background: #e5e7eb;
-  color: #374151;
+  background: var(--input-background);
+  color: var(--light-text);
 }
 
 /* ATTACHMENTS */
 .test-info-change-add-btn {
   background: transparent;
-  border: 1px dashed #ff9800;
-  color: #ff9800;
+  border: 1px dashed var(--primary-color);
+  color: var(--primary-color);
   padding: 6px 14px;
   border-radius: 8px;
   cursor: pointer;
@@ -160,7 +159,7 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 10px;
-  background: #f9fafb;
+  background-color: var(--input-background);
   padding: 8px 12px;
   border-radius: 8px;
   font-size: 13px;

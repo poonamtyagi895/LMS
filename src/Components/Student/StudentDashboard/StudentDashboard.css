@@ -5,12 +5,12 @@
 .student-dashboard-title {
   font-size: 26px;
   font-weight: 600;
-  color: #111827;
+  color: var(--main-heading);
 }
 
 .student-dashboard-date {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--main-subheading);
 }
 
 .student-dashboard-info-grid {

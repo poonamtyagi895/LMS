@@ -76,12 +76,12 @@ export default function LineGraph({
 
       xAxis: {
         categories: last7Days,
-        lineColor: "#eeeeee",
+        lineColor: "var(--light-border)",
         labels: {
-          style: { color: "#999999" },
+          style: { color: "var(--light-text)" },
           y: 35,
         },
-        tickColor: "#eeeeee",
+        tickColor: "var(--light-border)",
         tickmarkPlacement: "on",
       },
 
@@ -89,10 +89,10 @@ export default function LineGraph({
         min: 0,
         max: yMax,
         tickInterval: yStep,
-        gridLineColor: "#eeeeee",
+        gridLineColor: "var(--light-border)",
         title: { text: null },
         labels: {
-          style: { color: "#999999", fontSize: "9px" },
+          style: { color: "var(--light-text)", fontSize: "9px" },
           formatter: function () {
             return this.value;
           },
@@ -148,7 +148,7 @@ export default function LineGraph({
         {
           name: title,
           data: data.length ? data : Array(7).fill(0),
-          color: "#FD7177",
+          color: "var(--primary-color)",
         },
       ],
     });

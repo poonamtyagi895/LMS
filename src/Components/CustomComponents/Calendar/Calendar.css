@@ -1,10 +1,10 @@
 .calendar-card {
-  background: #ffffff;
+  background: white;
   padding: 18px;
   border-radius: 16px;
   width: 280px;
   min-width: 280px;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--light-shadow);
   animation: popIn 0.25s ease;
 }
 
@@ -21,7 +21,7 @@
 .calendar-nav i {
   margin-left: 10px;
   cursor: pointer;
-  color: #ff9800;
+  color: var(--primary-color);
   transition: transform 0.2s ease;
 }
 
@@ -39,7 +39,7 @@
 
 .calendar-day {
   text-align: center;
-  color: #9ca3af;
+  color: var(--light-text);
   font-weight: 500;
 }
 
@@ -56,41 +56,39 @@
 /* SELECTABLE */
 .calendar-date.selectable {
   cursor: pointer;
-  color: #111827;
+  color: var(--dark-text);
 }
 
 /* HOVER */
 .calendar-date.selectable:hover {
-  background: rgba(255, 152, 0, 0.15);
-  color: #ff9800;
+  background: var(--light-primary-color);
+  color: var(--primary-color);
   transform: scale(1.08);
-  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.35);
+  box-shadow: var(--normal-shadow);
 }
 
 /* SELECTED */
 .calendar-date.selected {
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
   font-weight: 600;
   transform: scale(1.1);
-  box-shadow: 0 8px 20px rgba(255, 152, 0, 0.45);
+  box-shadow: var(--normal-shadow);
 }
 
 /* DISABLED */
 .calendar-date.disabled {
-  color: #d1d5db;
+  color: var(--very-light-text);
   cursor: not-allowed;
 }
 
 .calendar-date.today {
-  background: #ff9900;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
   font-weight: 600;
 }
 
-/* ======================
-   PICKER CONTROLS
-====================== */
+/* PICKER CONTROLS */
 .calendar-selectors {
   display: flex;
   gap: 8px;
@@ -99,8 +97,8 @@
 .calendar-selectors select {
   padding: 6px 10px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background: #f9fafb;
+  border: 1px solid var(--light-border);
+  background: var(--dull-background);
   font-size: 13px;
   cursor: pointer;
 }
@@ -123,22 +121,13 @@
   transition: all 0.2s ease;
 }
 
-.calendar-btn.primary {
-  background: #ff9800;
-  color: #ffffff;
-}
-
-.calendar-btn.primary:hover {
-  background: #fb8c00;
-}
-
 .calendar-btn.ghost {
   background: transparent;
-  color: #6b7280;
+  color: var(--light-text);
 }
 
 .calendar-btn.ghost:hover {
-  background: #f3f4f6;
+  background: var(--input-background);
 }
 
 

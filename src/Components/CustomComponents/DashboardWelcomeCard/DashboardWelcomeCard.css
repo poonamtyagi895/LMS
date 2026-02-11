@@ -3,12 +3,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: linear-gradient(135deg, #ff9900c6, #ff6a00c6);
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   border-radius: 22px;
   padding: 28px 40px;
   margin-bottom: 28px;
   min-height: 200px;
   overflow: visible;
+  box-shadow: var(--light-shadow);
 }
 
 .dashboard-welcome-left {
@@ -20,7 +21,7 @@
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #ffffff;
+  color: white;
 }
 
 .dashboard-welcome-left p {
@@ -28,7 +29,7 @@
   line-height: 1.5;
   opacity: 0.95;
   margin-bottom: 18px;
-  color: #ffffff;
+  color: white;
 }
 
 .dashboard-welcome-right {

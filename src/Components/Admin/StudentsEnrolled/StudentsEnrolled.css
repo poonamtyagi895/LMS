@@ -6,11 +6,12 @@
 .students-enrolled-title {
   font-size: 26px;
   font-weight: 600;
+  color: var(--main-heading);
 }
 
 .students-enrolled-subtitle {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--main-subheading);
 }
 
 /* CONTROLS */
@@ -23,7 +24,7 @@
 
 .students-enrolled-entries {
   font-size: 13px;
-  color: #374151;
+  color: var(--light-text);
 }
 
 .students-enrolled-entries select {
@@ -31,7 +32,7 @@
   padding: 4px 8px;
   font-size: 13px;
   border-radius: 6px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--light-border);
 }
 
 .students-enrolled-actions-top {
@@ -41,10 +42,10 @@
 
 /* TABLE CARD */
 .students-enrolled-table-card {
-  background: #ffffff;
+  background: white;
   border-radius: 18px;
   padding: 24px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  box-shadow: var(--light-shadow);
 }
 
 /* TABLE */
@@ -57,24 +58,20 @@
   text-align: left;
   font-size: 13px;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--main-heading);
   padding-bottom: 14px;
 }
 
 .students-enrolled-table td {
   font-size: 14px;
   padding: 1px 0;
-  color: #111827;
-  border-top: 1px solid #eef0f4;
+  color: var(--dark-text);
+  border-top: 1px solid var(--light-border);
+  white-space: nowrap;
 }
 
 .students-enrolled-table tr:hover td {
-  background: #fafafa;
-}
-
-/* CENTERED COLUMNS */
-.col-center {
-  text-align: center;
+  background: var(--dull-background);
 }
 
 /* AVATAR */
@@ -84,16 +81,6 @@
   border-radius: 50%;
   overflow: hidden;
   margin: auto;
-}
-
-/* TEXT */
-.name {
-  font-weight: 500;
-}
-
-.email,
-.mobile {
-  color: #6b7280;
 }
 
 /* ACTION BUTTONS */
@@ -107,12 +94,11 @@
 .no-data {
   text-align: center;
   padding: 30px;
-  color: #9ca3af;
 }
 .table-info {
   margin-top: 12px;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--light-text);
 }
 
 /* FOOTER */
@@ -136,16 +122,16 @@
   padding: 6px 12px;
   border-radius: 6px;
   border: none;
-  background: #e5e7eb;
+  background: var(--dull-background);
   font-size: 12px;
   cursor: pointer;
-  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  box-shadow: var(--normal-shadow);
   font-weight: 600;
 }
 
 .pagination button.active {
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
 }
 
 .pagination button:disabled {

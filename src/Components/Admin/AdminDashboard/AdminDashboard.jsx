@@ -31,7 +31,7 @@ const AdminDashboard = () => {
 
       <DashboardWelcomeCard
         name="Poonam Tyagi"
-        buttonLabel="Explore New Students"
+        buttonLabel="New Students"
         onButtonClick={handleExploreClick}
       />
 

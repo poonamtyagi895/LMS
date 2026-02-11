@@ -3,9 +3,9 @@
   padding: 12px 24px;
   border-radius: 8px;
   border: none;
-  color: #fff;
+  color: white;
   cursor: pointer;
-  background-color: #ff9800;
+  background-color: var(--primary-color);
   transition: all 0.2s ease;
   z-index: 1;
 }
@@ -28,15 +28,15 @@
 
 .dot-button:hover::before {
   top: -70%;
-  background-image: radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, transparent 20%, #ff7f50 20%, transparent 30%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #ff7f50 15%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%);
+  background-image: radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, var(--secondary-color) 20%, transparent 30%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--secondary-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%);
   background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%,
     15% 15%, 10% 10%, 18% 18%;
   background-position: 50% 120%;
@@ -63,13 +63,13 @@
 
 .dot-button:hover::after {
   bottom: -70%;
-  background-image: radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, transparent 10%, #ff7f50 15%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%),
-    radial-gradient(circle, #ff7f50 20%, transparent 20%);
+  background-image: radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, var(--secondary-color) 15%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%),
+    radial-gradient(circle, var(--secondary-color) 20%, transparent 20%);
   background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%,
     18% 18%;
   background-position: 50% 0%;

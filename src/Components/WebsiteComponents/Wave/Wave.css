@@ -5,7 +5,7 @@
   background: linear-gradient(
     90deg,
     #ff6f00 0%,
-    #ff9800 50%,
+    var(--primary-color) 50%,
     #ff6a00 100%
   );
   overflow: hidden;

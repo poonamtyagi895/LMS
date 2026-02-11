@@ -10,7 +10,7 @@ import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/Ch
 import SegmentedTabs from "../../CustomComponents/SegmentedTabs/SegmentedTabs";
 
 import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
-import Loader2 from "../../CustomComponents/Loaders/Loader2";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
 /* MOCK TEST DATA */
@@ -126,7 +126,7 @@ const TestManagement = () => {
 
   return (
     <div className="test-management-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* HEADER */}
       <div className="test-management-header">

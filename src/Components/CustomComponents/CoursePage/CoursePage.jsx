@@ -6,7 +6,7 @@ import DotButton from "../Buttons/DotButton/DotButton";
 import ProgressPercentBar from "../ProgressPercentBar/ProgressPercentBar";
 import RatingPage from "../RatingPage/RatingPage";
 import StarRating from "../RatingPage/StarRating";
-import BulletPoint from "../BulletPoint/BulletPoint";
+import BulletPoint from "../CheckBox/BulletPoint/BulletPoint";
 import ChapterPage from "../ChapterPage/ChapterPage";
 
 const CoursePage = () => {

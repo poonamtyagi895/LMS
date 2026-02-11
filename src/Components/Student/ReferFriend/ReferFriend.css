@@ -10,23 +10,22 @@
 .refer-friend-title {
   font-size: 26px;
   font-weight: 600;
-  color: #111827;
+  color: var(--main-heading);
 }
 
 .refer-friend-subtitle {
   font-size: 14px;
-  color: #6b7280;
-  margin-top: 4px;
+  color: var(--main-subheading);
 }
 
 /* CARD */
 .refer-friend-card {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  background: #ffffff;
+  background: white;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--light-shadow);
 }
 
 /* LOTTIE */
@@ -54,12 +53,12 @@
 .refer-friend-heading {
   font-size: 30px;
   font-weight: 700;
-  color: #111827;
+  color: var(--main-heading);
 }
 
 .refer-friend-description {
   font-size: 15px;
-  color: #4b5563;
+  color: var(--dark-text);
   line-height: 1.7;
   max-width: 420px;
 }
@@ -73,7 +72,7 @@
   display: block;
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: var(--dark-text);
   margin-bottom: 6px;
 }
 
@@ -82,15 +81,14 @@
   padding: 10px 15px;
   font-size: 13px;
   border-radius: 8px;
-  border: 1px solid #e5e7eb;
-  background-color: #f3f4f6;
-  color: #111827;
+  border: 1px solid var(--light-border);
+  background-color: var(--input-background);
+  color: var(--dark-text);
   outline: none;
 }
 
 .refer-friend-input-wrapper input:focus {
-  border-color: #ff9800;
-  background-color: #f9fafb;
+  border-color: var(--primary-color);
 }
 
 /* SHARE BUTTON */

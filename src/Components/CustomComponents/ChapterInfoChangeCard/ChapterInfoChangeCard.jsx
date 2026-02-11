@@ -8,9 +8,9 @@ import DotButton from "../Buttons/DotButton/DotButton";
 import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import ConfirmationCard from "../ConfirmationCard/ConfirmationCard";
-import Loader2 from "../Loaders/Loader2";
+import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../CustomToast/CustomToast";
-import ProgressBar from "../ProgressBar/ProgressBar";
+import ProgressBarLoader from "../Loaders/ProgressBarLoader/ProgressBarLoader";
 import CheckBoxEye from "../CheckBox/CheckBoxEye/CheckBoxEye";
 
 const ChapterInfoChangeCard = () => {
@@ -66,7 +66,7 @@ const ChapterInfoChangeCard = () => {
 
   return (
     <div className="chapter-info-change-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* HEADER */}
       <div className="chapter-info-change-topbar">
@@ -255,7 +255,7 @@ const ChapterInfoChangeCard = () => {
                     className="chapter-video-preview"
                   />
                 ) : (
-                  <i>No video uploaded</i>
+                  <i className="chapter-info-change-placeholder">No video uploaded</i>
                 )}
               </p>
             )}
@@ -263,7 +263,7 @@ const ChapterInfoChangeCard = () => {
             {editField === "video" && (
               <>
                 {/* PROGRESS */}
-                {isUploadingVideo && <ProgressBar />}
+                {isUploadingVideo && <ProgressBarLoader />}
 
                 {/* UPLOAD BOX */}
                 {!isUploadingVideo && !tempValue && (

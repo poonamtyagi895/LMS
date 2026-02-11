@@ -9,9 +9,9 @@ import DotButton from "../Buttons/DotButton/DotButton";
 import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
 import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
 import ConfirmationCard from "../ConfirmationCard/ConfirmationCard";
-import Loader2 from "../Loaders/Loader2";
+import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../CustomToast/CustomToast";
-import ProgressBar from "../ProgressBar/ProgressBar"
+import ProgressBarLoader from "../Loaders/ProgressBarLoader/ProgressBarLoader"
 
 /* MOCK DATA */
 const MOCK_COURSES = {
@@ -239,7 +239,7 @@ const CourseInfoChangeCard = () => {
 
   return (
     <div className="course-info-change-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* HEADER */}
       <div className="course-info-change-topbar">
@@ -449,7 +449,7 @@ const CourseInfoChangeCard = () => {
             {editField === "image" && (
               <>
                 {/* PROGRESS BAR */}
-                {isUploadingImage && <ProgressBar />}
+                {isUploadingImage && <ProgressBarLoader />}
 
                 {/* UPLOAD BOX (before upload) */}
                 {!isUploadingImage && !tempValue && (
@@ -687,7 +687,7 @@ const CourseInfoChangeCard = () => {
             />
 
             {/* LOADER */}
-            {isUploadingAttachment && <ProgressBar />}
+            {isUploadingAttachment && <ProgressBarLoader />}
 
             {/* EMPTY STATE */}
             {!isUploadingAttachment && course.attachments.length === 0 && (
@@ -705,7 +705,7 @@ const CourseInfoChangeCard = () => {
                   justifyContent: "space-between",
                   alignItems: "center",
                   marginTop: "10px",
-                  background: "#f9fafb",
+                  background: "var(--input-background)",
                   padding: "8px 12px",
                   borderRadius: "8px",
                 }}

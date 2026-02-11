@@ -7,8 +7,8 @@
   height: 42px;
   border-radius: 8px;
   border: none;
-  background: #ff9800;
-  color: #ffffff;
+  background: var(--primary-color);
+  color: white;
   font-size: 18px;
   z-index: 300;
 }
@@ -16,8 +16,8 @@
 .dashboard-sidebar {
   width: 260px;
   height: 100vh;
-  background: #ffffff;
-  border-right: 1px solid #eef0f4;
+  background: white;
+  border-right: 1px solid var(--light-border);
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -32,7 +32,7 @@
   padding: 0 24px;
   font-size: 20px;
   font-weight: 600;
-  color: #ff9800;
+  color: var(--primary-color);
 }
 
 .dashboard-sidebar-logo-icon {
@@ -51,7 +51,7 @@
   gap: 14px;
   padding: 12px 16px;
   font-size: 14px;
-  color: #201e1eef;
+  color: var(--dark-text);
   border-radius: 10px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -66,13 +66,13 @@
 }
 
 .dashboard-sidebar-item:hover {
-  background: #f3f4f6;
-  color: #ff9800;
+  background: var(--input-background);
+  color: var(--primary-color);
 }
 
 .dashboard-sidebar-item.active {
-  background: #f3f4f6;
-  color: #ff9800;
+  background: var(--input-background);
+  color: var(--primary-color);
   font-weight: 500;
 }
 
@@ -86,7 +86,7 @@
 /* PREMIUM */
 .dashboard-sidebar-premium {
   margin: 0 16px 0;
-  background: #f5f0ff;
+  background: var(--input-background);
   border-radius: 16px;
   padding: 16px;
   text-align: center;
@@ -101,12 +101,12 @@
 .dashboard-sidebar-premium h4 {
   font-size: 14px;
   font-weight: 600;
-  color: #111827;
+  color: var(--dark-text);
 }
 
 .dashboard-sidebar-premium p {
   font-size: 12px;
-  color: #6b7280;
+  color: var(--light-text);
   margin-bottom: 12px;
 }
 

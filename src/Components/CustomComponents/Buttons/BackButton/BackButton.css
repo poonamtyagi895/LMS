@@ -4,13 +4,13 @@
  width: 100px;
  align-items: center;
  justify-content: center;
- background-color: #eeeeee4b;
  border-radius: 8px;
  letter-spacing: 1px;
  transition: all 0.2s linear;
  cursor: pointer;
  border: none;
- background: #fff;
+ background: white;
+ box-shadow: var(--light-shadow);
 }
 
 .back-button > svg {
@@ -26,6 +26,6 @@
 }
 
 .back-button:hover {
- box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+ box-shadow: var(--normal-shadow);
  transform: translateY(-2px);
 }

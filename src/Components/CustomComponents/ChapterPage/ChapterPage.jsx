@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./ChapterPage.css";
 
 import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
-import Loader2 from "../Loaders/Loader2";
+import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../CustomToast/CustomToast";
 
 const chaptersData = [
@@ -56,7 +56,7 @@ const ChapterPage = () => {
 
   return (
     <div className="chapter-page">
-      {showLoader && <Loader2 />}
+      {showLoader && <JumpLoader />}
 
       {/* LEFT */}
       <div className="chapter-page-chapters">

@@ -3,22 +3,17 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   padding: 12.5px 24px;
   border-radius: 8px;
-
-  background: linear-gradient(135deg, #ff9800, #ffb347);
-  color: #ffffff;
-
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
   font-size: 13px;
   font-weight: 600;
-
   border: none;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-
-  box-shadow: 0 8px 16px rgba(255, 152, 0, 0.35);
+  box-shadow: 0 8px 16px #ff980059;
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -34,7 +29,7 @@
   inset: 0;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.35) 0%,
+    #ffffff59 0%,
     transparent 70%
   );
   opacity: 0;
@@ -43,8 +38,8 @@
 
 /* Hover */
 .share-button:hover {
-  box-shadow: 0 14px 28px rgba(255, 152, 0, 0.45);
-  background: linear-gradient(135deg, #ffb347, #ff9800);
+  box-shadow: 0 14px 28px #ff980073;
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
 }
 
 .share-button:hover::before {
@@ -54,7 +49,7 @@
 /* Active */
 .share-button:active {
   transform: translateY(-1px) scale(0.97);
-  box-shadow: 0 6px 12px rgba(255, 152, 0, 0.3);
+  box-shadow: 0 6px 12px #ff98004d;
 }
 
 /* Text */
@@ -66,7 +61,7 @@
 
 /* Icon */
 .share-button-icon {
-  fill: #ffffff;
+  fill: white;
   transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   display: block;
 }
@@ -79,8 +74,8 @@
 .share-button:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px rgba(255, 152, 0, 0.5),
-    0 8px 16px rgba(255, 152, 0, 0.35);
+    0 0 0 3px #ff980080,
+    0 8px 16px #ff980059;
 }
 
 /* Reduced motion */
@@ -97,7 +92,7 @@
     gap: 6px;
 
     font-size: 12px;
-    box-shadow: 0 4px 10px rgba(255, 152, 0, 0.3);
+    box-shadow: 0 4px 10px #ff98004d;
   }
 
   .share-button-icon {
