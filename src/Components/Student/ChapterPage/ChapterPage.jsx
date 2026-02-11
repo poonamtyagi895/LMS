@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./ChapterPage.css";
 
-import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
-import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
-import { showToast } from "../CustomToast/CustomToast";
+import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/ChangeTextButton";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
+import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
 const chaptersData = [
   {

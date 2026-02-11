@@ -1,12 +1,12 @@
 import { useState } from "react";
 import "./CoursePage.css";
-import BackButton from "../Buttons/BackButton/BackButton";
-import ShareButton from "../Buttons/ShareButton/ShareButton";
-import DotButton from "../Buttons/DotButton/DotButton";
-import ProgressPercentBar from "../ProgressPercentBar/ProgressPercentBar";
-import RatingPage from "../RatingPage/RatingPage";
-import StarRating from "../RatingPage/StarRating";
-import BulletPoint from "../CheckBox/BulletPoint/BulletPoint";
+import BackButton from "../../CustomComponents/Buttons/BackButton/BackButton";
+import ShareButton from "../../CustomComponents/Buttons/ShareButton/ShareButton";
+import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
+import ProgressPercentBar from "../../CustomComponents/ProgressPercentBar/ProgressPercentBar";
+import RatingPage from "../../CustomComponents/RatingPage/RatingPage";
+import StarRating from "../../CustomComponents/RatingPage/StarRating";
+import BulletPoint from "../../CustomComponents/CheckBox/BulletPoint/BulletPoint";
 import ChapterPage from "../ChapterPage/ChapterPage";
 
 const CoursePage = () => {

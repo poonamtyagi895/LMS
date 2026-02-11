@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardSidebar.css";
-import LogoutButton from "../Buttons/LogoutButton/LogoutButton";
-import TooltipButton from "../Buttons/TooltipButton/TooltipButton";
+import LogoutButton from "../../Buttons/LogoutButton/LogoutButton";
+import TooltipButton from "../../Buttons/TooltipButton/TooltipButton";
 
 const DashboardSidebar = ({ menus }) => {
   useEffect(() => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardRightPanel.css";
-import Calendar from "../Calendar/Calendar";
+import Calendar from "../../Calendar/Calendar";
 
 const DashboardRightPanel = ({ role }) => {
   const [open, setOpen] = useState(false);

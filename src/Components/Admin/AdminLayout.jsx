@@ -1,5 +1,5 @@
-import DashboardSidebar from "../CustomComponents/DashboardSidebar/DashboardSidebar";
-import DashboardRightPanel from "../CustomComponents/DashboardRightPanel/DashboardRightPanel";
+import DashboardSidebar from "../CustomComponents/Dashboard/DashboardSidebar/DashboardSidebar";
+import DashboardRightPanel from "../CustomComponents/Dashboard/DashboardRightPanel/DashboardRightPanel";
 import "./AdminLayout.css";
 import { Outlet, useLocation } from "react-router-dom";
 

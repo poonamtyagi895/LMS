@@ -2,16 +2,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./CourseInfoChangeCard.css";
 
-import BackButton from "../Buttons/BackButton/BackButton";
-import EditButton from "../Buttons/EditButton/EditButton";
-import AddButton from "../Buttons/AddButton/AddButton";
-import DotButton from "../Buttons/DotButton/DotButton";
-import ChangeTextButton from "../Buttons/ChangeTextButton/ChangeTextButton";
-import DeleteButton from "../Buttons/DeleteButton/DeleteButton";
-import ConfirmationCard from "../ConfirmationCard/ConfirmationCard";
-import JumpLoader from "../Loaders/JumpLoader/JumpLoader";
-import { showToast } from "../CustomToast/CustomToast";
-import ProgressBarLoader from "../Loaders/ProgressBarLoader/ProgressBarLoader"
+import BackButton from "../../CustomComponents/Buttons/BackButton/BackButton";
+import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
+import AddButton from "../../CustomComponents/Buttons/AddButton/AddButton";
+import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
+import ChangeTextButton from "../../CustomComponents/Buttons/ChangeTextButton/ChangeTextButton";
+import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
+import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
+import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
+import ProgressBarLoader from "../../CustomComponents/Loaders/ProgressBarLoader/ProgressBarLoader"
 
 /* MOCK DATA */
 const MOCK_COURSES = {

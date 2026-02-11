@@ -1,0 +1,19 @@
+.student-support-page {
+  padding-bottom: 40px;
+}
+
+/* HEADER */
+.student-support-header {
+  margin-bottom: 28px;
+}
+
+.student-support-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--main-heading);
+}
+
+.student-support-subtitle {
+  font-size: 14px;
+  color: var(--main-subheading);
+}

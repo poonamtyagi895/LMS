@@ -1,0 +1,19 @@
+.purchase-history-page {
+  padding-bottom: 40px;
+}
+
+/* HEADER */
+.purchase-history-header {
+  margin-bottom: 28px;
+}
+
+.purchase-history-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--main-heading);
+}
+
+.purchase-history-subtitle {
+  font-size: 14px;
+  color: var(--main-subheading);
+}

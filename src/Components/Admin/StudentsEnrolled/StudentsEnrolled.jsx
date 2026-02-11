@@ -7,7 +7,7 @@ import SearchBar from "../../CustomComponents/Buttons/SearchBar/SearchBar";
 import EditButton from "../../CustomComponents/Buttons/EditButton/EditButton";
 import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
 
-import StudentInfoChangeCard from "../../CustomComponents/StudentInfoChangeCard/StudentInfoChangeCard";
+import StudentInfoChangeCard from "../StudentInfoChangeCard/StudentInfoChangeCard";
 import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
 import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";

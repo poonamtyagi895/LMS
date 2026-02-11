@@ -1,5 +1,5 @@
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import DotButton from "../Buttons/DotButton/DotButton";
+import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
 import "./StudentInfoChangeCard.css";
 
 const StudentInfoChangeCard = ({

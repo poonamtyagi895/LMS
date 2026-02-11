@@ -1,6 +1,6 @@
 import React from "react";
 import "./DashboardWelcomeCard.css";
-import DotButtonWhite from "../Buttons/DotButtonWhite/DotButtonWhite";
+import DotButtonWhite from "../../Buttons/DotButtonWhite/DotButtonWhite";
 
 const DashboardWelcomeCard = ({ name, buttonLabel, onButtonClick }) => {
   return (

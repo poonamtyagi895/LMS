@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import DashboardWelcomeCard from "../../CustomComponents/DashboardWelcomeCard/DashboardWelcomeCard";
-import DashboardInfoCard from "../../CustomComponents/DashboardInfoCard/DashboardInfoCard";
+import DashboardWelcomeCard from "../../CustomComponents/Dashboard/DashboardWelcomeCard/DashboardWelcomeCard";
+import DashboardInfoCard from "../../CustomComponents/Dashboard/DashboardInfoCard/DashboardInfoCard";
 import LineGraph from "../../CustomComponents/LineGraph/LineGraph";
 import "./StudentDashboard.css";
 
