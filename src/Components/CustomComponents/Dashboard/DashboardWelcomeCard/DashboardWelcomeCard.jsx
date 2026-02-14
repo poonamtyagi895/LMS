@@ -8,7 +8,7 @@ const DashboardWelcomeCard = ({ name, buttonLabel, onButtonClick }) => {
       <div className="dashboard-welcome-left">
         <h2>Hello, {name}!</h2>
         <p>
-          We’ve missed you! Check out what’s new and improved in your dashboard.
+          We've missed you! Check out what's new and improved in your dashboard.
         </p>
 
         <DotButtonWhite label={buttonLabel} onClick={onButtonClick}/>

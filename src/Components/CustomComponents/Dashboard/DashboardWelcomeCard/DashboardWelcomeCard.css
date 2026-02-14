@@ -49,11 +49,25 @@
   .dashboard-welcome-card {
     flex-direction: column;
     padding: 24px;
+    padding-bottom: 10px;
+    min-height: 180px;
   }
 
   .dashboard-welcome-left {
     max-width: 100%;
-    text-align: center;
+  }
+
+  .dashboard-welcome-left h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  .dashboard-welcome-left p {
+    font-size: 12px;
+    line-height: 1.5;
+    opacity: 0.95;
+    margin-bottom: 18px;
   }
 
   .dashboard-welcome-right {
@@ -64,6 +78,7 @@
   }
 
   .dashboard-welcome-right img {
-    width: 260px;
+    width: 280px;
+    display: none;
   }
 }

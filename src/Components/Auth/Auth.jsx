@@ -258,8 +258,8 @@ const Auth = () => {
       </div>
 
       {/* TEST ROUTES */}
-      <button onClick={() => navigate("/admin/dashboard")}>ADMIN</button>
-      <button onClick={() => navigate("/student/dashboard")}>STUDENT</button>
+      <DotButton label= "ADMIN" onClick={() => navigate("/admin/dashboard")}>ADMIN</DotButton>
+      <DotButton label= "STUDENT" onClick={() => navigate("/student/dashboard")}>STUDENT</DotButton>
     </div>
   );
 };
