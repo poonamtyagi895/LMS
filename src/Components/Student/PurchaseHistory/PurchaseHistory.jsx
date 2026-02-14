@@ -1,5 +1,5 @@
 import "./PurchaseHistory.css";
-import Table from "../../CustomComponents/Table/Table";
+import Table from "../../CustomComponents/TableComponents/Table/Table";
 
 const PurchaseHistory = () => {
   const purchases = [

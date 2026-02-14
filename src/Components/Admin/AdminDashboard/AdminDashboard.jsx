@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import DashboardWelcomeCard from "../../CustomComponents/Dashboard/DashboardWelcomeCard/DashboardWelcomeCard";
-import DashboardInfoCard from "../../CustomComponents/Dashboard/DashboardInfoCard/DashboardInfoCard";
+import InfoCard from "../../CustomComponents/InfoCard/InfoCard";
 import "./AdminDashboard.css";
 import LineGraph from "../../CustomComponents/LineGraph/LineGraph";
-import Table from "../../CustomComponents/Table/Table";
+import Table from "../../CustomComponents/TableComponents/Table/Table";
 
 const AdminDashboard = () => {
   const today = new Date().toLocaleDateString("en-GB", {
@@ -61,12 +61,12 @@ const AdminDashboard = () => {
       </div>
 
       <div className="admin-dashboard-info-grid">
-        <DashboardInfoCard
+        <InfoCard
           icon="fas fa-school"
           heading="Number of total enrollments"
           subheading="30 enrollments"
         />
-        <DashboardInfoCard
+        <InfoCard
           icon="fas fa-graduation-cap"
           heading="Number of total courses"
           subheading="50 courses"

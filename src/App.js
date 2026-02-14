@@ -18,8 +18,7 @@ import ChapterInfoChangeCard from "./Components/Admin/ChapterInfoChangeCard/Chap
 import TestManagement from "./Components/Admin/TestManagement/TestManagement";
 import TestInfoChangeCard from "./Components/Admin/TestInfoChangeCard/TestInfoChangeCard";
 import HomePage from "./Components/Website/HomePage/HomePage";
-import BackGround from "./Components/CustomComponents/BackGround/BackGround";
-import AutoCarousel from "./Components/CustomComponents/AutoCarousel/AutoCarousel";
+import AutoCarousel from "./Components/WebsiteComponents/AutoCarousel/AutoCarousel";
 
 function App() {
   return (
@@ -39,7 +38,7 @@ function App() {
           <Route path="dashboard" element={<StudentDashboard />} />
           <Route path="profile" element={<StudentProfile />} />
           <Route path="courses" element={<StudentCourses />} />
-          <Route path="courses/:courseId" element={<CoursePage />} />
+            <Route path="courses/:courseId" element={<CoursePage />} />
           <Route path="refer-friend" element={<ReferFriend />} />
           <Route path="purchase-history" element={<PurchaseHistory />} />
           <Route path="support" element={<StudentSupport />} />
@@ -75,7 +74,6 @@ function App() {
 
         {/* Extra / Testing Routes */}
         <Route path="/carousel" element={<AutoCarousel />} />
-        <Route path="/bg" element={<BackGround />} />
 
         {/* Fallback */}
         <Route path="*" element={<h2>Page Not Found</h2>} />

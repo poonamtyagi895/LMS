@@ -22,62 +22,15 @@
   margin-bottom: 18px;
 }
 
-.students-enrolled-entries {
-  font-size: 13px;
-  color: var(--light-text);
-}
-
-.students-enrolled-entries select {
-  margin: 0 6px;
-  padding: 4px 8px;
-  font-size: 13px;
-  border-radius: 6px;
-  border: 1px solid var(--light-border);
-}
-
 .students-enrolled-actions-top {
   display: flex;
   gap: 12px;
 }
 
-/* TABLE CARD */
-.students-enrolled-table-card {
-  background: white;
-  border-radius: 18px;
-  padding: 24px;
-  box-shadow: var(--light-shadow);
-}
-
-/* TABLE */
-.students-enrolled-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.students-enrolled-table th {
-  text-align: left;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--main-heading);
-  padding-bottom: 14px;
-}
-
-.students-enrolled-table td {
-  font-size: 14px;
-  padding: 1px 0;
-  color: var(--dark-text);
-  border-top: 1px solid var(--light-border);
-  white-space: nowrap;
-}
-
-.students-enrolled-table tr:hover td {
-  background: var(--dull-background);
-}
-
 /* AVATAR */
 .students-enrolled-avatar {
-  width: 52px;
-  height: 52px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
   margin: auto;
@@ -90,17 +43,6 @@
   gap: 10px;
 }
 
-/* NO DATA */
-.no-data {
-  text-align: center;
-  padding: 30px;
-}
-.table-info {
-  margin-top: 12px;
-  font-size: 13px;
-  color: var(--light-text);
-}
-
 /* FOOTER */
 .table-footer {
   display: flex;
@@ -111,53 +53,10 @@
   margin-top: 14px;
 }
 
-/* PAGINATION */
-.pagination {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.pagination button {
-  padding: 6px 12px;
-  border-radius: 6px;
-  border: none;
-  background: var(--dull-background);
-  font-size: 12px;
-  cursor: pointer;
-  box-shadow: var(--normal-shadow);
-  font-weight: 600;
-}
-
-.pagination button.active {
-  background: var(--primary-color);
-  color: white;
-}
-
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
 /* MOBILE */
 @media (max-width: 640px) {
   .table-footer {
     flex-direction: column;
     align-items: flex-start;
-  }
-}
-@media (max-width: 768px) {
-  .students-enrolled-table-card {
-    overflow-x: auto;
-  }
-
-  .students-enrolled-table {
-    min-width: 700px;
-  }
-  .students-enrolled-table td,
-  .students-enrolled-table th {
-    font-size: 12px;
-    padding: 6px 8px;
-    white-space: nowrap;
   }
 }

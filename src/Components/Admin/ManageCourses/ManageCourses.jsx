@@ -12,6 +12,11 @@ import ConfirmationCard from "../../CustomComponents/ConfirmationCard/Confirmati
 import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
+import Table from "../../CustomComponents/TableComponents/Table/Table";
+import TablePagination from "../../CustomComponents/TableComponents/TablePagination/TablePagination";
+import TableEntriesDisplay from "../../CustomComponents/TableComponents/TableEntriesDisplay/TableEntriesDisplay";
+import TableEntriesSelector from "../../CustomComponents/TableComponents/TableEntriesSelector/TableEntriesSelector";
+
 const INITIAL_COURSES = [
   { id: 1, title: "React for Beginners", price: "₹1999", published: true },
   { id: 2, title: "Advanced JavaScript", price: "₹2499", published: false },
@@ -89,6 +94,52 @@ const ManageCourses = () => {
     });
   };
 
+  const columns = [
+    {
+      key: "serial",
+      label: "S.No.",
+      render: (_, row, index) => startIndex + index + 1,
+    },
+    { key: "title", label: "Course Title" },
+    { key: "price", label: "Price" },
+
+    {
+      key: "published",
+      label: "Published",
+      render: (_, row) => (
+        <ChangeTextButton
+          isActive={row.published}
+          beforeText="Unpublished"
+          afterText="Published"
+          onClick={() => {
+            setPublishId(row.id);
+            setPublishNextState(!row.published);
+            setShowPublishPopup(true);
+          }}
+        />
+      ),
+    },
+
+    {
+      key: "actions",
+      label: "Actions",
+      align: "center",
+      render: (_, row) => (
+        <div className="manage-courses-row-actions">
+          <EditButton
+            onClick={() =>
+              runWithLoader(() => {
+                showToast("info", "Course setup page opened");
+                navigate(`/admin/manage-courses/edit/${row.id}`);
+              })
+            }
+          />
+          <DeleteButton onClick={() => handleDeleteClick(row.id)} />
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="manage-courses-page">
       {showLoader && <JumpLoader />}
@@ -103,21 +154,13 @@ const ManageCourses = () => {
 
       {/* CONTROLS */}
       <div className="manage-courses-controls">
-        <div className="manage-courses-entries">
-          Show
-          <select
-            value={entriesPerPage}
-            onChange={(e) => {
-              setEntriesPerPage(Number(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-          </select>
-          entries
-        </div>
+        <TableEntriesSelector
+          value={entriesPerPage}
+          onChange={(value) => {
+            setEntriesPerPage(value);
+            setCurrentPage(1);
+          }}
+        />
 
         <div className="manage-courses-actions">
           <SearchBar
@@ -139,96 +182,26 @@ const ManageCourses = () => {
       </div>
 
       {/* TABLE */}
-      <div className="manage-courses-table-card">
-        <table className="manage-courses-table">
-          <thead>
-            <tr>
-              <th>S.No.</th>
-              <th>Course Title</th>
-              <th>Price</th>
-              <th>Published</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {visibleCourses.map((c, index) => (
-              <tr key={c.id}>
-                <td>{startIndex + index + 1}</td>
-                <td>{c.title}</td>
-                <td>{c.price}</td>
-                <td>
-                  <ChangeTextButton
-                    isActive={c.published}
-                    beforeText="Unpublished"
-                    afterText="Published"
-                    onClick={() => {
-                      setPublishId(c.id);
-                      setPublishNextState(!c.published);
-                      setShowPublishPopup(true);
-                    }}
-                  />
-                </td>
-                <td>
-                  <div className="manage-courses-row-actions">
-                    <EditButton
-                      onClick={() =>
-                        runWithLoader(() => {
-                          showToast("info", "Course setup page opened");
-                          navigate(`/admin/manage-courses/edit/${c.id}`);
-                        })
-                      }
-                    />
-                    <DeleteButton onClick={() => handleDeleteClick(c.id)} />
-                  </div>
-                </td>
-              </tr>
-            ))}
-
-            {visibleCourses.length === 0 && (
-              <tr>
-                <td colSpan="5" className="manage-courses-no-data">
-                  No results found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      <Table
+        columns={columns}
+        data={visibleCourses}
+        rowKey="id"
+        size="compact"
+      />
 
       {/* FOOTER */}
       <div className="manage-courses-footer">
-        <p className="manage-courses-info">
-          Showing {filteredCourses.length === 0 ? 0 : startIndex + 1} to{" "}
-          {Math.min(endIndex, filteredCourses.length)} of{" "}
-          {filteredCourses.length} entries
-        </p>
+        <TableEntriesDisplay
+          startIndex={startIndex}
+          endIndex={endIndex}
+          total={filteredCourses.length}
+        />
 
-        <div className="manage-courses-pagination">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((p) => p - 1)}
-          >
-            Previous
-          </button>
-
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              className={currentPage === i + 1 ? "active" : ""}
-              onClick={() => setCurrentPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((p) => p + 1)}
-          >
-            Next
-          </button>
-        </div>
+        <TablePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
 
       {/* DELETE CONFIRM */}

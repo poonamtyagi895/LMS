@@ -11,6 +11,10 @@ import StudentInfoChangeCard from "../StudentInfoChangeCard/StudentInfoChangeCar
 import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
 import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
+import Table from "../../CustomComponents/TableComponents/Table/Table";
+import TablePagination from "../../CustomComponents/TableComponents/TablePagination/TablePagination";
+import TableEntriesDisplay from "../../CustomComponents/TableComponents/TableEntriesDisplay/TableEntriesDisplay";
+import TableEntriesSelector from "../../CustomComponents/TableComponents/TableEntriesSelector/TableEntriesSelector";
 
 const INITIAL_STUDENTS = [
   {
@@ -167,6 +171,44 @@ const StudentsEnrolled = () => {
     });
   };
 
+  const columns = [
+    {
+      key: "profile",
+      label: "Profile",
+      render: (_, row) => (
+        <div className="students-enrolled-avatar">
+          <DotLottieReact
+            src={
+              row.gender === "male"
+                ? "https://lottie.host/f2ffc4a9-3e7d-4eee-95f7-4aeaac63e5da/y0dA0Bl62z.lottie"
+                : "https://lottie.host/cd22b1f3-55fc-4d27-b91a-4bb55da64d34/4r9g7dOxUC.lottie"
+            }
+            loop
+            autoplay
+          />
+        </div>
+      ),
+    },
+    {
+      key: "serial",
+      label: "S.No.",
+      render: (_, row, index) => startIndex + index + 1,
+    },
+    { key: "name", label: "Name" },
+    { key: "email", label: "Email" },
+    { key: "mobile", label: "Mobile" },
+    {
+      key: "actions",
+      label: "Actions",
+      render: (_, row) => (
+        <div className="students-enrolled-row-actions">
+          <EditButton onClick={() => handleEdit(row)} />
+          <DeleteButton onClick={() => handleDeleteClick(row.id)} />
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="students-enrolled-page">
       {showLoader && <JumpLoader />}
@@ -181,18 +223,10 @@ const StudentsEnrolled = () => {
 
       {/* CONTROLS */}
       <div className="students-enrolled-controls">
-        <div className="students-enrolled-entries">
-          Show
-          <select
-            value={entriesPerPage}
-            onChange={(e) => handleEntriesChange(Number(e.target.value))}
-          >
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-          </select>
-          entries
-        </div>
+        <TableEntriesSelector
+          value={entriesPerPage}
+          onChange={handleEntriesChange}
+        />
 
         <div className="students-enrolled-actions-top">
           <SearchBar
@@ -206,95 +240,27 @@ const StudentsEnrolled = () => {
         </div>
       </div>
 
-      {/* TABLE */}
-      <div className="students-enrolled-table-card">
-        <table className="students-enrolled-table">
-          <thead>
-            <tr>
-              <th>Profile</th>
-              <th>S.No.</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Mobile</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {visibleStudents.map((s, index) => (
-              <tr key={s.id}>
-                <td>
-                  <div className="students-enrolled-avatar">
-                    <DotLottieReact
-                      src={
-                        s.gender === "male"
-                          ? "https://lottie.host/f2ffc4a9-3e7d-4eee-95f7-4aeaac63e5da/y0dA0Bl62z.lottie"
-                          : "https://lottie.host/cd22b1f3-55fc-4d27-b91a-4bb55da64d34/4r9g7dOxUC.lottie"
-                      }
-                      loop
-                      autoplay
-                    />
-                  </div>
-                </td>
-
-                <td>{startIndex + index + 1}</td>
-                <td>{s.name}</td>
-                <td>{s.email}</td>
-                <td>{s.mobile}</td>
-
-                <td>
-                  <div className="students-enrolled-row-actions">
-                    <EditButton onClick={() => handleEdit(s)} />
-                    <DeleteButton onClick={() => handleDeleteClick(s.id)} />
-                  </div>
-                </td>
-              </tr>
-            ))}
-
-            {visibleStudents.length === 0 && (
-              <tr>
-                <td colSpan="6" className="no-data">
-                  No results found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      {/* TABLE */}        
+      <Table
+        columns={columns}
+        data={visibleStudents}
+        rowKey="id"
+        size="tight"
+      />
 
       {/* INFO + PAGINATION */}
       <div className="table-footer">
-        <p className="table-info">
-          Showing {filteredStudents.length === 0 ? 0 : startIndex + 1} to{" "}
-          {Math.min(endIndex, filteredStudents.length)} of{" "}
-          {filteredStudents.length} entries
-        </p>
+        <TableEntriesDisplay
+          startIndex={startIndex}
+          endIndex={endIndex}
+          total={filteredStudents.length}
+        />
 
-        <div className="pagination">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((p) => p - 1)}
-          >
-            Previous
-          </button>
-
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              className={currentPage === i + 1 ? "active" : ""}
-              onClick={() => setCurrentPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((p) => p + 1)}
-          >
-            Next
-          </button>
-        </div>
+        <TablePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
 
       {/* POPUPS */}

@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   padding: 24px 60px;
-  color: #ffffff;
+  color: white;
 }
 
 /* LOGO */
@@ -32,7 +32,7 @@
 }
 
 .header-link {
-  color: #ffffff;
+  color: white;
   text-decoration: none;
   font-size: 16px;
   font-weight: 500;
@@ -66,13 +66,13 @@
 
 .header-btn-login {
   background: transparent;
-  border: 1px solid #ffffff;
-  color: #ffffff;
+  border: 1px solid white;
+  color: white;
 }
 
 .header-btn-trial {
-  background: #ffffff;
-  color: #ff6f00;
+  background: white;
+  color: var(--primary-color);
   border: none;
   font-weight: 600;
 }

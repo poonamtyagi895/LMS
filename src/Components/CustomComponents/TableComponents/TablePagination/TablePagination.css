@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: var(--dull-background);
+  font-size: 12px;
+  cursor: pointer;
+  box-shadow: var(--normal-shadow);
+  font-weight: 600;
+}
+
+.pagination button.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

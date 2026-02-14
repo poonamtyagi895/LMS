@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import DashboardWelcomeCard from "../../CustomComponents/Dashboard/DashboardWelcomeCard/DashboardWelcomeCard";
-import DashboardInfoCard from "../../CustomComponents/Dashboard/DashboardInfoCard/DashboardInfoCard";
+import InfoCard from "../../CustomComponents/InfoCard/InfoCard";
 import LineGraph from "../../CustomComponents/LineGraph/LineGraph";
 import "./StudentDashboard.css";
 
@@ -42,12 +42,12 @@ const StudentDashboard = () => {
         />
       </div>
       <div className="student-dashboard-info-grid">
-        <DashboardInfoCard
+        <InfoCard
           icon="fas fa-book-open"
           heading="Number of total courses"
           subheading="9 courses"
         />
-        <DashboardInfoCard
+        <InfoCard
           icon="fas fa-check-circle"
           heading="Completed courses"
           subheading="3 courses"

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import "./DashboardRightPanel.css";
 import Calendar from "../../Calendar/Calendar";
+import Notifications from "../../Notifications/Notifications";
 
 const DashboardRightPanel = ({ role }) => {
   const [open, setOpen] = useState(false);
@@ -49,38 +50,7 @@ const DashboardRightPanel = ({ role }) => {
         <Calendar mode = "display"/>
 
         {/* NOTIFICATIONS */}
-        <div className="dashboard-right-panel-card notifications-card">
-          <h5 className="notification-title">My Notifications</h5>
-
-          <div className="notifications-scroll">
-            <div className="notification-item">
-              <span className="tag">New</span>
-              <div className="notification-text">
-                <strong>New course available</strong>
-                <small>Advanced React added</small>
-              </div>
-              <span className="count">3</span>
-            </div>
-
-            <div className="notification-item">
-              <span className="tag">Alert</span>
-              <div className="notification-text">
-                <strong>Assignment due</strong>
-                <small>UI task ends tomorrow</small>
-              </div>
-              <span className="count">3</span>
-            </div>
-
-            <div className="notification-item">
-              <span className="tag">Info</span>
-              <div className="notification-text">
-                <strong>Profile updated</strong>
-                <small>Your info was saved</small>
-              </div>
-              <span className="count">3</span>
-            </div>
-          </div>
-        </div>
+        <Notifications role={role}/>
       </aside>
     </>
   );

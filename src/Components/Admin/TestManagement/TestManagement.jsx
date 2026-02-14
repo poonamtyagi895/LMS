@@ -13,6 +13,11 @@ import ConfirmationCard from "../../CustomComponents/ConfirmationCard/Confirmati
 import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
 
+import Table from "../../CustomComponents/TableComponents/Table/Table";
+import TablePagination from "../../CustomComponents/TableComponents/TablePagination/TablePagination";
+import TableEntriesDisplay from "../../CustomComponents/TableComponents/TableEntriesDisplay/TableEntriesDisplay";
+import TableEntriesSelector from "../../CustomComponents/TableComponents/TableEntriesSelector/TableEntriesSelector";
+
 /* MOCK TEST DATA */
 const INITIAL_TESTS = [
   {
@@ -124,6 +129,52 @@ const TestManagement = () => {
     });
   };
 
+  const columns = [
+    {
+      key: "serial",
+      label: "S.No.",
+      render: (_, row, index) => startIndex + index + 1,
+    },
+    { key: "title", label: "Test Title" },
+    { key: "category", label: "Test Category" },
+
+    {
+      key: "status",
+      label: "Status",
+      render: (_, row) => (
+        <ChangeTextButton
+          isActive={row.status}
+          beforeText="Draft"
+          afterText="Uploaded"
+          onClick={() => {
+            setStatusId(row.id);
+            setNextStatus(!row.status);
+            setShowStatusPopup(true);
+          }}
+        />
+      ),
+    },
+
+    {
+      key: "actions",
+      label: "Actions",
+      align: "center",
+      render: (_, row) => (
+        <div className="test-management-row-actions">
+          <EditButton
+            onClick={() =>
+              runWithLoader(() => {
+                showToast("info", "Test edit page opened");
+                navigate(`/admin/test-management/edit/${row.id}`);
+              })
+            }
+          />
+          <DeleteButton onClick={() => handleDeleteClick(row.id)} />
+        </div>
+      ),
+    },
+  ];
+
   return (
     <div className="test-management-page">
       {showLoader && <JumpLoader />}
@@ -146,21 +197,13 @@ const TestManagement = () => {
       </div>
       {/* CONTROLS */}
       <div className="test-management-controls">
-        <div className="test-management-entries">
-          Show
-          <select
-            value={entriesPerPage}
-            onChange={(e) => {
-              setEntriesPerPage(Number(e.target.value));
-              setCurrentPage(1);
-            }}
-          >
-            <option value={10}>10</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-          </select>
-          entries
-        </div>
+        <TableEntriesSelector
+          value={entriesPerPage}
+          onChange={(value) => {
+            setEntriesPerPage(value);
+            setCurrentPage(1);
+          }}
+        />
 
         <div className="test-management-actions">
           <SearchBar
@@ -183,96 +226,26 @@ const TestManagement = () => {
       </div>
 
       {/* TABLE */}
-      <div className="test-management-table-card">
-        <table className="test-management-table">
-          <thead>
-            <tr>
-              <th>S.No.</th>
-              <th>Test Title</th>
-              <th>Test Category</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {visibleTests.map((t, index) => (
-              <tr key={t.id}>
-                <td>{startIndex + index + 1}</td>
-                <td>{t.title}</td>
-                <td>{t.category}</td>
-                <td>
-                  <ChangeTextButton
-                    isActive={t.status}
-                    beforeText="Draft"
-                    afterText="Uploaded"
-                    onClick={() => {
-                      setStatusId(t.id);
-                      setNextStatus(!t.status);
-                      setShowStatusPopup(true);
-                    }}
-                  />
-                </td>
-                <td>
-                  <div className="test-management-row-actions">
-                    <EditButton
-                      onClick={() =>
-                        runWithLoader(() => {
-                          showToast("info", "Test edit page opened");
-                          navigate(`/admin/test-management/edit/${t.id}`);
-                        })
-                      }
-                    />
-                    <DeleteButton onClick={() => handleDeleteClick(t.id)} />
-                  </div>
-                </td>
-              </tr>
-            ))}
-
-            {visibleTests.length === 0 && (
-              <tr>
-                <td colSpan="5" className="test-management-no-data">
-                  No results found
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      <Table
+        columns={columns}
+        data={visibleTests}
+        rowKey="id"
+        size="compact"
+      />
 
       {/* FOOTER */}
       <div className="test-management-footer">
-        <p className="test-management-info">
-          Showing {filteredTests.length === 0 ? 0 : startIndex + 1} to{" "}
-          {Math.min(endIndex, filteredTests.length)} of{" "}
-          {filteredTests.length} entries
-        </p>
+        <TableEntriesDisplay
+          startIndex={startIndex}
+          endIndex={endIndex}
+          total={filteredTests.length}
+        />
 
-        <div className="test-management-pagination">
-          <button
-            disabled={currentPage === 1}
-            onClick={() => setCurrentPage((p) => p - 1)}
-          >
-            Previous
-          </button>
-
-          {[...Array(totalPages)].map((_, i) => (
-            <button
-              key={i}
-              className={currentPage === i + 1 ? "active" : ""}
-              onClick={() => setCurrentPage(i + 1)}
-            >
-              {i + 1}
-            </button>
-          ))}
-
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((p) => p + 1)}
-          >
-            Next
-          </button>
-        </div>
+        <TablePagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
       </div>
 
       {/* CONFIRMATIONS */}
