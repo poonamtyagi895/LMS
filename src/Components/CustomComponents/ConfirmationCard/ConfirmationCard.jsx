@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import DotButton from "../Buttons/DotButton/DotButton";
 import "./ConfirmationCard.css";
 
-const ConfirmationCard = ({ onConfirm, onCancel, message }) => {
+const ConfirmationCard = ({ onConfirm, onCancel, message, title = "Are you sure?" }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Enter") {
@@ -24,7 +24,7 @@ const ConfirmationCard = ({ onConfirm, onCancel, message }) => {
   return (
     <div className="confirmation-popup-overlay">
       <div className="confirmation-popup-card">
-        <h3>Are you sure?</h3>
+        <h3>{title}</h3>
         <p>{message}</p>
 
         <div className="confirmation-popup-actions">

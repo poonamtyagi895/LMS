@@ -1,9 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 :root {  
-  --primary-color: #ff9800;
+  /* ORANGE THEME */
+  /* --primary-color: #ff9800;
   --light-primary-color: #ff990044;
-  --secondary-color: #ff6a00;
+  --secondary-color: #ff6a00; */
+
+  /* BLUE THEME */
+  --primary-color: #3b82f6;
+  --light-primary-color: #3b82f644;
+  --secondary-color: #2563eb;
 
   --light-text: #12161cf0;
   --very-light-text: #d1d5db;
