@@ -16,6 +16,7 @@ const teachers = ["Poonam Tyagi", "Pooja"];
 
 const AdminSupport = () => {
   const [role, setRole] = useState("admin");
+  // eslint-disable-next-line no-unused-vars
   const [tickets, setTickets] = useState(ticketsData);
   const [selectedTicket, setSelectedTicket] = useState(tickets[0]);
   const [input, setInput] = useState("");
