@@ -265,7 +265,7 @@ const CourseInfoChangeCard = () => {
         <div>
           <div className="course-info-change-section-title">
             <span className="course-info-change-icon">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnElEQVR4nO2VQQqAMAwE97HqF7x69AeJD+rB39gXrFQ8iNCSBAQRAzm1yxx2w4KKgYpMBRubKehxjktzflwpmKurx/t2Adg1B00woTEUTOXfBWDX/AALoLidqBirK0g3kx0AQV/EzcgJNi7oQoDI8FUAxi6ZPpP9l8ynY5rNyQsBxJG8dyUiMkEPBk8fxEzWvw++3gfZfsmRPnBodsWDodNMPfi7AAAAAElFTkSuQmCC" alt="external-desktop-application-templates-bar-label-style-page-basic-regular-tal-revivo"/>
+              <i className="fa-solid fa-sliders"></i>
             </span>
             Customize your course
           </div>
@@ -516,7 +516,7 @@ const CourseInfoChangeCard = () => {
           {/* CHAPTERS */}
           <div className="course-info-change-section-title">
             <span className="course-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcUlEQVR4nO3YwQmAQAxE0em/ArsdO1AEXRbzHuS2EPi3bAIAcKNHejX5uwqQRwHu3n89ArytAkSArly4m04PAAAAzNTpx1AFiA+RChABKkDWLNxNpwcAAABm6vRjqALEh0gFiAAVIGsW7qbTAwAA+ZsTnlzRzEvmUXoAAAAASUVORK5CYII=" alt="list"/>
+              <i className="fa-solid fa-list-ul"></i>
             </span>
             Course chapters
           </div>
@@ -613,7 +613,7 @@ const CourseInfoChangeCard = () => {
           {/* PRICE */}
           <div className="course-info-change-section-title">
             <span className="course-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFIElEQVR4nO1aW4xeUxT+ULcqOu3ULe48UCJ94IUgqVsbqWtCKo0HNPogaY0nD4wXQV2Syfz/WfvMdDKUeKgHD9QlkVBEyww6LmFUNYRGtJGWoFR8svbe558z0/9yLvt0RLqSSWem+19rfXutva4DHKD/KbEPxzDCzRQ8SsHLFIxT8BMN9lDwJw1+puALGqynweMUXM8IXdUqJdhEwXsdz8U4lIKlFLxBwV80YK4vwd8UvE6DZezD4eGBeEEt/38dDqNBDwXbU4rtpcGbNOi1lolxDocwTxW0gCN0sY5zGeMGCh70Z/ekQP1geQ7jiP0ChDGupcGWFIAxCpYXcRMOY7b9rMFoCtDXjLG4MiB6UxTUKPjHC/wsmEAncxEFH6cuqF7aOlOBMMJxFIz43+vjvZe9mBECwCS563AIBStp8Lu/rBEO4vggQCg4nQZf+d9t4QAWhFS+qfw6LrBRb0LmGcUYJeaN0Z1iOKqWCa51Kx0idNHgXS97K2s4IT+TiYe3yf/7Adfg6Eo0bqfHWhyV0mEk95uZEu+3lvHTTqG84+f7MTflFfVCwjMktHeqBtJ4M0kAMFiErJQjO7+dlVdm4S2IBqsajz9k0mxHFFxFg+esW06A/oiCh4rWV+zFDBps9rxWhdc6LSzGTBq80MGK33EA5xXkv9jz+L6S2qwhSPC0F/QrYzygCtvIE+NYxriSBhsbASTGzNz8iYMo+NCnhtuqARHhGh8Afml147aAVBcr4R4U3O3lvFpa6aYCEpeKcV8HRZZmjXgtE6Xrb/aqpRGaKPjRAzk1Q8ZWi+wsIestyyPCdUV5tGae9BZVPkJPNvo5q65GaLJ9hLPIRcGZTyEKbvRWfQmhiYInGnVZjO7gAlJko6ED8iVCEwcxhwbbGpFLm7AIl2pbHFxWjG4vZ0c1NVGMEyl4ZUo99psdTmheiXGx5oIyMlJh3DZ5qKom8rwupMFTFHzSaI0ngH3DCHeUAcR2QKoi7wY3UdBnS4sJQM8WBcO2rqWlhMFlVTZQvvBbRsEur8idwR87kyQTcDLSUhEF4zvQ4OGXgkfsjMpgSQhlO45XHZBd/8WEuMMyH8Scjmd1AuludHdBWRv855tfOgWX0GANa5iVm7kbgeot3Z7h7K1J8iyUr8QXjcOY3fxQ8k4Ey3ML0JCazHBrOK3NuTMp+NafXZlbjsEKb431rQ+5AfNqxjgrt4BeHNywilsh3M8I59toWMMsxrjcrhwMdvszG3W4nbuxMr6fydJY8UkcqTeXG4x2grob6Tx9ebFIL0E3QHftcqfSh4L5vmbaXHS+67vF5/eZ2hv06zsskYPGMruktYaWEQafso5TigitaBzU40GMZy5EWcPZdjmjPjmEeSUVKF+MDmABBX/Yui3G1UUKs7XWPfoxd9pGpkM25zgXFfQVnVGN2jI8wkJMA1GjncH7jShXdMLIfpykJbn9PsLCqju/JpZwILSNDrHSsP2FWkZNXPLNZH4TpuFO450mM/ks41Zvz9gAMICTdU0WhPm+IbbHPuzEncqs3lq+GV1LazTT0KyLywJJsylvvRyX7Ma8FbSrrFfR708OzS7PbLPgtHaKcVehQtMNLFakxqj0Y6UrqtG+edKcb7/X2swpMGh/NlhiV80pYNaSunnS2kvbXv2jAi3FXRWbANhOwT2VWqEtKFdobtAJiQfi3EOLRF03t6+5FMhrFNwybQBaEQ0es8C06p0MZCcNPrfjIsHD9gKmYcF6gLCf6F9LGCYWiUt0ygAAAABJRU5ErkJggg==" alt="refund-2"/>
+              <i className="fa-solid fa-dollar-sign"></i>
             </span>
             Sell your course
           </div>
@@ -658,7 +658,7 @@ const CourseInfoChangeCard = () => {
           {/* ATTACHMENTS */}
           <div className="course-info-change-section-title">
             <span className="course-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeElEQVR4nO2ZwUrDQBCGf4tPog+gZ/VWfRsRWg/iKT166LmzG/RtfIjqGwiCHnspv5g2kASVZGd3iTA/zCWBmfmSzWSYAUz/QCxwSI9LOszpcBdsgmuWOM2bvMcFHV7pwEi2pWDJApNcyW8iJt+0x6QQ1bFpPnnBJwWegocgc3jOCsHdma+T/+AKRyp/gkXWN0GP20YQp/bXBnhPDsFmQMEitj8KVh2Ip6gQyQGIg6QQqQGqa0wIkQMgKUR0gGZREPjWPSaASPAGrv4qyywwqapRrOoUHeCnH6ND2emV7unw1oIQLEcBoGhNthScjAJg7/ecgpdBEB43owFoteeCWa/eKSR+SoAs8WkAOtEAxABUogGIAahEAxADUIkGIAagEg1ADEAlGoAYgEo0AP/7LDOHuJva1bOheYiDaWsMqFwxDYrtcbwfPdYA03hLPs2euJ+VneTX37mMcc3axzb0OAtKPuGiu6+t1ckPmmXGs1n1/YUeGxPy6guI6odWKpaMUwAAAABJRU5ErkJggg==" alt="external-File-file-tanah-basah-basic-outline-tanah-basah"/>
+              <i className="fa-solid fa-paperclip"></i>
             </span>
             Resources & Attachments
           </div>

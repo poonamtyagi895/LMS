@@ -23,7 +23,12 @@ const Table = ({
           <thead>
             <tr>
               {columns.map((col) => (
-                <th key={col.key}>{col.label}</th>
+                <th
+                  key={col.key}
+                  style={{ textAlign: col.align || "left" }}
+                >
+                  {col.label}
+                </th>
               ))}
             </tr>
           </thead>
@@ -42,7 +47,10 @@ const Table = ({
               data.map((row, rowIndex) => (
                 <tr key={row[rowKey]}>
                   {columns.map((col) => (
-                    <td key={col.key}>
+                    <td
+                      key={col.key}
+                      style={{ textAlign: col.align || "left" }}
+                    >
                       {col.render
                         ? col.render(row[col.key], row, rowIndex)
                         : row[col.key]}

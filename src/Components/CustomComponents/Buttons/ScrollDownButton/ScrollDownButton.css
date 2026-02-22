@@ -1,0 +1,86 @@
+.scroll-down-container {
+  position: relative;
+  width: 28px;
+  height: 48px;
+  border: calc(30px / 10) solid var(--primary-color);
+  border-radius: 50px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.scroll-down-container * {
+  pointer-events: none;
+}
+
+.scroll-down-container::before {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--primary-color);
+  border-radius: 100%;
+  animation: scroll-down-anim 2s infinite;
+  box-sizing: border-box;
+  box-shadow: 0px -5px 3px 1px var(--overlay-background);
+}
+
+@keyframes scroll-down-anim {
+  0% {
+    opacity: 0;
+    height: 6px;
+  }
+  40% {
+    opacity: 1;
+    height: 10px;
+  }
+  80% {
+    transform: translate(0, 20px);
+    height: 10px;
+    opacity: 0;
+  }
+  100% {
+    height: 3px;
+    opacity: 0;
+  }
+}
+
+.scroll-down-chevrons {
+  padding: 6px 0 0 0;
+  margin-left: -3px;
+  margin-top: 48px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-down-chevron {
+  margin-top: -6px;
+  position: relative;
+  border: solid var(--primary-color);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+}
+
+.scroll-down-chevron:nth-child(odd) {
+  animation: scroll-down-pulse 500ms ease infinite alternate;
+}
+
+.scroll-down-chevron:nth-child(even) {
+  animation: scroll-down-pulse 500ms ease infinite alternate 250ms;
+}
+
+@keyframes scroll-down-pulse {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.5;
+  }
+}

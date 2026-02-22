@@ -52,9 +52,9 @@
   flex-shrink: 0;
 }
 
-.chapter-info-change-icon img {
-  width: 22px;
-  height: 22px;
+.chapter-info-change-icon i {
+  font-size: 18px;
+  color: var(--primary-color);
 }
 
 .chapter-info-change-card {

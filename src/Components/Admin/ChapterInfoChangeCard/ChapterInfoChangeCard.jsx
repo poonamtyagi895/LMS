@@ -93,7 +93,7 @@ const ChapterInfoChangeCard = () => {
           {/* CUSTOMIZE */}
           <div className="chapter-info-change-section-title">
             <span className="chapter-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnElEQVR4nO2VQQqAMAwE97HqF7x69AeJD+rB39gXrFQ8iNCSBAQRAzm1yxx2w4KKgYpMBRubKehxjktzflwpmKurx/t2Adg1B00woTEUTOXfBWDX/AALoLidqBirK0g3kx0AQV/EzcgJNi7oQoDI8FUAxi6ZPpP9l8ynY5rNyQsBxJG8dyUiMkEPBk8fxEzWvw++3gfZfsmRPnBodsWDodNMPfi7AAAAAElFTkSuQmCC" alt="external-desktop-application-templates-bar-label-style-page-basic-regular-tal-revivo"/>
+              <i className="fa-solid fa-sliders"></i>
             </span>
             Customize your chapter
           </div>
@@ -174,7 +174,7 @@ const ChapterInfoChangeCard = () => {
           {/* ACCESS */}
           <div className="chapter-info-change-section-title">
             <span className="chapter-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAABoElEQVR4nO1UzUqCURA9C3dFltuKICHpJUR6lWrVE7QwnyHIb+6ni7CdIrgRgyCIbOMiFy3clLRoW1FKtZyY+w32/aW5kRZeGLjcM/fMnTNzB5ivf724jBQbHDChyYQnJnypyb5psTJS0xMXkGDCIRsM2YAn2ND6FpD4G3kJa2zQ8RFcMGGXHWT4DAvWZC9ngv34deTuePITbLBB314gPLBBduKDDLJscK9B+sLxG/kiG/TU8ZpPsTzCilhngzoTBmoNyWKEu0gy4Urv9oQr7iUVdej6HVjICS8x2r8KFnpgV7FKkJyQU+CTXaRDgesqmXTSqq0RoaVntYCvi7Tl8LCcP0BbD48imREGFvMVUCWTB71H/F3klasdDeAiP1UAwluM1IW4AJ5EhA92sBkK0FCsZeXxanKuGVQDviVs2Y8YlihQZMKt9Pro3EHGFjRa5OdAVsdYYsJdbJEjbSot5yIZkIRQE83VqgFyBytscDO2TSMfzfs82VhH/x0HO2zwOPGjjR0VLva4iG2bpZjsCftscDnVqJjJsJvJuJ6vma5vZQvois3IUYUAAAAASUVORK5CYII=" alt="visible--v1"/>
+              <i className="fa-solid fa-eye"></i>
             </span>
             Access Settings
           </div>
@@ -232,7 +232,7 @@ const ChapterInfoChangeCard = () => {
         <div>
           <div className="chapter-info-change-section-title">
             <span className="chapter-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAsklEQVR4nO3VPQrCQBDF8f9B9ASewM7SYOdFPI3MJMdR0HNoLAVLK3mygSjiBwGTDYR9MN2DHyy7O5CSMrgoZyHnJEd/j1EqJ2sGG2Ur6HOOzWBvFa3mq7VmLGMnYxsNVsEknMajEwOWMZNxeel0DctZyri+dbqEZazk3D52OoV/dZRgHwJsPV2u3p5THTlTOefocIWHL9M4RIdDVDCSs5ez6XEt5mQt4mH7zBvBKSmDyx031Y7ls7sl1QAAAABJRU5ErkJggg==" alt="video-call"></img>
+              <i className="fa-solid fa-video"></i>
             </span>
             Add a video
           </div>

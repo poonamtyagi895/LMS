@@ -1,13 +1,17 @@
 import { useState } from "react";
 import DotButton from "../Buttons/DotButton/DotButton";
+import { showToast } from "../CustomToast/CustomToast";
 import "./RatingPage.scss";
 
-const RatingPage = ({ onClose }) => {
+const RatingPage = ({ onClose,onSubmit }) => {
   const [rating, setRating] = useState(null);
 
   const handleSubmit = () => {
-    console.log("Selected rating:", rating);
-    onClose();
+    if(!rating){
+      showToast("warning","Please select a rating first");
+      return;
+    }
+    onSubmit(rating);
   };
 
   return (
@@ -132,7 +136,6 @@ const RatingPage = ({ onClose }) => {
           <DotButton
             label="Submit Rating"
             onClick={handleSubmit}
-            disabled={!rating}
           />
         </div>
       </div>

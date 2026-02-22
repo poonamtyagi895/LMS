@@ -1,276 +1,449 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import "./StudentSupport.css";
-
 import DotButton from "../../CustomComponents/Buttons/DotButton/DotButton";
-import AddButton from "../../CustomComponents/Buttons/AddButton/AddButton";
-import DeleteButton from "../../CustomComponents/Buttons/DeleteButton/DeleteButton";
-import SegmentedTabs from "../../CustomComponents/SegmentedTabs/SegmentedTabs";
-import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
-import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { showToast } from "../../CustomComponents/CustomToast/CustomToast";
+import CopyButton from "../../CustomComponents/Buttons/CopyButton/CopyButton";
+import ScrollDownButton from "../../CustomComponents/Buttons/ScrollDownButton/ScrollDownButton";
+import JumpLoader from "../../CustomComponents/Loaders/JumpLoader/JumpLoader"
+import ConfirmationCard from "../../CustomComponents/ConfirmationCard/ConfirmationCard";
+import RollingEyes from "../../CustomComponents/RollingEyes/RollingEyes";
+import QueryPopup from "./QueryPopup/QueryPopup";
+import BounceLoader from "../../CustomComponents/Loaders/BounceLoader/BounceLoader";
 
-const suggestions = [
-  "Help me plan a game night with my friends.",
-  "How can I improve my public speaking skills?",
-  "Latest web development trends?",
-  "Write JS code to sum array elements.",
+const profileLottie =
+  "https://lottie.host/f2ffc4a9-3e7d-4eee-95f7-4aeaac63e5da/y0dA0Bl62z.lottie";
+
+const initialStaticSuggestions = [
+  "Payment related",
+  "Course access",
+  "Technical issue",
+  "Certificate help"
 ];
 
-const teachers = ["Poonam Tyagi", "Tyagi", "Pooja"];
+const allSuggestions = [
+  "Course content issue","Video not loading","Assignment doubt","Exam query",
+  "Payment failed","Refund status","Certificate issue","Course expired",
+  "Login problem","Forgot password","App crashing","Download notes",
+  "Quiz not submitting","Test marks issue","Audio problem","Subtitles missing",
+  "Project help","Assignment upload","UI bug","Slow buffering",
+  "Network error","Teacher support","Course access","Resource missing",
+  "Invalid payment","Wrong certificate","Video lagging","File upload error",
+  "Course locked","Language change"
+];
+
+const getTime = () =>
+  new Date().toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
 const StudentSupport = () => {
-  const [mode, setMode] = useState("ai");
+  const chatRef = useRef(null);
+  const [showScrollBtn, setShowScrollBtn] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState("");
+  const [chatStarted, setChatStarted] = useState(false);
+  const [chips, setChips] = useState([]);
+  const [questionCount, setQuestionCount] = useState(0);
+  const [showQueryPopup, setShowQueryPopup] = useState(false);
+  const [attachments, setAttachments] = useState([]);
+  const [fullPreview, setFullPreview] = useState(null);
+  const [loadingSupport, setLoadingSupport] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
-  const [aiMessages, setAiMessages] = useState([]);
-  const [aiInput, setAiInput] = useState("");
-
-  const [teacherChats, setTeacherChats] = useState({});
-  const [selectedTeacher, setSelectedTeacher] = useState("");
-  const [teacherInput, setTeacherInput] = useState("");
-
-  const [showTeacherPopup, setShowTeacherPopup] = useState(false);
-  const [tempTeacher, setTempTeacher] = useState("");
-
-  const [showConfirm, setShowConfirm] = useState(false);
-  const [showLoader, setShowLoader] = useState(false);
-
-  const tabs = [
-    { label: "AI Assistant", value: "ai" },
-    { label: "Teachers Support", value: "teacher" },
-  ];
+  const rotateChips = useCallback(() => {
+    const shuffled = [...allSuggestions].sort(() => 0.5 - Math.random());
+    if (questionCount >= 5) {
+      setChips([
+        shuffled[0],
+        shuffled[1],
+        "Post Query"
+      ]);
+    } else {
+      setChips(shuffled.slice(0, 3));
+    }
+  }, [questionCount]);
 
   useEffect(() => {
-    if (mode === "teacher" && !selectedTeacher) {
-      setTempTeacher("");
-      setShowTeacherPopup(true);
+    rotateChips();
+  }, [rotateChips]);
+
+  const handleChipClick = (chipText) => {
+    if (chipText === "Post Query") {
+      setLoadingSupport(true);
+      setTimeout(()=>{
+        setLoadingSupport(false);
+        setShowConfirmation(true);
+      },400);
+      return;
     }
-  }, [mode, selectedTeacher]);
+    sendMessage(chipText);
+  };
 
-  const messages =
-    mode === "ai"
-      ? aiMessages
-      : teacherChats[selectedTeacher] || [];
+  useEffect(() => {
+    const chat = chatRef.current;
+    if (!chat) return;
+    const handleScroll = () => {
+      const isAtBottom =
+        Math.abs(chat.scrollHeight - chat.scrollTop - chat.clientHeight) <= 2;
+      setShowScrollBtn(!isAtBottom);
+    };
+    chat.addEventListener("scroll", handleScroll);
+    return () => {
+      chat.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-  const input = mode === "ai" ? aiInput : teacherInput;
+  useEffect(() => {
+    if (!chatStarted) return;
+    const chat = chatRef.current;
+    if (!chat) return;
+    requestAnimationFrame(() => {
+      if (chat.scrollHeight <= chat.clientHeight) {
+        setShowScrollBtn(false);
+        return;
+      }
+      const isAtBottom =
+        Math.abs(chat.scrollHeight - chat.scrollTop - chat.clientHeight) <= 5;
+      setShowScrollBtn(!isAtBottom);
+    });
+  }, [messages, chatStarted]);
 
-  const setInput = (v) =>
-    mode === "ai" ? setAiInput(v) : setTeacherInput(v);
+  useEffect(() => {
+    if (!chatStarted) return;
+    const chat = chatRef.current;
+    if (!chat) return;
+    const handleScroll = () => {
+      if (chat.scrollHeight <= chat.clientHeight) {
+        setShowScrollBtn(false);
+        return;
+      }
+      const isAtBottom =
+        Math.abs(chat.scrollHeight - chat.scrollTop - chat.clientHeight) <= 5;
+      setShowScrollBtn(!isAtBottom);
+    };
+    chat.addEventListener("scroll", handleScroll);
+    requestAnimationFrame(handleScroll);
+    return () => {
+      chat.removeEventListener("scroll", handleScroll);
+    };
+  }, [chatStarted]);
 
   const sendMessage = (text = null) => {
     const finalText = text || input;
-    if (!finalText.trim()) return;
-
-    const userMsg = { type: "user", text: finalText };
-    const botMsg =
-      mode === "ai"
-        ? { type: "bot", text: "I’m your AI assistant 🙂" }
-        : { type: "bot", text: `${selectedTeacher} will reply soon 👨‍🏫` };
-
-    if (mode === "ai") {
-      setAiMessages((p) => [...p, userMsg, botMsg]);
-      setAiInput("");
-    } else {
-      setTeacherChats((prev) => ({
-        ...prev,
-        [selectedTeacher]: [
-          ...(prev[selectedTeacher] || []),
-          userMsg,
-          botMsg,
-        ],
-      }));
-      setTeacherInput("");
-    }
-  };
-
-  const askDelete = () => {
-    if (messages.length === 0) {
-      showToast("warning", "No chats to delete");
+    if (!finalText.trim()) {
+      showToast("warning", "Please write your query");
       return;
     }
-    setShowConfirm(true);
+    if (!chatStarted) setChatStarted(true);
+    const attachmentPreview = attachments.map(file => ({
+      file,
+      preview: file.type.startsWith("image")
+        ? URL.createObjectURL(file)
+        : null
+    }));
+    const botLoaderId = Date.now();
+    setMessages((p) => [
+      ...p,
+      {
+        type: "user",
+        text: finalText,
+        time: getTime(),
+        attachments: attachmentPreview
+      },
+      {
+        id: botLoaderId,
+        type: "bot-loading",
+      }
+    ]);
+    setTimeout(() => {
+      setMessages((prev) =>
+        prev.map((msg) =>
+          msg.id === botLoaderId
+            ? {
+                type: "bot",
+                text: "Here is the solution to your query 🙂",
+                time: getTime()
+              }
+            : msg
+        )
+      );
+    }, 1500);
+    setQuestionCount(prev => prev + 1);
+    setInput("");
+    setAttachments([]);
   };
 
-  const handleDelete = () => {
-    setShowLoader(true);
+  const handleAttachment = (files) => {
+    if (!files.length) return;
+    const fileArr = Array.from(files);
+    if (attachments.length + fileArr.length > 3) {
+      showToast("error", "Upload only 3 attachments");
+      return;
+    }
+    setAttachments(prev => [...prev, ...fileArr]);
+    showToast("success", "Attachment added successfully");
+  };
 
-    setTimeout(() => {
-      if (mode === "ai") setAiMessages([]);
-      else {
-        setTeacherChats((prev) => ({
-          ...prev,
-          [selectedTeacher]: [],
-        }));
-      }
+  const removeAttachment = (indexToRemove) => {
+    setAttachments(prev => prev.filter((_,i)=> i !== indexToRemove));
+    showToast("success","Attachment removed");
+  };
 
-      setShowLoader(false);
-      setShowConfirm(false);
-      showToast("info", "Chat deleted");
-    }, 600);
+  const scrollToBottom = () => {
+    const chat = chatRef.current;
+    if (!chat) return;
+
+    chat.scrollTo({
+      top: chat.scrollHeight,
+      behavior: "smooth"
+    });
   };
 
   return (
     <div className="student-support-page">
-
-      {showLoader && <JumpLoader />}
-
-      {/* HEADER */}
       <div className="student-support-header">
-        <h1 className="student-support-title">Student Support</h1>
-        <p className="student-support-subtitle">
-          Talk with AI or get help from teachers
-        </p>
+        <div>
+          <div className="student-support-heading">Student Support</div>
+          <div className="student-support-subheading">
+            Ask AI assistant for instant help
+          </div>
+        </div>
+        <DotButton
+          label="Post Query"
+          onClick={()=>{
+            setLoadingSupport(true);
+            setTimeout(()=>{
+              setLoadingSupport(false);
+              setShowConfirmation(true);
+            },400);
+          }}
+        />
       </div>
+      <div className="student-support-chat-card">
+        <div className="student-support-bg-eyes">
+          <RollingEyes />
+        </div>
+        {showQueryPopup && (
+          <QueryPopup onClose={() => setShowQueryPopup(false)} />
+        )}
 
-      <SegmentedTabs tabs={tabs} activeValue={mode} onChange={setMode} />
+        {!chatStarted && (
+          <div className="student-support-initial">
 
-      <div className="student-support-layout">
+            <div className="student-support-big-title">
+              How can I help you today?
+            </div>
 
-        {/* TEACHER SIDEBAR */}
-        {mode === "teacher" && (
-          <div className="student-support-teacher-sidebar">
-            <h3>Teachers</h3>
+            <div className="student-support-big-subtitle">
+              Choose one of the common queries below
+            </div>
 
-            <ul className="student-support-teacher-list">
-              {Object.keys(teacherChats).map((teacher) => (
-                <li
-                  key={teacher}
-                  className={`student-support-teacher-item ${
-                    selectedTeacher === teacher ? "active" : ""
-                  }`}
-                  onClick={() => setSelectedTeacher(teacher)}
+            <div className="student-support-initial-suggestions">
+              {initialStaticSuggestions.map((s, i) => (
+                <div
+                  key={i}
+                  className="student-support-initial-chip"
+                  onClick={() => sendMessage(s)}
                 >
-                  {teacher}
-                </li>
+                  {s}
+                </div>
               ))}
-            </ul>
-
-            <AddButton
-              label="Add Teacher"
-              onClick={() => {
-                setTempTeacher("");
-                setShowTeacherPopup(true);
-              }}
-            />
+            </div>
           </div>
         )}
 
-        {/* CHAT CARD */}
-        <div className="student-support-chat-card">
-
-          <div className="student-support-topbar">
-            <h3>
-              {mode === "ai"
-                ? "🤖 AI Assistant"
-                : `👨‍🏫 ${selectedTeacher || "Teacher Support"}`}
-            </h3>
-            <DeleteButton onClick={askDelete} />
-          </div>
-
-          <div className="student-support-messages">
-
-            {messages.length === 0 ? (
-              <div className="student-support-empty">
-                <div className="student-support-hero">
-                  <h1>Hello, <span>there</span></h1>
-                  <p>
-                    {mode === "ai"
-                      ? "How can I help you today?"
-                      : "Ask your teacher anything"}
-                  </p>
-                </div>
-
-                {mode === "ai" && (
-                  <div className="student-support-suggestions">
-                    {suggestions.map((text, i) => (
-                      <div
-                        key={i}
-                        className="student-support-suggestion-card"
-                        onClick={() => sendMessage(text)}
-                      >
-                        {text}
-                      </div>
-                    ))}
+        {chatStarted && (
+          <div className="student-support-messages" ref={chatRef}>
+            {messages.map((msg, i) => (
+              <div
+                key={i}
+                className={
+                  msg.type === "user"
+                    ? "student-support-row right"
+                    : "student-support-row"
+                }
+              >
+                {(msg.type === "bot" || msg.type === "bot-loading") && (
+                  <div className="student-support-bot-avatar">
+                    <i className="fa-solid fa-robot"></i>
                   </div>
                 )}
-              </div>
-            ) : (
-              messages.map((msg, i) => (
-                <div
-                  key={i}
-                  className={`student-support-msg ${
-                    msg.type === "user"
-                      ? "student-support-user-msg"
-                      : "student-support-bot-msg"
-                  }`}
-                >
-                  {msg.text}
+                {msg.type === "user" && (
+                  <div className="student-support-user-avatar">
+                    <DotLottieReact src={profileLottie} loop autoplay />
+                  </div>
+                )}
+                <div className="student-support-msg-group">
+                  {msg.type === "bot-loading" ? (
+                    <div className="student-support-loader-only">
+                      <BounceLoader size={200}/>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="student-support-bubble-row">
+                        <div className="student-support-msg-group">
+
+                          {msg.attachments && msg.attachments.length > 0 && (
+                            <div className="student-support-msg-attachments">
+                              {msg.attachments.map((att, idx) =>
+                                att.preview ? (
+                                  <img
+                                    key={idx}
+                                    src={att.preview}
+                                    className="student-support-msg-thumb"
+                                    onClick={() => setFullPreview(att.preview)}
+                                    alt="attachment preview"
+                                  />
+                                ) : (
+                                  <div key={idx} className="student-support-msg-file">
+                                    <i className="fa-solid fa-file"></i>
+                                  </div>
+                                )
+                              )}
+                            </div>
+                          )}
+
+                          <div
+                            className={
+                              msg.type === "user"
+                                ? "student-support-user-msg"
+                                : "student-support-bot-msg"
+                            }
+                          >
+                            {msg.text}
+                          </div>
+
+                        </div>
+
+                        {msg.type !== "bot-loading" && (
+                          <CopyButton text={msg.text} />
+                        )}
+                      </div>
+
+                      <div className="student-support-time">
+                        {msg.time}
+                      </div>
+                    </>
+                  )}
                 </div>
-              ))
+              </div>
+            ))}
+
+            {!messages.some(m => m.type === "bot-loading") && (
+              <div className="student-support-chip-row">
+                {chips.map((s, i) => (
+                  <div
+                    key={i}
+                    className="student-support-chip"
+                    onClick={() => handleChipClick(s)}
+                  >
+                    {s}
+                  </div>
+                ))}
+              </div>
             )}
           </div>
+        )}
+        {attachments.length > 0 && (
+          <div className="student-support-msg-attachments">
+          {attachments.map((file,i)=>{
+          const isImage=file.type.startsWith("image");
+          const previewURL = URL.createObjectURL(file);
+          const handlePreview = () => {
+            setFullPreview(previewURL);
+            setTimeout(()=>{
+              URL.revokeObjectURL(previewURL);
+            },1000);
+          };
 
-          <div className="student-support-input-row">
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              placeholder={
-                mode === "ai"
-                  ? "Ask AI anything..."
-                  : "Message your teacher..."
-              }
-              onKeyDown={(e) => e.key === "Enter" && sendMessage()}
-            />
-            <DotButton label="Send" onClick={() => sendMessage()} />
+          return(
+            <div key={i} style={{position:"relative"}}>
+              {/* REMOVE BUTTON */}
+              <span
+                className="student-support-attachment-remove"
+                onClick={()=>removeAttachment(i)}
+              >
+                ✖
+              </span>
+              {isImage ? (
+                <img
+                  src={previewURL}
+                  className="student-support-msg-thumb"
+                  alt="attachment preview"
+                  onClick={handlePreview}
+                  style={{cursor:"pointer"}}
+                />
+              ):(
+                <div className="student-support-msg-file-card">
+                  <div className="student-support-file-icon">
+                    <i className="fa-solid fa-file-lines"></i>
+                  </div>
+                  <div className="student-support-file-info">
+                    <span>{file.name}</span>
+                    <span>{file.type.split("/")[1]}</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          )
+          })}
           </div>
+        )}
+        {showScrollBtn && (
+          <div className={`student-support-scroll-btn ${attachments.length>0 ? "with-attachments":""}`}>
+            <ScrollDownButton onClick={scrollToBottom} />
+          </div>
+        )}
+        <div className="student-support-input-row">
+          <div className="student-support-input-wrapper">
+            <label className="student-support-attach-inside">
+              <i className="fa-solid fa-paperclip"></i>
+              <input
+                type="file"
+                multiple
+                hidden
+                onChange={(e) => handleAttachment(e.target.files)}
+              />
+            </label>
+            <textarea
+              value={input}
+              rows={1}
+              placeholder="Type your message..."
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  sendMessage();
+                }
+              }}
+            />
+          </div>
+          <DotButton label="Send" onClick={() => sendMessage()} />
         </div>
       </div>
-
-      {/* DELETE */}
-      {showConfirm && (
+      {loadingSupport && <JumpLoader />}
+      {showConfirmation &&
         <ConfirmationCard
-          message="Delete all chats?"
-          onConfirm={handleDelete}
-          onCancel={() => setShowConfirm(false)}
-        />
-      )}
-
-      {/* TEACHER POPUP */}
-      {showTeacherPopup && (
-        <ConfirmationCard
-          title="Select Teacher"
-          message={
-            <div className="student-support-teacher-popup">
-              <select
-                value={tempTeacher}
-                onChange={(e) => setTempTeacher(e.target.value)}
-              >
-                <option value="">Choose teacher</option>
-                {teachers.map((t) => (
-                  <option key={t}>{t}</option>
-                ))}
-              </select>
-            </div>
-          }
-          onConfirm={() => {
-            if (!tempTeacher) {
-              showToast("warning", "Please select a teacher");
-              return;
-            }
-
-            setSelectedTeacher(tempTeacher);
-            setTeacherChats((p) => ({
-              ...p,
-              [tempTeacher]: p[tempTeacher] || [],
-            }));
-
-            setShowTeacherPopup(false);
-            showToast("success", `Chat started with ${tempTeacher}`);
+          title="Post Query?"
+          message="Do you want to raise a query?"
+          onConfirm={()=>{
+            setShowConfirmation(false);
+            setShowQueryPopup(true);
           }}
-          onCancel={() => {
-            setShowTeacherPopup(false);
-            setMode("ai");
-          }}
+          onCancel={()=>setShowConfirmation(false)}
         />
+      }
+      {fullPreview && (
+        <div
+          className="student-support-full-preview"
+          onClick={()=>{
+            setFullPreview(null);
+          }}
+        >
+          <img src={fullPreview} alt="" />
+        </div>
       )}
     </div>
   );

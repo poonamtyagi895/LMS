@@ -60,8 +60,14 @@
   font-size: 14px;
   color: var(--dark-text);
   border-top: 1px solid var(--light-border);
-  vertical-align: middle;
   padding: 14px 0;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.table td > * {
+  display: flex;
+  align-items: center;
 }
 
 .table-normal td { padding: 14px 0; }

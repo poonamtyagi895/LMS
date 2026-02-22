@@ -170,8 +170,8 @@ const TestInfoChangeCard = () => {
         {/* LEFT */}
         <div>
           <div className="test-info-change-section-title">
-             <span className="test-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAnElEQVR4nO2VQQqAMAwE97HqF7x69AeJD+rB39gXrFQ8iNCSBAQRAzm1yxx2w4KKgYpMBRubKehxjktzflwpmKurx/t2Adg1B00woTEUTOXfBWDX/AALoLidqBirK0g3kx0AQV/EzcgJNi7oQoDI8FUAxi6ZPpP9l8ynY5rNyQsBxJG8dyUiMkEPBk8fxEzWvw++3gfZfsmRPnBodsWDodNMPfi7AAAAAElFTkSuQmCC" alt="external-desktop-application-templates-bar-label-style-page-basic-regular-tal-revivo"/>
+            <span className="test-info-change-icon">
+              <i className="fa-solid fa-sliders"></i>
             </span>
             Customize your test
           </div>
@@ -246,7 +246,7 @@ const TestInfoChangeCard = () => {
         <div>
           <div className="test-info-change-section-title">
             <span className="test-info-change-icon">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB4ElEQVR4nOVUzS5kURD+kN6IfoJmxyTEzw6PwUIveQMeYXbsR7c6t3XCFmEjxJKVh5iFFbOZEQQZET45daqvps+9adELiZNUuk/dqq+qvqpTwLc4FCzRgW9EsNTJAJuRAJudAh+hw5mCrmFaJQQ5898+BkZ0UXBMwS4TzFFQoeDZAB+ZoFfF/w+6J7Mpq4/3Jbrysp1vocLhPwW/WMVwalfFMB1W9dt7+wQLcfAK+ig4N37X6XBKh9+sYjwzoSrG1cbbBh/ve8E6iq3GDsuWxR8mKKjuJ7r1t4YfdNij4MbE0zH0xiZBQcFDkJUYPbMU3FmQI19RE/hlhLq/FJTUpo6i+gTwOyaYiZecYIoO9zYxo1bZngHue0DW0E+HA9Ntqc0aRu1+7zEym2yV3KpxowLBjWVWauJ+wHRXaf/C/TYXPBrA4VrvNfR/OgAFky0UCXat/AOlx4MLDk23Y9SOpRQJJrP4n4k2WTCkDW1dFf9YwWBTBflN9qOVOaaCkm+o0eVlJwXfRo8lWFDfzDH1o/Y6x+09NMFE+tAc6rkPzbJYiK4Kh9XoqhA8tL0qGpRQcGKvtmz75il32YVAZfM5adDa9mHINr6um6r61KHDRoS6jY6AI/RmMcL1YscCfOnzAtieRlLpk7lPAAAAAElFTkSuQmCC" alt="settings--v1"></img>
+              <i className="fa-solid fa-gear"></i>
             </span>
             Test configuration
           </div>
@@ -293,10 +293,7 @@ const TestInfoChangeCard = () => {
           {/* ATTACHMENTS */}
           <div className="test-info-change-section-title">
             <span className="test-info-change-icon">
-                <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeElEQVR4nO2ZwUrDQBCGf4tPog+gZ/VWfRsRWg/iKT166LmzG/RtfIjqGwiCHnspv5g2kASVZGd3iTA/zCWBmfmSzWSYAUz/QCxwSI9LOszpcBdsgmuWOM2bvMcFHV7pwEi2pWDJApNcyW8iJt+0x6QQ1bFpPnnBJwWegocgc3jOCsHdma+T/+AKRyp/gkXWN0GP20YQp/bXBnhPDsFmQMEitj8KVh2Ip6gQyQGIg6QQqQGqa0wIkQMgKUR0gGZREPjWPSaASPAGrv4qyywwqapRrOoUHeCnH6ND2emV7unw1oIQLEcBoGhNthScjAJg7/ecgpdBEB43owFoteeCWa/eKSR+SoAs8WkAOtEAxABUogGIAahEAxADUIkGIAagEg1ADEAlGoAYgEo0AP/7LDOHuJva1bOheYiDaWsMqFwxDYrtcbwfPdYA03hLPs2euJ+VneTX37mMcc3axzb0OAtKPuGiu6+t1ckPmmXGs1n1/YUeGxPy6guI6odWKpaMUwAAAABJRU5ErkJggg=="
-                alt="attachments"
-                />
+              <i className="fa-solid fa-paperclip"></i>
             </span>
             Resources & Attachments
             </div>

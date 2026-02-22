@@ -1,0 +1,47 @@
+.rolling-eyes-page {
+  background-color: var(--light-primary-color);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rolling-eyes-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.rolling-eyes {
+  display: flex;
+  gap: 6px;
+}
+
+.rolling-eyes-left,
+.rolling-eyes-right {
+  border-radius: 50%;
+  width: 4.5rem;
+  aspect-ratio: 1/1;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rolling-eyes-eyeball {
+  width: 1.5rem;
+  aspect-ratio: 1/1;
+  background-color: var(--main-heading);
+  border-radius: 50%;
+  transition: translate 0.05s ease-out;
+}
+
+.rolling-eyes-mouth {
+  width: 3rem;
+  height: 2rem;
+  border-bottom: 1rem solid gold;
+  border-radius: 50%;
+  rotate: -15deg;
+}

@@ -54,9 +54,9 @@
   flex-shrink: 0;
 }
 
-.test-info-change-icon img {
-  width: 22px;
-  height: 22px;
+.test-info-change-icon i {
+  font-size: 18px;
+  color: var(--primary-color);
 }
 
 /* CARD */

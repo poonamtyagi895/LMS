@@ -23,8 +23,8 @@
 }
 
 .segmented-tabs-btn.active {
-  color: var(--main-heading);
   font-weight: 600;
+  color: var(--primary-color);
 }
 
 .segmented-tabs-indicator {

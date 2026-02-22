@@ -1,0 +1,66 @@
+.copy-button {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-color: var(--input-background);
+  color: var(--main-subheading);
+  border: none;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* ⭐ ESCAPES CHAT SCROLL CONTAINER */
+.copy-button-tooltip {
+  position: fixed;
+  opacity: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 9px;
+  background: var(--input-background);
+  padding: 2px 4px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 9999;
+  top: -999px;
+  left: -999px;
+}
+
+.copy-button-tooltip::before {
+  content: attr(data-text-initial);
+}
+
+.copy-button-active .copy-button-tooltip::before {
+  content: attr(data-text-end);
+}
+
+.copy-button:hover .copy-button-tooltip {
+  opacity: 1;
+}
+
+.copy-button svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-49%, -50%);
+}
+
+.copy-button-checkmark {
+  display: none;
+}
+
+.copy-button-active .copy-button-clipboard {
+  display: none;
+}
+
+.copy-button-active .copy-button-checkmark {
+  display: block;
+}
+
+.copy-button:hover {
+  background-color: var(--light-border);
+}
+
+.copy-button:hover svg {
+  color: var(--primary-color);
+}

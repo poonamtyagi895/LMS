@@ -17,6 +17,7 @@ import CourseInfoChangeCard from "./Components/Admin/CourseInfoChangeCard/Course
 import ChapterInfoChangeCard from "./Components/Admin/ChapterInfoChangeCard/ChapterInfoChangeCard";
 import TestManagement from "./Components/Admin/TestManagement/TestManagement";
 import TestInfoChangeCard from "./Components/Admin/TestInfoChangeCard/TestInfoChangeCard";
+import AdminSupport from "./Components/Admin/AdminSupport/AdminSupport";
 import HomePage from "./Components/Website/HomePage/HomePage";
 import AutoCarousel from "./Components/WebsiteComponents/AutoCarousel/AutoCarousel";
 
@@ -41,7 +42,7 @@ function App() {
             <Route path="courses/:courseId" element={<CoursePage />} />
           <Route path="refer-friend" element={<ReferFriend />} />
           <Route path="purchase-history" element={<PurchaseHistory />} />
-          <Route path="support" element={<StudentSupport />} />
+          <Route path="student-support" element={<StudentSupport />} />
         </Route>
 
         {/* Admin Panel */}
@@ -70,6 +71,7 @@ function App() {
             path="test-management/edit/:id"
             element={<TestInfoChangeCard mode="edit" />}
           />
+          <Route path="admin-support" element={<AdminSupport />} />
         </Route>
 
         {/* Extra / Testing Routes */}

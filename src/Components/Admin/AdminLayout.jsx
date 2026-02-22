@@ -11,6 +11,7 @@ const AdminLayout = () => {
     { label: "Students enrolled", icon: "fas fa-user-graduate", path: "/admin/students" },
     { label: "Manage Courses", icon: "fas fa-book", path: "/admin/manage-courses" },
     { label: "Test Management", icon: "fas fa-file-alt", path: "/admin/test-management" },
+    { label: "Support", icon: "fas fa-headset", path: "/admin/admin-support" },
   ];
 
   const updatedMenus = menus.map(m => ({
